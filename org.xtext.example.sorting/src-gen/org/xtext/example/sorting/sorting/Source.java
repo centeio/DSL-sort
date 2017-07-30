@@ -3,19 +3,12 @@
  */
 package org.xtext.example.sorting.sorting;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Source</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.Source#getPorts <em>Ports</em>}</li>
- * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getSource()
  * @model
@@ -23,20 +16,4 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Source extends Component
 {
-  /**
-   * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Ports</em>' containment reference list.
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getSource_Ports()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Port> getPorts();
-
 } // Source

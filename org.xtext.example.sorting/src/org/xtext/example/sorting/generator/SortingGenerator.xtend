@@ -8,6 +8,8 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.sorting.sorting.*
+import java.util.Iterator
+import org.eclipse.emf.ecore.EObject
 
 /**
  * Generates code from your model files on save.
@@ -17,11 +19,170 @@ import org.xtext.example.sorting.sorting.*
 class SortingGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+
 		fsa.generateFile(resource.className+".java", generate(resource.contents.head as Config)); 
 //			resource.allContents
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+		fsa.generateFile(resource.className+".Component.java", 
+			'''
+			public abstract class Component{
+				protected int level = 0;
+				public void invoke();
+				public Port getPort(String name);
+				
+				public int getLevel() {
+					return level;
+				}				
+			}''');
+		 fsa.generateFile(resource.className+".Source.java", 
+		 	'''
+		 	import java.util.HashMap;
+		 	
+		 	public abstract class Source extends Component{
+		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
+		 		Port getPort(String name){return outPorts.get(name);}
+		 	}
+		 	'''
+		 );
+		 
+		 fsa.generateFile(resource.className+".Filter.java", 
+		 	'''
+		 	import java.util.HashMap;
+		 	
+		 	public abstract class Filter extends Component{
+		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
+		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
+		 		public Port getPort(String name){
+		 			if(inPorts.get(name) != null) 
+		 				return inPorts.get(name);
+		 			return outPorts.get(name);
+		 		}		
+		 	}
+		 	'''
+		 );
+		 fsa.generateFile(resource.className+".Sink.java", 
+		 	'''
+		 	import java.util.HashMap;
+		 	
+		 	public abstract class Sink extends Component{
+		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
+		 		public Port getPort(String name){
+		 			return inPorts.get(name);
+		 		}
+		 	}
+		 	'''
+		 );
+		 fsa.generateFile(resource.className+".Port.java", 
+		 	'''
+		 	import java.util.ArrayList;
+		 	
+		 	public class Port{
+		 		protected Component component;
+		 		protected String name;
+		 		protected ArrayList<Edge> edges = new ArrayList<Edge>();
+		 	
+		 		public Port(String name, Component component){
+		 			this.name = name;
+		 			this.component = component;
+		 		}
+		 	
+		 		public Component getComponent() {
+		 			return component;
+		 		}
+		 	
+		 		public void setComponent(Component component) {
+		 			this.component = component;
+		 		}
+		 	
+		 		public String getName() {
+		 			return name;
+		 		}
+		 	
+		 		public void setName(String name) {
+		 			this.name = name;
+		 		}
+		 	
+		 		public ArrayList<Edge> getEdges() {
+		 			return edges;
+		 		}
+		 	
+		 		public void setEdges(ArrayList<Edge> edges) {
+		 			this.edges = edges;
+		 		}
+		 	}
+		 	'''
+		 );
+		  fsa.generateFile(resource.className+".Edge.java", 
+		 	'''
+		 	public class Edge{
+		 		protected Port source; // <n1.get(p1),n2.get(p2)> 
+		 		protected Port target;
+		 	
+		 		public Edge(Port source, Port target){
+		 			this.source = source;
+		 			this.target = target;
+		 		}
+		 	
+		 		public Port getSource() {
+		 			return source;
+		 		}
+		 	
+		 		public void setSource(Port source) {
+		 			this.source = source;
+		 		}
+		 	
+		 		public Port getTarget() {
+		 			return target;
+		 		}
+		 	
+		 		public void setTarget(Port target) {
+		 			this.target = target;
+		 		}
+		 	}
+		 	''');
+		 	
+		 	for(component: resource.allContents.toIterable.filter(Component)){
+		 		fsa.generateFile(resource.className+component.name + ".java",
+		 			'''
+			«IF (component instanceof Source)»
+				public class «component.name» extends Source{
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.outPorts»
+							inPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»
+					}
+				}
+			«ELSEIF (component instanceof Filter)»
+				public class «component.name» extends Filter{
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.inPorts»
+							inPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»
+						«FOR port : component.outPorts»
+							outPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»					
+					}
+				}
+			«ELSEIF (component instanceof Sink)»
+				public class «component.name» extends Sink{
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.outPorts»
+							outPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»					
+					}					
+				}
+			«ENDIF»					 			
+		 	'''
+		 	);
+		 	}
+		 	
+		 
+		
 	}
 	
 	def className(Resource res) {
@@ -33,88 +194,40 @@ class SortingGenerator extends AbstractGenerator {
 		«FOR imp : config.imports»
 			import «imp.name»
 		«ENDFOR»
-		import java.util.HashMap;
-		
-		
-		public abstract class Component{
-			int level = 0;
-			void invoke();
-			Port getPort(String name);
-		}
-		
-		public abstract class Source extends Component{
-			HashMap<String, Port> outPorts = new HashMap<String, Port>();	
-			
-			@Overide
-			Port getPort(String name){
-				return outPorts.get(name);
-			}
-		}
-		
-		public abstract class Filter extends Component{
-			HashMap<String, Port> inPorts = new HashMap<String, Port>();
-			HashMap<String, Port> outPorts = new HashMap<String, Port>();
-			
-			@Overide
-			Port getPort(String name){
-				(inPorts.get(name) != null) ? return inPorts.get(name) 
-				return outPorts.get(name);
-			}		
-		}
-		
-		public abstract class Sink extends Component{
-			HashMap<String, Port> inPorts = new HashMap<String, Port>();
-			@Overide
-			Port getPort(String name){
-				return inPorts.get(name);
-			}
-		}
-		
-		public class Port{
-			Component component;
-			String name;
-			ArrayList<Edges> edges = new ArrayList<Edges>();
-			
-			public Port(String name, Component component){
-				this.name = name;
-				this.component = component;
-			}
-		}
-		
-		public class Edge{
-			Port source; // <n1.get(p1),n2.get(p2)> 
-			Port target;
-			
-			public Edge(Port source, Port target){
-				this.source = source;
-				this.target = target;
-			}
-		}
-		
+
 		«FOR component : config.components»
 			«IF (component instanceof Source)»
 				public class «component.name» extends Source{
-					public Source(){
-						«FOR port : component.ports»
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.outPorts»
 							inPorts.put(«port.name», new Port(«port.name»,this));
 						«ENDFOR»
 					}
-
 				}
-				
-
-				
 			«ELSEIF (component instanceof Filter)»
 				public class «component.name» extends Filter{
-					
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.inPorts»
+							inPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»
+						«FOR port : component.outPorts»
+							outPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»					
+					}
 				}
 			«ELSEIF (component instanceof Sink)»
 				public class «component.name» extends Sink{
-					
+					public «component.name»(String name){
+						this.name=name;
+						«FOR port : component.outPorts»
+							outPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»					
+					}					
 				}
 			«ENDIF»			
 		«ENDFOR»
 		
 	'''
-	
 }

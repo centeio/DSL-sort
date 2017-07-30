@@ -3,19 +3,8 @@
  */
 package org.xtext.example.sorting.sorting.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.SortingPackage;
 import org.xtext.example.sorting.sorting.Source;
 
@@ -23,27 +12,11 @@ import org.xtext.example.sorting.sorting.Source;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Source</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.SourceImpl#getPorts <em>Ports</em>}</li>
- * </ul>
  *
  * @generated
  */
 public class SourceImpl extends ComponentImpl implements Source
 {
-  /**
-   * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPorts()
-   * @generated
-   * @ordered
-   */
-  protected EList<Port> ports;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -63,104 +36,6 @@ public class SourceImpl extends ComponentImpl implements Source
   protected EClass eStaticClass()
   {
     return SortingPackage.Literals.SOURCE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Port> getPorts()
-  {
-    if (ports == null)
-    {
-      ports = new EObjectContainmentEList<Port>(Port.class, this, SortingPackage.SOURCE__PORTS);
-    }
-    return ports;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SOURCE__PORTS:
-        return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SOURCE__PORTS:
-        return getPorts();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SOURCE__PORTS:
-        getPorts().clear();
-        getPorts().addAll((Collection<? extends Port>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SOURCE__PORTS:
-        getPorts().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SOURCE__PORTS:
-        return ports != null && !ports.isEmpty();
-    }
-    return super.eIsSet(featureID);
   }
 
 } //SourceImpl

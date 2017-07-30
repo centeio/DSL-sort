@@ -101,7 +101,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Filter returns Filter
 	 *
 	 * Constraint:
-	 *     (name=ID inPort+=Port+ outPort+=Port+ method=STRING?)
+	 *     (name=ID inPorts+=Port+ outPorts+=Port+ method=STRING?)
 	 */
 	protected void sequence_Filter(ISerializationContext context, Filter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -177,7 +177,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Sink returns Sink
 	 *
 	 * Constraint:
-	 *     (name=ID inPort+=Port+ method=STRING?)
+	 *     (name=ID inPorts+=Port+ outPorts+=Port* method=STRING?)
 	 */
 	protected void sequence_Sink(ISerializationContext context, Sink semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -190,7 +190,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Source returns Source
 	 *
 	 * Constraint:
-	 *     (name=ID ports+=Port+ method=STRING?)
+	 *     (name=ID inPorts+=Port* outPorts+=Port+ method=STRING?)
 	 */
 	protected void sequence_Source(ISerializationContext context, Source semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -628,39 +628,64 @@ ruleSource returns [EObject current=null]
 		{
 			newLeafNode(otherlv_2, grammarAccess.getSourceAccess().getLeftCurlyBracketKeyword_2());
 		}
-		otherlv_3='out:'
+		(
+			otherlv_3='in:'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getSourceAccess().getInKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getSourceAccess().getInPortsPortParserRuleCall_3_1_0());
+					}
+					lv_inPorts_4_0=rulePort
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSourceRule());
+						}
+						add(
+							$current,
+							"inPorts",
+							lv_inPorts_4_0,
+							"org.xtext.example.sorting.Sorting.Port");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+		otherlv_5='out:'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getSourceAccess().getOutKeyword_3());
+			newLeafNode(otherlv_5, grammarAccess.getSourceAccess().getOutKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSourceAccess().getPortsPortParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getSourceAccess().getOutPortsPortParserRuleCall_5_0());
 				}
-				lv_ports_4_0=rulePort
+				lv_outPorts_6_0=rulePort
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSourceRule());
 					}
 					add(
 						$current,
-						"ports",
-						lv_ports_4_0,
+						"outPorts",
+						lv_outPorts_6_0,
 						"org.xtext.example.sorting.Sorting.Port");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
 		(
-			otherlv_5='method:'
+			otherlv_7='method:'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getSourceAccess().getMethodKeyword_5_0());
+				newLeafNode(otherlv_7, grammarAccess.getSourceAccess().getMethodKeyword_6_0());
 			}
 			(
 				(
-					lv_method_6_0=RULE_STRING
+					lv_method_8_0=RULE_STRING
 					{
-						newLeafNode(lv_method_6_0, grammarAccess.getSourceAccess().getMethodSTRINGTerminalRuleCall_5_1_0());
+						newLeafNode(lv_method_8_0, grammarAccess.getSourceAccess().getMethodSTRINGTerminalRuleCall_6_1_0());
 					}
 					{
 						if ($current==null) {
@@ -669,25 +694,25 @@ ruleSource returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"method",
-							lv_method_6_0,
+							lv_method_8_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
 			)
 			(
-				otherlv_7='.'
+				otherlv_9='.'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getSourceAccess().getFullStopKeyword_5_2_0());
+					newLeafNode(otherlv_9, grammarAccess.getSourceAccess().getFullStopKeyword_6_2_0());
 				}
-				this_STRING_8=RULE_STRING
+				this_STRING_10=RULE_STRING
 				{
-					newLeafNode(this_STRING_8, grammarAccess.getSourceAccess().getSTRINGTerminalRuleCall_5_2_1());
+					newLeafNode(this_STRING_10, grammarAccess.getSourceAccess().getSTRINGTerminalRuleCall_6_2_1());
 				}
 			)*
 		)?
-		otherlv_9='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getSourceAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_11, grammarAccess.getSourceAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;
@@ -741,17 +766,17 @@ ruleFilter returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFilterAccess().getInPortPortParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getFilterAccess().getInPortsPortParserRuleCall_4_0());
 				}
-				lv_inPort_4_0=rulePort
+				lv_inPorts_4_0=rulePort
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFilterRule());
 					}
 					add(
 						$current,
-						"inPort",
-						lv_inPort_4_0,
+						"inPorts",
+						lv_inPorts_4_0,
 						"org.xtext.example.sorting.Sorting.Port");
 					afterParserOrEnumRuleCall();
 				}
@@ -764,17 +789,17 @@ ruleFilter returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFilterAccess().getOutPortPortParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getFilterAccess().getOutPortsPortParserRuleCall_6_0());
 				}
-				lv_outPort_6_0=rulePort
+				lv_outPorts_6_0=rulePort
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFilterRule());
 					}
 					add(
 						$current,
-						"outPort",
-						lv_outPort_6_0,
+						"outPorts",
+						lv_outPorts_6_0,
 						"org.xtext.example.sorting.Sorting.Port");
 					afterParserOrEnumRuleCall();
 				}
@@ -870,32 +895,57 @@ ruleSink returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSinkAccess().getInPortPortParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getSinkAccess().getInPortsPortParserRuleCall_4_0());
 				}
-				lv_inPort_4_0=rulePort
+				lv_inPorts_4_0=rulePort
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getSinkRule());
 					}
 					add(
 						$current,
-						"inPort",
-						lv_inPort_4_0,
+						"inPorts",
+						lv_inPorts_4_0,
 						"org.xtext.example.sorting.Sorting.Port");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
 		(
-			otherlv_5='method:'
+			otherlv_5='out:'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getSinkAccess().getMethodKeyword_5_0());
+				newLeafNode(otherlv_5, grammarAccess.getSinkAccess().getOutKeyword_5_0());
 			}
 			(
 				(
-					lv_method_6_0=RULE_STRING
 					{
-						newLeafNode(lv_method_6_0, grammarAccess.getSinkAccess().getMethodSTRINGTerminalRuleCall_5_1_0());
+						newCompositeNode(grammarAccess.getSinkAccess().getOutPortsPortParserRuleCall_5_1_0());
+					}
+					lv_outPorts_6_0=rulePort
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getSinkRule());
+						}
+						add(
+							$current,
+							"outPorts",
+							lv_outPorts_6_0,
+							"org.xtext.example.sorting.Sorting.Port");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+		(
+			otherlv_7='method:'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getSinkAccess().getMethodKeyword_6_0());
+			}
+			(
+				(
+					lv_method_8_0=RULE_STRING
+					{
+						newLeafNode(lv_method_8_0, grammarAccess.getSinkAccess().getMethodSTRINGTerminalRuleCall_6_1_0());
 					}
 					{
 						if ($current==null) {
@@ -904,25 +954,25 @@ ruleSink returns [EObject current=null]
 						setWithLastConsumed(
 							$current,
 							"method",
-							lv_method_6_0,
+							lv_method_8_0,
 							"org.eclipse.xtext.common.Terminals.STRING");
 					}
 				)
 			)
 			(
-				otherlv_7='.'
+				otherlv_9='.'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getSinkAccess().getFullStopKeyword_5_2_0());
+					newLeafNode(otherlv_9, grammarAccess.getSinkAccess().getFullStopKeyword_6_2_0());
 				}
-				this_STRING_8=RULE_STRING
+				this_STRING_10=RULE_STRING
 				{
-					newLeafNode(this_STRING_8, grammarAccess.getSinkAccess().getSTRINGTerminalRuleCall_5_2_1());
+					newLeafNode(this_STRING_10, grammarAccess.getSinkAccess().getSTRINGTerminalRuleCall_6_2_1());
 				}
 			)*
 		)?
-		otherlv_9='}'
+		otherlv_11='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getSinkAccess().getRightCurlyBracketKeyword_6());
+			newLeafNode(otherlv_11, grammarAccess.getSinkAccess().getRightCurlyBracketKeyword_7());
 		}
 	)
 ;

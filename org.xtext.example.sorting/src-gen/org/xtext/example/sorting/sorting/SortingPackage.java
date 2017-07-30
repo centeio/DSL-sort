@@ -289,13 +289,31 @@ public interface SortingPackage extends EPackage
   int COMPONENT__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>In Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__IN_PORTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Out Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPONENT__OUT_PORTS = 2;
+
+  /**
    * The feature id for the '<em><b>Method</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__METHOD = 1;
+  int COMPONENT__METHOD = 3;
 
   /**
    * The number of structural features of the '<em>Component</em>' class.
@@ -304,7 +322,7 @@ public interface SortingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPONENT_FEATURE_COUNT = 2;
+  int COMPONENT_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.SourceImpl <em>Source</em>}' class.
@@ -326,6 +344,24 @@ public interface SortingPackage extends EPackage
   int SOURCE__NAME = COMPONENT__NAME;
 
   /**
+   * The feature id for the '<em><b>In Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOURCE__IN_PORTS = COMPONENT__IN_PORTS;
+
+  /**
+   * The feature id for the '<em><b>Out Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOURCE__OUT_PORTS = COMPONENT__OUT_PORTS;
+
+  /**
    * The feature id for the '<em><b>Method</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -335,22 +371,13 @@ public interface SortingPackage extends EPackage
   int SOURCE__METHOD = COMPONENT__METHOD;
 
   /**
-   * The feature id for the '<em><b>Ports</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE__PORTS = COMPONENT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Source</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOURCE_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 1;
+  int SOURCE_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.FilterImpl <em>Filter</em>}' class.
@@ -372,6 +399,24 @@ public interface SortingPackage extends EPackage
   int FILTER__NAME = COMPONENT__NAME;
 
   /**
+   * The feature id for the '<em><b>In Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER__IN_PORTS = COMPONENT__IN_PORTS;
+
+  /**
+   * The feature id for the '<em><b>Out Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FILTER__OUT_PORTS = COMPONENT__OUT_PORTS;
+
+  /**
    * The feature id for the '<em><b>Method</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -381,31 +426,13 @@ public interface SortingPackage extends EPackage
   int FILTER__METHOD = COMPONENT__METHOD;
 
   /**
-   * The feature id for the '<em><b>In Port</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FILTER__IN_PORT = COMPONENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Out Port</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FILTER__OUT_PORT = COMPONENT_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Filter</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FILTER_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 2;
+  int FILTER_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.SinkImpl <em>Sink</em>}' class.
@@ -427,6 +454,24 @@ public interface SortingPackage extends EPackage
   int SINK__NAME = COMPONENT__NAME;
 
   /**
+   * The feature id for the '<em><b>In Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINK__IN_PORTS = COMPONENT__IN_PORTS;
+
+  /**
+   * The feature id for the '<em><b>Out Ports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SINK__OUT_PORTS = COMPONENT__OUT_PORTS;
+
+  /**
    * The feature id for the '<em><b>Method</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -436,22 +481,13 @@ public interface SortingPackage extends EPackage
   int SINK__METHOD = COMPONENT__METHOD;
 
   /**
-   * The feature id for the '<em><b>In Port</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SINK__IN_PORT = COMPONENT_FEATURE_COUNT + 0;
-
-  /**
    * The number of structural features of the '<em>Sink</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINK_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 1;
+  int SINK_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.InstanceImpl <em>Instance</em>}' class.
@@ -788,6 +824,28 @@ public interface SortingPackage extends EPackage
   EAttribute getComponent_Name();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Component#getInPorts <em>In Ports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>In Ports</em>'.
+   * @see org.xtext.example.sorting.sorting.Component#getInPorts()
+   * @see #getComponent()
+   * @generated
+   */
+  EReference getComponent_InPorts();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Component#getOutPorts <em>Out Ports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Out Ports</em>'.
+   * @see org.xtext.example.sorting.sorting.Component#getOutPorts()
+   * @see #getComponent()
+   * @generated
+   */
+  EReference getComponent_OutPorts();
+
+  /**
    * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Component#getMethod <em>Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -809,17 +867,6 @@ public interface SortingPackage extends EPackage
   EClass getSource();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Source#getPorts <em>Ports</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Ports</em>'.
-   * @see org.xtext.example.sorting.sorting.Source#getPorts()
-   * @see #getSource()
-   * @generated
-   */
-  EReference getSource_Ports();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Filter <em>Filter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -830,28 +877,6 @@ public interface SortingPackage extends EPackage
   EClass getFilter();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Filter#getInPort <em>In Port</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>In Port</em>'.
-   * @see org.xtext.example.sorting.sorting.Filter#getInPort()
-   * @see #getFilter()
-   * @generated
-   */
-  EReference getFilter_InPort();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Filter#getOutPort <em>Out Port</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Out Port</em>'.
-   * @see org.xtext.example.sorting.sorting.Filter#getOutPort()
-   * @see #getFilter()
-   * @generated
-   */
-  EReference getFilter_OutPort();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Sink <em>Sink</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -860,17 +885,6 @@ public interface SortingPackage extends EPackage
    * @generated
    */
   EClass getSink();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Sink#getInPort <em>In Port</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>In Port</em>'.
-   * @see org.xtext.example.sorting.sorting.Sink#getInPort()
-   * @see #getSink()
-   * @generated
-   */
-  EReference getSink_InPort();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Instance <em>Instance</em>}'.
@@ -1187,6 +1201,22 @@ public interface SortingPackage extends EPackage
     EAttribute COMPONENT__NAME = eINSTANCE.getComponent_Name();
 
     /**
+     * The meta object literal for the '<em><b>In Ports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT__IN_PORTS = eINSTANCE.getComponent_InPorts();
+
+    /**
+     * The meta object literal for the '<em><b>Out Ports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPONENT__OUT_PORTS = eINSTANCE.getComponent_OutPorts();
+
+    /**
      * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1205,14 +1235,6 @@ public interface SortingPackage extends EPackage
     EClass SOURCE = eINSTANCE.getSource();
 
     /**
-     * The meta object literal for the '<em><b>Ports</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SOURCE__PORTS = eINSTANCE.getSource_Ports();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.FilterImpl <em>Filter</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1223,22 +1245,6 @@ public interface SortingPackage extends EPackage
     EClass FILTER = eINSTANCE.getFilter();
 
     /**
-     * The meta object literal for the '<em><b>In Port</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FILTER__IN_PORT = eINSTANCE.getFilter_InPort();
-
-    /**
-     * The meta object literal for the '<em><b>Out Port</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FILTER__OUT_PORT = eINSTANCE.getFilter_OutPort();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.SinkImpl <em>Sink</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1247,14 +1253,6 @@ public interface SortingPackage extends EPackage
      * @generated
      */
     EClass SINK = eINSTANCE.getSink();
-
-    /**
-     * The meta object literal for the '<em><b>In Port</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SINK__IN_PORT = eINSTANCE.getSink_InPort();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.InstanceImpl <em>Instance</em>}' class.

@@ -3,20 +3,12 @@
  */
 package org.xtext.example.sorting.sorting;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Filter</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.Filter#getInPort <em>In Port</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Filter#getOutPort <em>Out Port</em>}</li>
- * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter()
  * @model
@@ -24,36 +16,4 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Filter extends Component
 {
-  /**
-   * Returns the value of the '<em><b>In Port</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>In Port</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>In Port</em>' containment reference list.
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_InPort()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Port> getInPort();
-
-  /**
-   * Returns the value of the '<em><b>Out Port</b></em>' containment reference list.
-   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Out Port</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Out Port</em>' containment reference list.
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_OutPort()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Port> getOutPort();
-
 } // Filter

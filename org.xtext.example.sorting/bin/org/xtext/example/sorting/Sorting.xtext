@@ -42,7 +42,8 @@ Component:
 
 Source:
 	'source' name=ID '{'
-	'out:' ports+=Port+
+	('in:' inPorts+=Port+)?
+	'out:' outPorts+=Port+
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	'}'
 	//TODO foreach N (param ou unknown)
@@ -50,8 +51,8 @@ Source:
 	
 Filter:
 	'filter' name=ID '{'
-	'in:' inPort+=Port+
-	'out:' outPort+=Port+
+	'in:' inPorts+=Port+
+	'out:' outPorts+=Port+
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	//TODO adicionar codigo ao método
 	'}'
@@ -59,7 +60,8 @@ Filter:
 
 Sink:
 	'sink' name=ID '{'
-	'in:' inPort+=Port+
+	'in:' inPorts+=Port+
+	('out:' outPorts+=Port+)?
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	'}'
 ;	

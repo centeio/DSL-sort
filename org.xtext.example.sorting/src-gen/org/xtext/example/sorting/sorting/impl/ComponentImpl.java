@@ -3,14 +3,24 @@
  */
 package org.xtext.example.sorting.sorting.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.xtext.example.sorting.sorting.Component;
+import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.SortingPackage;
 
 /**
@@ -22,6 +32,8 @@ import org.xtext.example.sorting.sorting.SortingPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getInPorts <em>In Ports</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getOutPorts <em>Out Ports</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getMethod <em>Method</em>}</li>
  * </ul>
  *
@@ -48,6 +60,26 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getInPorts() <em>In Ports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInPorts()
+   * @generated
+   * @ordered
+   */
+  protected EList<Port> inPorts;
+
+  /**
+   * The cached value of the '{@link #getOutPorts() <em>Out Ports</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOutPorts()
+   * @generated
+   * @ordered
+   */
+  protected EList<Port> outPorts;
 
   /**
    * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
@@ -118,6 +150,34 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Port> getInPorts()
+  {
+    if (inPorts == null)
+    {
+      inPorts = new EObjectContainmentEList<Port>(Port.class, this, SortingPackage.COMPONENT__IN_PORTS);
+    }
+    return inPorts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Port> getOutPorts()
+  {
+    if (outPorts == null)
+    {
+      outPorts = new EObjectContainmentEList<Port>(Port.class, this, SortingPackage.COMPONENT__OUT_PORTS);
+    }
+    return outPorts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getMethod()
   {
     return method;
@@ -142,12 +202,34 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SortingPackage.COMPONENT__IN_PORTS:
+        return ((InternalEList<?>)getInPorts()).basicRemove(otherEnd, msgs);
+      case SortingPackage.COMPONENT__OUT_PORTS:
+        return ((InternalEList<?>)getOutPorts()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case SortingPackage.COMPONENT__NAME:
         return getName();
+      case SortingPackage.COMPONENT__IN_PORTS:
+        return getInPorts();
+      case SortingPackage.COMPONENT__OUT_PORTS:
+        return getOutPorts();
       case SortingPackage.COMPONENT__METHOD:
         return getMethod();
     }
@@ -159,6 +241,7 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -166,6 +249,14 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     {
       case SortingPackage.COMPONENT__NAME:
         setName((String)newValue);
+        return;
+      case SortingPackage.COMPONENT__IN_PORTS:
+        getInPorts().clear();
+        getInPorts().addAll((Collection<? extends Port>)newValue);
+        return;
+      case SortingPackage.COMPONENT__OUT_PORTS:
+        getOutPorts().clear();
+        getOutPorts().addAll((Collection<? extends Port>)newValue);
         return;
       case SortingPackage.COMPONENT__METHOD:
         setMethod((String)newValue);
@@ -187,6 +278,12 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
       case SortingPackage.COMPONENT__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case SortingPackage.COMPONENT__IN_PORTS:
+        getInPorts().clear();
+        return;
+      case SortingPackage.COMPONENT__OUT_PORTS:
+        getOutPorts().clear();
+        return;
       case SortingPackage.COMPONENT__METHOD:
         setMethod(METHOD_EDEFAULT);
         return;
@@ -206,6 +303,10 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     {
       case SortingPackage.COMPONENT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SortingPackage.COMPONENT__IN_PORTS:
+        return inPorts != null && !inPorts.isEmpty();
+      case SortingPackage.COMPONENT__OUT_PORTS:
+        return outPorts != null && !outPorts.isEmpty();
       case SortingPackage.COMPONENT__METHOD:
         return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
     }

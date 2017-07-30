@@ -3,6 +3,8 @@
  */
 package org.xtext.example.sorting.sorting;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.Component#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Component#getInPorts <em>In Ports</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Component#getOutPorts <em>Out Ports</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.Component#getMethod <em>Method</em>}</li>
  * </ul>
  *
@@ -49,6 +53,38 @@ public interface Component extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>In Ports</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>In Ports</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>In Ports</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getComponent_InPorts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Port> getInPorts();
+
+  /**
+   * Returns the value of the '<em><b>Out Ports</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Out Ports</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Out Ports</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getComponent_OutPorts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Port> getOutPorts();
 
   /**
    * Returns the value of the '<em><b>Method</b></em>' attribute.

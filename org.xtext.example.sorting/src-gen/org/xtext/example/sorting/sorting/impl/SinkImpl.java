@@ -3,19 +3,8 @@
  */
 package org.xtext.example.sorting.sorting.impl;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.Sink;
 import org.xtext.example.sorting.sorting.SortingPackage;
 
@@ -23,27 +12,11 @@ import org.xtext.example.sorting.sorting.SortingPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Sink</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.SinkImpl#getInPort <em>In Port</em>}</li>
- * </ul>
  *
  * @generated
  */
 public class SinkImpl extends ComponentImpl implements Sink
 {
-  /**
-   * The cached value of the '{@link #getInPort() <em>In Port</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInPort()
-   * @generated
-   * @ordered
-   */
-  protected EList<Port> inPort;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -63,104 +36,6 @@ public class SinkImpl extends ComponentImpl implements Sink
   protected EClass eStaticClass()
   {
     return SortingPackage.Literals.SINK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Port> getInPort()
-  {
-    if (inPort == null)
-    {
-      inPort = new EObjectContainmentEList<Port>(Port.class, this, SortingPackage.SINK__IN_PORT);
-    }
-    return inPort;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SINK__IN_PORT:
-        return ((InternalEList<?>)getInPort()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SINK__IN_PORT:
-        return getInPort();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SINK__IN_PORT:
-        getInPort().clear();
-        getInPort().addAll((Collection<? extends Port>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SINK__IN_PORT:
-        getInPort().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.SINK__IN_PORT:
-        return inPort != null && !inPort.isEmpty();
-    }
-    return super.eIsSet(featureID);
   }
 
 } //SinkImpl
