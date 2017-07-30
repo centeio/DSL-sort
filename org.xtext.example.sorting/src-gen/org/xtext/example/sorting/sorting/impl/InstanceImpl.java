@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 
@@ -29,12 +30,14 @@ import org.xtext.example.sorting.sorting.SortingPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.InstanceImpl#getComponent <em>Component</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.InstanceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.InstanceImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.InstanceImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InstanceImpl extends ComponentImpl implements Instance
+public class InstanceImpl extends MinimalEObjectImpl.Container implements Instance
 {
   /**
    * The cached value of the '{@link #getComponent() <em>Component</em>}' reference.
@@ -45,6 +48,46 @@ public class InstanceImpl extends ComponentImpl implements Instance
    * @ordered
    */
   protected Component component;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethod()
+   * @generated
+   * @ordered
+   */
+  protected static final String METHOD_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethod()
+   * @generated
+   * @ordered
+   */
+  protected String method = METHOD_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' attribute list.
@@ -125,6 +168,52 @@ public class InstanceImpl extends ComponentImpl implements Instance
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.INSTANCE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getMethod()
+  {
+    return method;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMethod(String newMethod)
+  {
+    String oldMethod = method;
+    method = newMethod;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.INSTANCE__METHOD, oldMethod, method));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getArgs()
   {
     if (args == null)
@@ -147,6 +236,10 @@ public class InstanceImpl extends ComponentImpl implements Instance
       case SortingPackage.INSTANCE__COMPONENT:
         if (resolve) return getComponent();
         return basicGetComponent();
+      case SortingPackage.INSTANCE__NAME:
+        return getName();
+      case SortingPackage.INSTANCE__METHOD:
+        return getMethod();
       case SortingPackage.INSTANCE__ARGS:
         return getArgs();
     }
@@ -166,6 +259,12 @@ public class InstanceImpl extends ComponentImpl implements Instance
     {
       case SortingPackage.INSTANCE__COMPONENT:
         setComponent((Component)newValue);
+        return;
+      case SortingPackage.INSTANCE__NAME:
+        setName((String)newValue);
+        return;
+      case SortingPackage.INSTANCE__METHOD:
+        setMethod((String)newValue);
         return;
       case SortingPackage.INSTANCE__ARGS:
         getArgs().clear();
@@ -188,6 +287,12 @@ public class InstanceImpl extends ComponentImpl implements Instance
       case SortingPackage.INSTANCE__COMPONENT:
         setComponent((Component)null);
         return;
+      case SortingPackage.INSTANCE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case SortingPackage.INSTANCE__METHOD:
+        setMethod(METHOD_EDEFAULT);
+        return;
       case SortingPackage.INSTANCE__ARGS:
         getArgs().clear();
         return;
@@ -207,6 +312,10 @@ public class InstanceImpl extends ComponentImpl implements Instance
     {
       case SortingPackage.INSTANCE__COMPONENT:
         return component != null;
+      case SortingPackage.INSTANCE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SortingPackage.INSTANCE__METHOD:
+        return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
       case SortingPackage.INSTANCE__ARGS:
         return args != null && !args.isEmpty();
     }
@@ -224,7 +333,11 @@ public class InstanceImpl extends ComponentImpl implements Instance
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (args: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", method: ");
+    result.append(method);
+    result.append(", args: ");
     result.append(args);
     result.append(')');
     return result.toString();

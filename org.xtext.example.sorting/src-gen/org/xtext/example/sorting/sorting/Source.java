@@ -3,6 +3,7 @@
  */
 package org.xtext.example.sorting.sorting;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +14,7 @@ package org.xtext.example.sorting.sorting;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.Source#getType <em>Type</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Source#getPorts <em>Ports</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getSource()
@@ -23,29 +24,19 @@ package org.xtext.example.sorting.sorting;
 public interface Source extends Component
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ports</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Ports</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(Type)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getSource_Type()
+   * @return the value of the '<em>Ports</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getSource_Ports()
    * @model containment="true"
    * @generated
    */
-  Type getType();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Source#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(Type value);
+  EList<Port> getPorts();
 
 } // Source

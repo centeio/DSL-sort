@@ -1,6 +1,6 @@
 
 foreach(Transition trans: transitions){
-
+// trans = <component,port>?
   Transition current = trans;
   generate(current.source);
   while(current.target == null){

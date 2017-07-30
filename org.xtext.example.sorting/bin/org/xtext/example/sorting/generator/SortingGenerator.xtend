@@ -30,8 +30,89 @@ class SortingGenerator extends AbstractGenerator {
 	}
 	
 	def CharSequence generate(Config config)'''
-		«FOR imports : config.imports»
-			import «imports.name»
+		«FOR imp : config.imports»
+			import «imp.name»
+		«ENDFOR»
+		import java.util.HashMap;
+		
+		
+		public abstract class Component{
+			int level = 0;
+			void invoke();
+			Port getPort(String name);
+		}
+		
+		public abstract class Source extends Component{
+			HashMap<String, Port> outPorts = new HashMap<String, Port>();	
+			
+			@Overide
+			Port getPort(String name){
+				return outPorts.get(name);
+			}
+		}
+		
+		public abstract class Filter extends Component{
+			HashMap<String, Port> inPorts = new HashMap<String, Port>();
+			HashMap<String, Port> outPorts = new HashMap<String, Port>();
+			
+			@Overide
+			Port getPort(String name){
+				(inPorts.get(name) != null) ? return inPorts.get(name) 
+				return outPorts.get(name);
+			}		
+		}
+		
+		public abstract class Sink extends Component{
+			HashMap<String, Port> inPorts = new HashMap<String, Port>();
+			@Overide
+			Port getPort(String name){
+				return inPorts.get(name);
+			}
+		}
+		
+		public class Port{
+			Component component;
+			String name;
+			ArrayList<Edges> edges = new ArrayList<Edges>();
+			
+			public Port(String name, Component component){
+				this.name = name;
+				this.component = component;
+			}
+		}
+		
+		public class Edge{
+			Port source; // <n1.get(p1),n2.get(p2)> 
+			Port target;
+			
+			public Edge(Port source, Port target){
+				this.source = source;
+				this.target = target;
+			}
+		}
+		
+		«FOR component : config.components»
+			«IF (component instanceof Source)»
+				public class «component.name» extends Source{
+					public Source(){
+						«FOR port : component.ports»
+							inPorts.put(«port.name», new Port(«port.name»,this));
+						«ENDFOR»
+					}
+
+				}
+				
+
+				
+			«ELSEIF (component instanceof Filter)»
+				public class «component.name» extends Filter{
+					
+				}
+			«ELSEIF (component instanceof Sink)»
+				public class «component.name» extends Sink{
+					
+				}
+			«ENDIF»			
 		«ENDFOR»
 		
 	'''

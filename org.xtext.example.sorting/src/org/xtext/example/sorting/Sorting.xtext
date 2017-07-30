@@ -5,10 +5,11 @@ generate sorting "http://www.xtext.org/example/sorting/Sorting"
 Config:
 	{Config}
 	'config''{' name=ID
-	imports+=Import
-	components+=Component
-	instances+=Instance
-	transitions+=Transition '}'
+	prams+=Param+
+	imports+=Import+
+	components+=Component+
+	instances+=Instance+
+	transitions+=Transition+ '}'
 ;
 
 Param:
@@ -28,16 +29,20 @@ Import:
 ;
 
 Port:
-	name=ID type=('int'|'String'|'double'|'long') ('['']')?
+	name=ID type=Type
 	;
+
+Type:
+	type=('int'|'String'|'double'|'long') ('['']')?
+;
 
 Component:
 	Source|Sink|Filter
-;	
-	
+;
+
 Source:
 	'source' name=ID '{'
-	'out:' ports+=Port
+	'out:' ports+=Port+
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	'}'
 	//TODO foreach N (param ou unknown)
@@ -45,8 +50,8 @@ Source:
 	
 Filter:
 	'filter' name=ID '{'
-	'in:' inPort+=Port
-	'out:' outPort+=Port
+	'in:' inPort+=Port+
+	'out:' outPort+=Port+
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	//TODO adicionar codigo ao método
 	'}'
@@ -54,7 +59,7 @@ Filter:
 
 Sink:
 	'sink' name=ID '{'
-	'in:' inPort+=Port
+	'in:' inPort+=Port+
 	('method:' method=STRING('.'STRING)*)? //default and optional
 	'}'
 ;	
@@ -67,7 +72,7 @@ Instance:
 Transition:
 	//(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
 	//source=[Instance] "=>" target=[Instance] /*sem Instance no Component*/
-	source=[Instance] '->' (target=[Instance] | transition=Transition)  
+	'['source=[Instance]',' targetPort=[Port]']''->' ('['target=[Instance] ',' sourcePort=[Port]']'| transition=Transition)  
 ;
 
 //TODO dot

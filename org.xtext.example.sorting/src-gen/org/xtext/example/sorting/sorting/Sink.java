@@ -3,6 +3,7 @@
  */
 package org.xtext.example.sorting.sorting;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +14,7 @@ package org.xtext.example.sorting.sorting;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.Sink#getInType <em>In Type</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Sink#getInPort <em>In Port</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getSink()
@@ -23,29 +24,19 @@ package org.xtext.example.sorting.sorting;
 public interface Sink extends Component
 {
   /**
-   * Returns the value of the '<em><b>In Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>In Port</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>In Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>In Port</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>In Type</em>' containment reference.
-   * @see #setInType(Type)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getSink_InType()
+   * @return the value of the '<em>In Port</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getSink_InPort()
    * @model containment="true"
    * @generated
    */
-  Type getInType();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Sink#getInType <em>In Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>In Type</em>' containment reference.
-   * @see #getInType()
-   * @generated
-   */
-  void setInType(Type value);
+  EList<Port> getInPort();
 
 } // Sink

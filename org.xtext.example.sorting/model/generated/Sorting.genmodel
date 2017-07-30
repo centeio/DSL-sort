@@ -8,12 +8,23 @@
       fileExtensions="sortex" ecorePackage="Sorting.ecore#/">
     <genClasses ecoreClass="Sorting.ecore#//Config">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Config/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Config/prams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Config/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Config/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Config/instances"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Config/transitions"/>
+    </genClasses>
+    <genClasses ecoreClass="Sorting.ecore#//Param">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Param/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Param/int"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Param/string"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Import/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Sorting.ecore#//Port">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Port/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Port/type"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Type/type"/>
@@ -23,22 +34,27 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Component/method"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Source">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Source/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Source/ports"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Filter">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Filter/inType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Filter/outType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Filter/inPort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Filter/outPort"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Sink">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Sink/inType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Sink/inPort"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Instance">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Sorting.ecore#//Instance/component"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Instance/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Instance/method"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Sorting.ecore#//Instance/args"/>
     </genClasses>
     <genClasses ecoreClass="Sorting.ecore#//Transition">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Sorting.ecore#//Transition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Sorting.ecore#//Transition/targetPort"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Sorting.ecore#//Transition/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Sorting.ecore#//Transition/sourcePort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Sorting.ecore#//Transition/transition"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

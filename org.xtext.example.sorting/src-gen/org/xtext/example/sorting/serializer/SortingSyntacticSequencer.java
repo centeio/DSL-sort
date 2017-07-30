@@ -22,8 +22,9 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SortingGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a;
-	protected AbstractElementAlias match_Instance_ArgsKeyword_3_1_0_q;
-	protected AbstractElementAlias match_Instance___FullStopKeyword_3_0_2_0_STRINGTerminalRuleCall_3_0_2_1__a;
+	protected AbstractElementAlias match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a;
+	protected AbstractElementAlias match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a;
+	protected AbstractElementAlias match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q;
 	protected AbstractElementAlias match_Sink___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a;
 	protected AbstractElementAlias match_Source___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a;
 	protected AbstractElementAlias match_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q;
@@ -32,8 +33,9 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SortingGrammarAccess) access;
 		match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getFilterAccess().getFullStopKeyword_7_2_0()), new TokenAlias(false, false, grammarAccess.getFilterAccess().getSTRINGTerminalRuleCall_7_2_1()));
-		match_Instance_ArgsKeyword_3_1_0_q = new TokenAlias(false, true, grammarAccess.getInstanceAccess().getArgsKeyword_3_1_0());
-		match_Instance___FullStopKeyword_3_0_2_0_STRINGTerminalRuleCall_3_0_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getFullStopKeyword_3_0_2_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getSTRINGTerminalRuleCall_3_0_2_1()));
+		match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getFullStopKeyword_2_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getSTRINGTerminalRuleCall_2_1_0_2_1()));
+		match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getFullStopKeyword_2_1_0_5_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getSTRINGTerminalRuleCall_2_1_0_5_1()));
+		match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getLeftCurlyBracketKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getArgsKeyword_2_1_1_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getRightCurlyBracketKeyword_2_2()));
 		match_Sink___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getSinkAccess().getFullStopKeyword_5_2_0()), new TokenAlias(false, false, grammarAccess.getSinkAccess().getSTRINGTerminalRuleCall_5_2_1()));
 		match_Source___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getSourceAccess().getFullStopKeyword_5_2_0()), new TokenAlias(false, false, grammarAccess.getSourceAccess().getSTRINGTerminalRuleCall_5_2_1()));
 		match_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTypeAccess().getLeftSquareBracketKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getTypeAccess().getRightSquareBracketKeyword_1_1()));
@@ -66,10 +68,12 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a.equals(syntax))
 				emit_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Instance_ArgsKeyword_3_1_0_q.equals(syntax))
-				emit_Instance_ArgsKeyword_3_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Instance___FullStopKeyword_3_0_2_0_STRINGTerminalRuleCall_3_0_2_1__a.equals(syntax))
-				emit_Instance___FullStopKeyword_3_0_2_0_STRINGTerminalRuleCall_3_0_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a.equals(syntax))
+				emit_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a.equals(syntax))
+				emit_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q.equals(syntax))
+				emit_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Sink___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a.equals(syntax))
 				emit_Sink___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Source___FullStopKeyword_5_2_0_STRINGTerminalRuleCall_5_2_1__a.equals(syntax))
@@ -93,12 +97,12 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'args:'?
+	 *     ('.' STRING)*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=ID (ambiguity) (rule end)
+	 *     method=STRING (ambiguity) '(' STRING ('.' STRING)* ')' '}' (rule end)
 	 */
-	protected void emit_Instance_ArgsKeyword_3_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -107,9 +111,20 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('.' STRING)*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     method=STRING (ambiguity) (rule end)
+	 *     method=STRING ('.' STRING)* '(' STRING (ambiguity) ')' '}' (rule end)
 	 */
-	protected void emit_Instance___FullStopKeyword_3_0_2_0_STRINGTerminalRuleCall_3_0_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('{' 'args:' '}')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) (rule end)
+	 */
+	protected void emit_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

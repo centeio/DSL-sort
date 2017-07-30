@@ -11,8 +11,13 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.xtext.example.sorting.sorting.Component;
 import org.xtext.example.sorting.sorting.Config;
+import org.xtext.example.sorting.sorting.Filter;
 import org.xtext.example.sorting.sorting.Import;
+import org.xtext.example.sorting.sorting.Port;
+import org.xtext.example.sorting.sorting.Sink;
+import org.xtext.example.sorting.sorting.Source;
 
 /**
  * Generates code from your model files on save.
@@ -38,11 +43,216 @@ public class SortingGenerator extends AbstractGenerator {
     StringConcatenation _builder = new StringConcatenation();
     {
       EList<Import> _imports = config.getImports();
-      for(final Import imports : _imports) {
+      for(final Import imp : _imports) {
         _builder.append("import ");
-        String _name = imports.getName();
+        String _name = imp.getName();
         _builder.append(_name);
         _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("import java.util.HashMap;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public abstract class Component{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("int level = 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("void invoke();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port getPort(String name);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public abstract class Source extends Component{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HashMap<String, Port> outPorts = new HashMap<String, Port>();\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Overide");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port getPort(String name){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return outPorts.get(name);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public abstract class Filter extends Component{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HashMap<String, Port> inPorts = new HashMap<String, Port>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HashMap<String, Port> outPorts = new HashMap<String, Port>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Overide");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port getPort(String name){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("(inPorts.get(name) != null) ? return inPorts.get(name) ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return outPorts.get(name);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}\t\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public abstract class Sink extends Component{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("HashMap<String, Port> inPorts = new HashMap<String, Port>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("@Overide");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port getPort(String name){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return inPorts.get(name);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class Port{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Component component;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("String name;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("ArrayList<Edges> edges = new ArrayList<Edges>();");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Port(String name, Component component){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("this.name = name;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("this.component = component;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class Edge{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port source; // <n1.get(p1),n2.get(p2)> ");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("Port target;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("public Edge(Port source, Port target){");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("this.source = source;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("this.target = target;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      EList<Component> _components = config.getComponents();
+      for(final Component component : _components) {
+        {
+          if ((component instanceof Source)) {
+            _builder.append("public class ");
+            String _name_1 = ((Source)component).getName();
+            _builder.append(_name_1);
+            _builder.append(" extends Source{");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("public Source(){");
+            _builder.newLine();
+            {
+              EList<Port> _ports = ((Source)component).getPorts();
+              for(final Port port : _ports) {
+                _builder.append("\t\t");
+                _builder.append("inPorts.put(");
+                String _name_2 = port.getName();
+                _builder.append(_name_2, "\t\t");
+                _builder.append(", new Port(");
+                String _name_3 = port.getName();
+                _builder.append(_name_3, "\t\t");
+                _builder.append(",this));");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+            _builder.newLine();
+            _builder.append("}");
+            _builder.newLine();
+            _builder.newLine();
+            _builder.newLine();
+            _builder.newLine();
+          } else {
+            if ((component instanceof Filter)) {
+              _builder.append("public class ");
+              String _name_4 = component.getName();
+              _builder.append(_name_4);
+              _builder.append(" extends Filter{");
+              _builder.newLineIfNotEmpty();
+              _builder.append("\t");
+              _builder.newLine();
+              _builder.append("}");
+              _builder.newLine();
+            } else {
+              if ((component instanceof Sink)) {
+                _builder.append("public class ");
+                String _name_5 = component.getName();
+                _builder.append(_name_5);
+                _builder.append(" extends Sink{");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.newLine();
+                _builder.append("}");
+                _builder.newLine();
+              }
+            }
+          }
+        }
       }
     }
     _builder.newLine();

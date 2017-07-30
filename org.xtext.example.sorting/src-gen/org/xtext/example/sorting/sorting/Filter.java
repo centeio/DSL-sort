@@ -3,6 +3,7 @@
  */
 package org.xtext.example.sorting.sorting;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,8 +14,8 @@ package org.xtext.example.sorting.sorting;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.Filter#getInType <em>In Type</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Filter#getOutType <em>Out Type</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Filter#getInPort <em>In Port</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Filter#getOutPort <em>Out Port</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter()
@@ -24,55 +25,35 @@ package org.xtext.example.sorting.sorting;
 public interface Filter extends Component
 {
   /**
-   * Returns the value of the '<em><b>In Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>In Port</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>In Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>In Port</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>In Type</em>' containment reference.
-   * @see #setInType(Type)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_InType()
+   * @return the value of the '<em>In Port</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_InPort()
    * @model containment="true"
    * @generated
    */
-  Type getInType();
+  EList<Port> getInPort();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Filter#getInType <em>In Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>In Type</em>' containment reference.
-   * @see #getInType()
-   * @generated
-   */
-  void setInType(Type value);
-
-  /**
-   * Returns the value of the '<em><b>Out Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Out Port</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.sorting.sorting.Port}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Out Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Out Port</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Out Type</em>' containment reference.
-   * @see #setOutType(Type)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_OutType()
+   * @return the value of the '<em>Out Port</em>' containment reference list.
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getFilter_OutPort()
    * @model containment="true"
    * @generated
    */
-  Type getOutType();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Filter#getOutType <em>Out Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Out Type</em>' containment reference.
-   * @see #getOutType()
-   * @generated
-   */
-  void setOutType(Type value);
+  EList<Port> getOutPort();
 
 } // Filter

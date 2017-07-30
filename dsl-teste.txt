@@ -7,30 +7,31 @@ import java.util.Arrays
 components:
 
 source File{
-out: String[]
+out: out1 String[] out2 String[]
 method: readFile
+ports: 
 }
 
 filter Avg{
-in: int[]
-out: int
+in: in1 int[] in2 int
+out: out1 int
 method: avg
 }
 
 filter Sort{
-in: int[]
-out: int[]
+in: in1 int[]
+out: out1 int[]
 method: bubbleSort
 }
 
 filter FirstN{
-in: int[]
-out: int[]
+in: in1 int[]
+out: out1 int[]
 method: filter(in=10, args[0])
 }
 
 sink Display{
-in: String
+in: in1 String
 method: System.out.println
 }
 

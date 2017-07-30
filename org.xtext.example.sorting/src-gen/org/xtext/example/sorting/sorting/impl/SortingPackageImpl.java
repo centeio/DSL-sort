@@ -15,6 +15,8 @@ import org.xtext.example.sorting.sorting.Config;
 import org.xtext.example.sorting.sorting.Filter;
 import org.xtext.example.sorting.sorting.Import;
 import org.xtext.example.sorting.sorting.Instance;
+import org.xtext.example.sorting.sorting.Param;
+import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.Sink;
 import org.xtext.example.sorting.sorting.SortingFactory;
 import org.xtext.example.sorting.sorting.SortingPackage;
@@ -42,7 +44,21 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass paramEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass portEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -181,7 +197,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConfig_Imports()
+  public EReference getConfig_Prams()
   {
     return (EReference)configEClass.getEStructuralFeatures().get(1);
   }
@@ -191,7 +207,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConfig_Components()
+  public EReference getConfig_Imports()
   {
     return (EReference)configEClass.getEStructuralFeatures().get(2);
   }
@@ -201,9 +217,69 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConfig_Transitions()
+  public EReference getConfig_Components()
   {
     return (EReference)configEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConfig_Instances()
+  {
+    return (EReference)configEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConfig_Transitions()
+  {
+    return (EReference)configEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParam()
+  {
+    return paramEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParam_Name()
+  {
+    return (EAttribute)paramEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParam_Int()
+  {
+    return (EAttribute)paramEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParam_String()
+  {
+    return (EAttribute)paramEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -224,6 +300,36 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
   public EAttribute getImport_Name()
   {
     return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPort()
+  {
+    return portEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPort_Name()
+  {
+    return (EAttribute)portEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPort_Type()
+  {
+    return (EReference)portEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -291,7 +397,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSource_Type()
+  public EReference getSource_Ports()
   {
     return (EReference)sourceEClass.getEStructuralFeatures().get(0);
   }
@@ -311,7 +417,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFilter_InType()
+  public EReference getFilter_InPort()
   {
     return (EReference)filterEClass.getEStructuralFeatures().get(0);
   }
@@ -321,7 +427,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFilter_OutType()
+  public EReference getFilter_OutPort()
   {
     return (EReference)filterEClass.getEStructuralFeatures().get(1);
   }
@@ -341,7 +447,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSink_InType()
+  public EReference getSink_InPort()
   {
     return (EReference)sinkEClass.getEStructuralFeatures().get(0);
   }
@@ -371,9 +477,29 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getInstance_Args()
+  public EAttribute getInstance_Name()
   {
     return (EAttribute)instanceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInstance_Method()
+  {
+    return (EAttribute)instanceEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInstance_Args()
+  {
+    return (EAttribute)instanceEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -401,9 +527,39 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTransition_Target()
+  public EReference getTransition_TargetPort()
   {
     return (EReference)transitionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTransition_Target()
+  {
+    return (EReference)transitionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTransition_SourcePort()
+  {
+    return (EReference)transitionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTransition_Transition()
+  {
+    return (EReference)transitionEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -438,12 +594,23 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     // Create classes and their features
     configEClass = createEClass(CONFIG);
     createEAttribute(configEClass, CONFIG__NAME);
+    createEReference(configEClass, CONFIG__PRAMS);
     createEReference(configEClass, CONFIG__IMPORTS);
     createEReference(configEClass, CONFIG__COMPONENTS);
+    createEReference(configEClass, CONFIG__INSTANCES);
     createEReference(configEClass, CONFIG__TRANSITIONS);
+
+    paramEClass = createEClass(PARAM);
+    createEAttribute(paramEClass, PARAM__NAME);
+    createEAttribute(paramEClass, PARAM__INT);
+    createEAttribute(paramEClass, PARAM__STRING);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__NAME);
+
+    portEClass = createEClass(PORT);
+    createEAttribute(portEClass, PORT__NAME);
+    createEReference(portEClass, PORT__TYPE);
 
     typeEClass = createEClass(TYPE);
     createEAttribute(typeEClass, TYPE__TYPE);
@@ -453,22 +620,27 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     createEAttribute(componentEClass, COMPONENT__METHOD);
 
     sourceEClass = createEClass(SOURCE);
-    createEReference(sourceEClass, SOURCE__TYPE);
+    createEReference(sourceEClass, SOURCE__PORTS);
 
     filterEClass = createEClass(FILTER);
-    createEReference(filterEClass, FILTER__IN_TYPE);
-    createEReference(filterEClass, FILTER__OUT_TYPE);
+    createEReference(filterEClass, FILTER__IN_PORT);
+    createEReference(filterEClass, FILTER__OUT_PORT);
 
     sinkEClass = createEClass(SINK);
-    createEReference(sinkEClass, SINK__IN_TYPE);
+    createEReference(sinkEClass, SINK__IN_PORT);
 
     instanceEClass = createEClass(INSTANCE);
     createEReference(instanceEClass, INSTANCE__COMPONENT);
+    createEAttribute(instanceEClass, INSTANCE__NAME);
+    createEAttribute(instanceEClass, INSTANCE__METHOD);
     createEAttribute(instanceEClass, INSTANCE__ARGS);
 
     transitionEClass = createEClass(TRANSITION);
     createEReference(transitionEClass, TRANSITION__SOURCE);
+    createEReference(transitionEClass, TRANSITION__TARGET_PORT);
     createEReference(transitionEClass, TRANSITION__TARGET);
+    createEReference(transitionEClass, TRANSITION__SOURCE_PORT);
+    createEReference(transitionEClass, TRANSITION__TRANSITION);
   }
 
   /**
@@ -503,17 +675,27 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     sourceEClass.getESuperTypes().add(this.getComponent());
     filterEClass.getESuperTypes().add(this.getComponent());
     sinkEClass.getESuperTypes().add(this.getComponent());
-    instanceEClass.getESuperTypes().add(this.getComponent());
 
     // Initialize classes and features; add operations and parameters
     initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConfig_Name(), ecorePackage.getEString(), "name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConfig_Prams(), this.getParam(), null, "prams", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConfig_Imports(), this.getImport(), null, "imports", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConfig_Components(), this.getComponent(), null, "components", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConfig_Instances(), this.getInstance(), null, "instances", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConfig_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParam_Int(), ecorePackage.getEInt(), "int", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParam_String(), ecorePackage.getEString(), "string", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_Name(), ecorePackage.getEString(), "name", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(portEClass, Port.class, "Port", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPort_Name(), ecorePackage.getEString(), "name", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPort_Type(), this.getType(), null, "type", null, 0, 1, Port.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getType_Type(), ecorePackage.getEString(), "type", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -523,22 +705,27 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     initEAttribute(getComponent_Method(), ecorePackage.getEString(), "method", null, 0, 1, Component.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSource_Type(), this.getType(), null, "type", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSource_Ports(), this.getPort(), null, "ports", null, 0, -1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(filterEClass, Filter.class, "Filter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFilter_InType(), this.getType(), null, "inType", null, 0, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFilter_OutType(), this.getType(), null, "outType", null, 0, 1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFilter_InPort(), this.getPort(), null, "inPort", null, 0, -1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFilter_OutPort(), this.getPort(), null, "outPort", null, 0, -1, Filter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sinkEClass, Sink.class, "Sink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSink_InType(), this.getType(), null, "inType", null, 0, 1, Sink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSink_InPort(), this.getPort(), null, "inPort", null, 0, -1, Sink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instanceEClass, Instance.class, "Instance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInstance_Component(), this.getComponent(), null, "component", null, 0, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInstance_Name(), ecorePackage.getEString(), "name", null, 0, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getInstance_Method(), ecorePackage.getEString(), "method", null, 0, 1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInstance_Args(), ecorePackage.getEString(), "args", null, 0, -1, Instance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTransition_Source(), this.getComponent(), null, "source", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTransition_Target(), this.getComponent(), null, "target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransition_Source(), this.getInstance(), null, "source", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransition_TargetPort(), this.getPort(), null, "targetPort", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransition_Target(), this.getInstance(), null, "target", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransition_SourcePort(), this.getPort(), null, "sourcePort", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTransition_Transition(), this.getTransition(), null, "transition", null, 0, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

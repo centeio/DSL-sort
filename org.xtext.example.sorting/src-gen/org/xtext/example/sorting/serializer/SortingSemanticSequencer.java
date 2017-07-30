@@ -19,6 +19,8 @@ import org.xtext.example.sorting.sorting.Config;
 import org.xtext.example.sorting.sorting.Filter;
 import org.xtext.example.sorting.sorting.Import;
 import org.xtext.example.sorting.sorting.Instance;
+import org.xtext.example.sorting.sorting.Param;
+import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.Sink;
 import org.xtext.example.sorting.sorting.SortingPackage;
 import org.xtext.example.sorting.sorting.Source;
@@ -51,6 +53,12 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case SortingPackage.INSTANCE:
 				sequence_Instance(context, (Instance) semanticObject); 
 				return; 
+			case SortingPackage.PARAM:
+				sequence_Param(context, (Param) semanticObject); 
+				return; 
+			case SortingPackage.PORT:
+				sequence_Port(context, (Port) semanticObject); 
+				return; 
 			case SortingPackage.SINK:
 				sequence_Sink(context, (Sink) semanticObject); 
 				return; 
@@ -73,7 +81,14 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Config returns Config
 	 *
 	 * Constraint:
-	 *     (name=ID imports+=Import components+=Component transitions+=Transition)
+	 *     (
+	 *         name=ID 
+	 *         prams+=Param+ 
+	 *         imports+=Import+ 
+	 *         components+=Component+ 
+	 *         instances+=Instance+ 
+	 *         transitions+=Transition+
+	 *     )
 	 */
 	protected void sequence_Config(ISerializationContext context, Config semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -86,7 +101,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Filter returns Filter
 	 *
 	 * Constraint:
-	 *     (name=ID inType=Type outType=Type method=STRING?)
+	 *     (name=ID inPort+=Port+ outPort+=Port+ method=STRING?)
 	 */
 	protected void sequence_Filter(ISerializationContext context, Filter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -113,7 +128,6 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
-	 *     Component returns Instance
 	 *     Instance returns Instance
 	 *
 	 * Constraint:
@@ -126,11 +140,44 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Contexts:
+	 *     Param returns Param
+	 *
+	 * Constraint:
+	 *     (name='@' (int=INT | string=STRING)?)
+	 */
+	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Port returns Port
+	 *
+	 * Constraint:
+	 *     (name=ID type=Type)
+	 */
+	protected void sequence_Port(ISerializationContext context, Port semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.PORT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.PORT__NAME));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.PORT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.PORT__TYPE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPortAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPortAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Component returns Sink
 	 *     Sink returns Sink
 	 *
 	 * Constraint:
-	 *     (name=ID inType=Type method=STRING?)
+	 *     (name=ID inPort+=Port+ method=STRING?)
 	 */
 	protected void sequence_Sink(ISerializationContext context, Sink semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -143,7 +190,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Source returns Source
 	 *
 	 * Constraint:
-	 *     (name=ID type=Type method=STRING?)
+	 *     (name=ID ports+=Port+ method=STRING?)
 	 */
 	protected void sequence_Source(ISerializationContext context, Source semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -155,19 +202,10 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Transition returns Transition
 	 *
 	 * Constraint:
-	 *     (source=[Component|ID] target=[Component|ID])
+	 *     (source=[Instance|ID] targetPort=[Port|ID] ((target=[Instance|ID] sourcePort=[Port|ID]) | transition=Transition))
 	 */
 	protected void sequence_Transition(ISerializationContext context, Transition semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE));
-			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__TARGET) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__TARGET));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTransitionAccess().getSourceComponentIDTerminalRuleCall_0_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__SOURCE, false));
-		feeder.accept(grammarAccess.getTransitionAccess().getTargetComponentIDTerminalRuleCall_2_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__TARGET, false));
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

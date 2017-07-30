@@ -3,17 +3,21 @@
  */
 package org.xtext.example.sorting.sorting.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.SortingPackage;
 import org.xtext.example.sorting.sorting.Source;
-import org.xtext.example.sorting.sorting.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +27,7 @@ import org.xtext.example.sorting.sorting.Type;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.SourceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.SourceImpl#getPorts <em>Ports</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +35,14 @@ import org.xtext.example.sorting.sorting.Type;
 public class SourceImpl extends ComponentImpl implements Source
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getPorts()
    * @generated
    * @ordered
    */
-  protected Type type;
+  protected EList<Port> ports;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,47 +70,13 @@ public class SourceImpl extends ComponentImpl implements Source
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getType()
+  public EList<Port> getPorts()
   {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
-  {
-    Type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
+    if (ports == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SortingPackage.SOURCE__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      ports = new EObjectContainmentEList<Port>(Port.class, this, SortingPackage.SOURCE__PORTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(Type newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SortingPackage.SOURCE__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SortingPackage.SOURCE__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.SOURCE__TYPE, newType, newType));
+    return ports;
   }
 
   /**
@@ -119,8 +89,8 @@ public class SourceImpl extends ComponentImpl implements Source
   {
     switch (featureID)
     {
-      case SortingPackage.SOURCE__TYPE:
-        return basicSetType(null, msgs);
+      case SortingPackage.SOURCE__PORTS:
+        return ((InternalEList<?>)getPorts()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +105,8 @@ public class SourceImpl extends ComponentImpl implements Source
   {
     switch (featureID)
     {
-      case SortingPackage.SOURCE__TYPE:
-        return getType();
+      case SortingPackage.SOURCE__PORTS:
+        return getPorts();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -146,13 +116,15 @@ public class SourceImpl extends ComponentImpl implements Source
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case SortingPackage.SOURCE__TYPE:
-        setType((Type)newValue);
+      case SortingPackage.SOURCE__PORTS:
+        getPorts().clear();
+        getPorts().addAll((Collection<? extends Port>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +140,8 @@ public class SourceImpl extends ComponentImpl implements Source
   {
     switch (featureID)
     {
-      case SortingPackage.SOURCE__TYPE:
-        setType((Type)null);
+      case SortingPackage.SOURCE__PORTS:
+        getPorts().clear();
         return;
     }
     super.eUnset(featureID);
@@ -185,8 +157,8 @@ public class SourceImpl extends ComponentImpl implements Source
   {
     switch (featureID)
     {
-      case SortingPackage.SOURCE__TYPE:
-        return type != null;
+      case SortingPackage.SOURCE__PORTS:
+        return ports != null && !ports.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -4,6 +4,7 @@
 package org.xtext.example.sorting.sorting.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,7 +12,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.xtext.example.sorting.sorting.Component;
+import org.xtext.example.sorting.sorting.Instance;
+import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.SortingPackage;
 import org.xtext.example.sorting.sorting.Transition;
 
@@ -24,7 +26,10 @@ import org.xtext.example.sorting.sorting.Transition;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.TransitionImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.TransitionImpl#getTargetPort <em>Target Port</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.TransitionImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.TransitionImpl#getSourcePort <em>Source Port</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.TransitionImpl#getTransition <em>Transition</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,7 +44,17 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * @generated
    * @ordered
    */
-  protected Component source;
+  protected Instance source;
+
+  /**
+   * The cached value of the '{@link #getTargetPort() <em>Target Port</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTargetPort()
+   * @generated
+   * @ordered
+   */
+  protected Port targetPort;
 
   /**
    * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -49,7 +64,27 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * @generated
    * @ordered
    */
-  protected Component target;
+  protected Instance target;
+
+  /**
+   * The cached value of the '{@link #getSourcePort() <em>Source Port</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSourcePort()
+   * @generated
+   * @ordered
+   */
+  protected Port sourcePort;
+
+  /**
+   * The cached value of the '{@link #getTransition() <em>Transition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTransition()
+   * @generated
+   * @ordered
+   */
+  protected Transition transition;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,12 +112,12 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public Component getSource()
+  public Instance getSource()
   {
     if (source != null && source.eIsProxy())
     {
       InternalEObject oldSource = (InternalEObject)source;
-      source = (Component)eResolveProxy(oldSource);
+      source = (Instance)eResolveProxy(oldSource);
       if (source != oldSource)
       {
         if (eNotificationRequired())
@@ -97,7 +132,7 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public Component basicGetSource()
+  public Instance basicGetSource()
   {
     return source;
   }
@@ -107,9 +142,9 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSource(Component newSource)
+  public void setSource(Instance newSource)
   {
-    Component oldSource = source;
+    Instance oldSource = source;
     source = newSource;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__SOURCE, oldSource, source));
@@ -120,12 +155,55 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public Component getTarget()
+  public Port getTargetPort()
+  {
+    if (targetPort != null && targetPort.eIsProxy())
+    {
+      InternalEObject oldTargetPort = (InternalEObject)targetPort;
+      targetPort = (Port)eResolveProxy(oldTargetPort);
+      if (targetPort != oldTargetPort)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SortingPackage.TRANSITION__TARGET_PORT, oldTargetPort, targetPort));
+      }
+    }
+    return targetPort;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Port basicGetTargetPort()
+  {
+    return targetPort;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTargetPort(Port newTargetPort)
+  {
+    Port oldTargetPort = targetPort;
+    targetPort = newTargetPort;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__TARGET_PORT, oldTargetPort, targetPort));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Instance getTarget()
   {
     if (target != null && target.eIsProxy())
     {
       InternalEObject oldTarget = (InternalEObject)target;
-      target = (Component)eResolveProxy(oldTarget);
+      target = (Instance)eResolveProxy(oldTarget);
       if (target != oldTarget)
       {
         if (eNotificationRequired())
@@ -140,7 +218,7 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public Component basicGetTarget()
+  public Instance basicGetTarget()
   {
     return target;
   }
@@ -150,12 +228,119 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTarget(Component newTarget)
+  public void setTarget(Instance newTarget)
   {
-    Component oldTarget = target;
+    Instance oldTarget = target;
     target = newTarget;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__TARGET, oldTarget, target));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Port getSourcePort()
+  {
+    if (sourcePort != null && sourcePort.eIsProxy())
+    {
+      InternalEObject oldSourcePort = (InternalEObject)sourcePort;
+      sourcePort = (Port)eResolveProxy(oldSourcePort);
+      if (sourcePort != oldSourcePort)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SortingPackage.TRANSITION__SOURCE_PORT, oldSourcePort, sourcePort));
+      }
+    }
+    return sourcePort;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Port basicGetSourcePort()
+  {
+    return sourcePort;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSourcePort(Port newSourcePort)
+  {
+    Port oldSourcePort = sourcePort;
+    sourcePort = newSourcePort;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__SOURCE_PORT, oldSourcePort, sourcePort));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Transition getTransition()
+  {
+    return transition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTransition(Transition newTransition, NotificationChain msgs)
+  {
+    Transition oldTransition = transition;
+    transition = newTransition;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__TRANSITION, oldTransition, newTransition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTransition(Transition newTransition)
+  {
+    if (newTransition != transition)
+    {
+      NotificationChain msgs = null;
+      if (transition != null)
+        msgs = ((InternalEObject)transition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SortingPackage.TRANSITION__TRANSITION, null, msgs);
+      if (newTransition != null)
+        msgs = ((InternalEObject)newTransition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SortingPackage.TRANSITION__TRANSITION, null, msgs);
+      msgs = basicSetTransition(newTransition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.TRANSITION__TRANSITION, newTransition, newTransition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SortingPackage.TRANSITION__TRANSITION:
+        return basicSetTransition(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -171,9 +356,17 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
       case SortingPackage.TRANSITION__SOURCE:
         if (resolve) return getSource();
         return basicGetSource();
+      case SortingPackage.TRANSITION__TARGET_PORT:
+        if (resolve) return getTargetPort();
+        return basicGetTargetPort();
       case SortingPackage.TRANSITION__TARGET:
         if (resolve) return getTarget();
         return basicGetTarget();
+      case SortingPackage.TRANSITION__SOURCE_PORT:
+        if (resolve) return getSourcePort();
+        return basicGetSourcePort();
+      case SortingPackage.TRANSITION__TRANSITION:
+        return getTransition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -189,10 +382,19 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
     switch (featureID)
     {
       case SortingPackage.TRANSITION__SOURCE:
-        setSource((Component)newValue);
+        setSource((Instance)newValue);
+        return;
+      case SortingPackage.TRANSITION__TARGET_PORT:
+        setTargetPort((Port)newValue);
         return;
       case SortingPackage.TRANSITION__TARGET:
-        setTarget((Component)newValue);
+        setTarget((Instance)newValue);
+        return;
+      case SortingPackage.TRANSITION__SOURCE_PORT:
+        setSourcePort((Port)newValue);
+        return;
+      case SortingPackage.TRANSITION__TRANSITION:
+        setTransition((Transition)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -209,10 +411,19 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
     switch (featureID)
     {
       case SortingPackage.TRANSITION__SOURCE:
-        setSource((Component)null);
+        setSource((Instance)null);
+        return;
+      case SortingPackage.TRANSITION__TARGET_PORT:
+        setTargetPort((Port)null);
         return;
       case SortingPackage.TRANSITION__TARGET:
-        setTarget((Component)null);
+        setTarget((Instance)null);
+        return;
+      case SortingPackage.TRANSITION__SOURCE_PORT:
+        setSourcePort((Port)null);
+        return;
+      case SortingPackage.TRANSITION__TRANSITION:
+        setTransition((Transition)null);
         return;
     }
     super.eUnset(featureID);
@@ -230,8 +441,14 @@ public class TransitionImpl extends MinimalEObjectImpl.Container implements Tran
     {
       case SortingPackage.TRANSITION__SOURCE:
         return source != null;
+      case SortingPackage.TRANSITION__TARGET_PORT:
+        return targetPort != null;
       case SortingPackage.TRANSITION__TARGET:
         return target != null;
+      case SortingPackage.TRANSITION__SOURCE_PORT:
+        return sourcePort != null;
+      case SortingPackage.TRANSITION__TRANSITION:
+        return transition != null;
     }
     return super.eIsSet(featureID);
   }
