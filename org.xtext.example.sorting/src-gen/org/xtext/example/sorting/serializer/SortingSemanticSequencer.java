@@ -83,7 +83,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         prams+=Param+ 
+	 *         params+=Param+ 
 	 *         imports+=Import+ 
 	 *         components+=Component+ 
 	 *         instances+=Instance+ 
@@ -143,7 +143,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Param returns Param
 	 *
 	 * Constraint:
-	 *     (name='@' (int=INT | string=STRING)?)
+	 *     (name='@' (intval=INT | stringval=STRING))
 	 */
 	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -202,10 +202,25 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Transition returns Transition
 	 *
 	 * Constraint:
-	 *     (source=[Instance|ID] targetPort=[Port|ID] ((target=[Instance|ID] sourcePort=[Port|ID]) | transition=Transition))
+	 *     (source=[Instance|ID] targetPort=[Port|ID] target=[Instance|ID] sourcePort=[Port|ID])
 	 */
 	protected void sequence_Transition(ISerializationContext context, Transition semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__TARGET_PORT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__TARGET_PORT));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__TARGET));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE_PORT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.TRANSITION__SOURCE_PORT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getTransitionAccess().getSourceInstanceIDTerminalRuleCall_1_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__SOURCE, false));
+		feeder.accept(grammarAccess.getTransitionAccess().getTargetPortPortIDTerminalRuleCall_3_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__TARGET_PORT, false));
+		feeder.accept(grammarAccess.getTransitionAccess().getTargetInstanceIDTerminalRuleCall_7_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__TARGET, false));
+		feeder.accept(grammarAccess.getTransitionAccess().getSourcePortPortIDTerminalRuleCall_9_0_1(), semanticObject.eGet(SortingPackage.Literals.TRANSITION__SOURCE_PORT, false));
+		feeder.finish();
 	}
 	
 	

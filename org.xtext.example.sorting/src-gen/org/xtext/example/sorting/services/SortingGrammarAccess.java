@@ -32,8 +32,8 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Assignment cPramsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPramsParamParserRuleCall_4_0 = (RuleCall)cPramsAssignment_4.eContents().get(0);
+		private final Assignment cParamsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cParamsParamParserRuleCall_4_0 = (RuleCall)cParamsAssignment_4.eContents().get(0);
 		private final Assignment cImportsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cImportsImportParserRuleCall_5_0 = (RuleCall)cImportsAssignment_5.eContents().get(0);
 		private final Assignment cComponentsAssignment_6 = (Assignment)cGroup.eContents().get(6);
@@ -47,14 +47,14 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		//Config:
 		//	{Config}
 		//	'config' '{' name=ID
-		//	prams+=Param+
+		//	params+=Param+
 		//	imports+=Import+
 		//	components+=Component+
 		//	instances+=Instance+
 		//	transitions+=Transition+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Config} 'config' '{' name=ID prams+=Param+ imports+=Import+ components+=Component+ instances+=Instance+
+		//{Config} 'config' '{' name=ID params+=Param+ imports+=Import+ components+=Component+ instances+=Instance+
 		//transitions+=Transition+ '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -73,11 +73,11 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
-		//prams+=Param+
-		public Assignment getPramsAssignment_4() { return cPramsAssignment_4; }
+		//params+=Param+
+		public Assignment getParamsAssignment_4() { return cParamsAssignment_4; }
 		
 		//Param
-		public RuleCall getPramsParamParserRuleCall_4_0() { return cPramsParamParserRuleCall_4_0; }
+		public RuleCall getParamsParamParserRuleCall_4_0() { return cParamsParamParserRuleCall_4_0; }
 		
 		//imports+=Import+
 		public Assignment getImportsAssignment_5() { return cImportsAssignment_5; }
@@ -111,19 +111,18 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cNameCommercialAtKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Assignment cIntAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
-		private final RuleCall cIntINTTerminalRuleCall_1_1_0_0 = (RuleCall)cIntAssignment_1_1_0.eContents().get(0);
-		private final Assignment cStringAssignment_1_1_1 = (Assignment)cAlternatives_1_1.eContents().get(1);
-		private final RuleCall cStringSTRINGTerminalRuleCall_1_1_1_0 = (RuleCall)cStringAssignment_1_1_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cIntvalAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cIntvalINTTerminalRuleCall_2_0_0 = (RuleCall)cIntvalAssignment_2_0.eContents().get(0);
+		private final Assignment cStringvalAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cStringvalSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cStringvalAssignment_2_1.eContents().get(0);
 		
 		//Param:
-		//	name='@' ('=' (int=INT | string=STRING))?;
+		//	name='@' '=' (intval=INT | stringval=STRING);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='@' ('=' (int=INT | string=STRING))?
+		//name='@' '=' (intval=INT | stringval=STRING)
 		public Group getGroup() { return cGroup; }
 		
 		//name='@'
@@ -132,26 +131,23 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		//'@'
 		public Keyword getNameCommercialAtKeyword_0_0() { return cNameCommercialAtKeyword_0_0; }
 		
-		//('=' (int=INT | string=STRING))?
-		public Group getGroup_1() { return cGroup_1; }
-		
 		//'='
-		public Keyword getEqualsSignKeyword_1_0() { return cEqualsSignKeyword_1_0; }
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 		
-		//int=INT | string=STRING
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		//intval=INT | stringval=STRING
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//int=INT
-		public Assignment getIntAssignment_1_1_0() { return cIntAssignment_1_1_0; }
+		//intval=INT
+		public Assignment getIntvalAssignment_2_0() { return cIntvalAssignment_2_0; }
 		
 		//INT
-		public RuleCall getIntINTTerminalRuleCall_1_1_0_0() { return cIntINTTerminalRuleCall_1_1_0_0; }
+		public RuleCall getIntvalINTTerminalRuleCall_2_0_0() { return cIntvalINTTerminalRuleCall_2_0_0; }
 		
-		//string=STRING
-		public Assignment getStringAssignment_1_1_1() { return cStringAssignment_1_1_1; }
+		//stringval=STRING
+		public Assignment getStringvalAssignment_2_1() { return cStringvalAssignment_2_1; }
 		
 		//STRING
-		public RuleCall getStringSTRINGTerminalRuleCall_1_1_1_0() { return cStringSTRINGTerminalRuleCall_1_1_1_0; }
+		public RuleCall getStringvalSTRINGTerminalRuleCall_2_1_0() { return cStringvalSTRINGTerminalRuleCall_2_1_0; }
 	}
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.sorting.Sorting.QualifiedNameWithWildcard");
@@ -724,30 +720,24 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTargetPortPortIDTerminalRuleCall_3_0_1 = (RuleCall)cTargetPortPortCrossReference_3_0.eContents().get(1);
 		private final Keyword cRightSquareBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
-		private final Group cGroup_6_0 = (Group)cAlternatives_6.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_6_0_0 = (Keyword)cGroup_6_0.eContents().get(0);
-		private final Assignment cTargetAssignment_6_0_1 = (Assignment)cGroup_6_0.eContents().get(1);
-		private final CrossReference cTargetInstanceCrossReference_6_0_1_0 = (CrossReference)cTargetAssignment_6_0_1.eContents().get(0);
-		private final RuleCall cTargetInstanceIDTerminalRuleCall_6_0_1_0_1 = (RuleCall)cTargetInstanceCrossReference_6_0_1_0.eContents().get(1);
-		private final Keyword cCommaKeyword_6_0_2 = (Keyword)cGroup_6_0.eContents().get(2);
-		private final Assignment cSourcePortAssignment_6_0_3 = (Assignment)cGroup_6_0.eContents().get(3);
-		private final CrossReference cSourcePortPortCrossReference_6_0_3_0 = (CrossReference)cSourcePortAssignment_6_0_3.eContents().get(0);
-		private final RuleCall cSourcePortPortIDTerminalRuleCall_6_0_3_0_1 = (RuleCall)cSourcePortPortCrossReference_6_0_3_0.eContents().get(1);
-		private final Keyword cRightSquareBracketKeyword_6_0_4 = (Keyword)cGroup_6_0.eContents().get(4);
-		private final Assignment cTransitionAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
-		private final RuleCall cTransitionTransitionParserRuleCall_6_1_0 = (RuleCall)cTransitionAssignment_6_1.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cTargetAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final CrossReference cTargetInstanceCrossReference_7_0 = (CrossReference)cTargetAssignment_7.eContents().get(0);
+		private final RuleCall cTargetInstanceIDTerminalRuleCall_7_0_1 = (RuleCall)cTargetInstanceCrossReference_7_0.eContents().get(1);
+		private final Keyword cCommaKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Assignment cSourcePortAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final CrossReference cSourcePortPortCrossReference_9_0 = (CrossReference)cSourcePortAssignment_9.eContents().get(0);
+		private final RuleCall cSourcePortPortIDTerminalRuleCall_9_0_1 = (RuleCall)cSourcePortPortCrossReference_9_0.eContents().get(1);
+		private final Keyword cRightSquareBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//Transition: //(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
 		////source=[Instance] "=>" target=[Instance] /*sem Instance no Component*/
-		//	'[' source=[Instance] ',' targetPort=[Port] ']' '->' ('[' target=[Instance] ',' sourcePort=[Port] ']' |
-		//	transition=Transition);
+		//	'[' source=[Instance] ',' targetPort=[Port] ']' '->' '[' target=[Instance] ',' sourcePort=[Port] ']';
 		@Override public ParserRule getRule() { return rule; }
 		
 		////(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
 		////source=[Instance] "=>" target=[Instance] /*sem Instance no Component*/
-		//'[' source=[Instance] ',' targetPort=[Port] ']' '->' ('[' target=[Instance] ',' sourcePort=[Port] ']' |
-		//transition=Transition)
+		//'[' source=[Instance] ',' targetPort=[Port] ']' '->' '[' target=[Instance] ',' sourcePort=[Port] ']'
 		public Group getGroup() { return cGroup; }
 		
 		////(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
@@ -782,44 +772,32 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		//'->'
 		public Keyword getHyphenMinusGreaterThanSignKeyword_5() { return cHyphenMinusGreaterThanSignKeyword_5; }
 		
-		//'[' target=[Instance] ',' sourcePort=[Port] ']' | transition=Transition
-		public Alternatives getAlternatives_6() { return cAlternatives_6; }
-		
-		//'[' target=[Instance] ',' sourcePort=[Port] ']'
-		public Group getGroup_6_0() { return cGroup_6_0; }
-		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_6_0_0() { return cLeftSquareBracketKeyword_6_0_0; }
+		public Keyword getLeftSquareBracketKeyword_6() { return cLeftSquareBracketKeyword_6; }
 		
 		//target=[Instance]
-		public Assignment getTargetAssignment_6_0_1() { return cTargetAssignment_6_0_1; }
+		public Assignment getTargetAssignment_7() { return cTargetAssignment_7; }
 		
 		//[Instance]
-		public CrossReference getTargetInstanceCrossReference_6_0_1_0() { return cTargetInstanceCrossReference_6_0_1_0; }
+		public CrossReference getTargetInstanceCrossReference_7_0() { return cTargetInstanceCrossReference_7_0; }
 		
 		//ID
-		public RuleCall getTargetInstanceIDTerminalRuleCall_6_0_1_0_1() { return cTargetInstanceIDTerminalRuleCall_6_0_1_0_1; }
+		public RuleCall getTargetInstanceIDTerminalRuleCall_7_0_1() { return cTargetInstanceIDTerminalRuleCall_7_0_1; }
 		
 		//','
-		public Keyword getCommaKeyword_6_0_2() { return cCommaKeyword_6_0_2; }
+		public Keyword getCommaKeyword_8() { return cCommaKeyword_8; }
 		
 		//sourcePort=[Port]
-		public Assignment getSourcePortAssignment_6_0_3() { return cSourcePortAssignment_6_0_3; }
+		public Assignment getSourcePortAssignment_9() { return cSourcePortAssignment_9; }
 		
 		//[Port]
-		public CrossReference getSourcePortPortCrossReference_6_0_3_0() { return cSourcePortPortCrossReference_6_0_3_0; }
+		public CrossReference getSourcePortPortCrossReference_9_0() { return cSourcePortPortCrossReference_9_0; }
 		
 		//ID
-		public RuleCall getSourcePortPortIDTerminalRuleCall_6_0_3_0_1() { return cSourcePortPortIDTerminalRuleCall_6_0_3_0_1; }
+		public RuleCall getSourcePortPortIDTerminalRuleCall_9_0_1() { return cSourcePortPortIDTerminalRuleCall_9_0_1; }
 		
 		//']'
-		public Keyword getRightSquareBracketKeyword_6_0_4() { return cRightSquareBracketKeyword_6_0_4; }
-		
-		//transition=Transition
-		public Assignment getTransitionAssignment_6_1() { return cTransitionAssignment_6_1; }
-		
-		//Transition
-		public RuleCall getTransitionTransitionParserRuleCall_6_1_0() { return cTransitionTransitionParserRuleCall_6_1_0; }
+		public Keyword getRightSquareBracketKeyword_10() { return cRightSquareBracketKeyword_10; }
 	}
 	
 	
@@ -891,7 +869,7 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	//Config:
 	//	{Config}
 	//	'config' '{' name=ID
-	//	prams+=Param+
+	//	params+=Param+
 	//	imports+=Import+
 	//	components+=Component+
 	//	instances+=Instance+
@@ -905,7 +883,7 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Param:
-	//	name='@' ('=' (int=INT | string=STRING))?;
+	//	name='@' '=' (intval=INT | stringval=STRING);
 	public ParamElements getParamAccess() {
 		return pParam;
 	}
@@ -1027,8 +1005,7 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Transition: //(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
 	////source=[Instance] "=>" target=[Instance] /*sem Instance no Component*/
-	//	'[' source=[Instance] ',' targetPort=[Port] ']' '->' ('[' target=[Instance] ',' sourcePort=[Port] ']' |
-	//	transition=Transition);
+	//	'[' source=[Instance] ',' targetPort=[Port] ']' '->' '[' target=[Instance] ',' sourcePort=[Port] ']';
 	public TransitionElements getTransitionAccess() {
 		return pTransition;
 	}

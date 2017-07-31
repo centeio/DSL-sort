@@ -77,13 +77,13 @@ public interface SortingPackage extends EPackage
   int CONFIG__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Prams</b></em>' containment reference list.
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONFIG__PRAMS = 1;
+  int CONFIG__PARAMS = 1;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -150,22 +150,22 @@ public interface SortingPackage extends EPackage
   int PARAM__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Int</b></em>' attribute.
+   * The feature id for the '<em><b>Intval</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__INT = 1;
+  int PARAM__INTVAL = 1;
 
   /**
-   * The feature id for the '<em><b>String</b></em>' attribute.
+   * The feature id for the '<em><b>Stringval</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__STRING = 2;
+  int PARAM__STRINGVAL = 2;
 
   /**
    * The number of structural features of the '<em>Param</em>' class.
@@ -591,22 +591,13 @@ public interface SortingPackage extends EPackage
   int TRANSITION__SOURCE_PORT = 3;
 
   /**
-   * The feature id for the '<em><b>Transition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TRANSITION__TRANSITION = 4;
-
-  /**
    * The number of structural features of the '<em>Transition</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TRANSITION_FEATURE_COUNT = 5;
+  int TRANSITION_FEATURE_COUNT = 4;
 
 
   /**
@@ -631,15 +622,15 @@ public interface SortingPackage extends EPackage
   EAttribute getConfig_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Config#getPrams <em>Prams</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Config#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Prams</em>'.
-   * @see org.xtext.example.sorting.sorting.Config#getPrams()
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see org.xtext.example.sorting.sorting.Config#getParams()
    * @see #getConfig()
    * @generated
    */
-  EReference getConfig_Prams();
+  EReference getConfig_Params();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.xtext.example.sorting.sorting.Config#getImports <em>Imports</em>}'.
@@ -707,26 +698,26 @@ public interface SortingPackage extends EPackage
   EAttribute getParam_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getInt <em>Int</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getIntval <em>Intval</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Int</em>'.
-   * @see org.xtext.example.sorting.sorting.Param#getInt()
+   * @return the meta object for the attribute '<em>Intval</em>'.
+   * @see org.xtext.example.sorting.sorting.Param#getIntval()
    * @see #getParam()
    * @generated
    */
-  EAttribute getParam_Int();
+  EAttribute getParam_Intval();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getString <em>String</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getStringval <em>Stringval</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>String</em>'.
-   * @see org.xtext.example.sorting.sorting.Param#getString()
+   * @return the meta object for the attribute '<em>Stringval</em>'.
+   * @see org.xtext.example.sorting.sorting.Param#getStringval()
    * @see #getParam()
    * @generated
    */
-  EAttribute getParam_String();
+  EAttribute getParam_Stringval();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Import <em>Import</em>}'.
@@ -995,17 +986,6 @@ public interface SortingPackage extends EPackage
   EReference getTransition_SourcePort();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.sorting.sorting.Transition#getTransition <em>Transition</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Transition</em>'.
-   * @see org.xtext.example.sorting.sorting.Transition#getTransition()
-   * @see #getTransition()
-   * @generated
-   */
-  EReference getTransition_Transition();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1047,12 +1027,12 @@ public interface SortingPackage extends EPackage
     EAttribute CONFIG__NAME = eINSTANCE.getConfig_Name();
 
     /**
-     * The meta object literal for the '<em><b>Prams</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONFIG__PRAMS = eINSTANCE.getConfig_Prams();
+    EReference CONFIG__PARAMS = eINSTANCE.getConfig_Params();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -1105,20 +1085,20 @@ public interface SortingPackage extends EPackage
     EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
 
     /**
-     * The meta object literal for the '<em><b>Int</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Intval</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAM__INT = eINSTANCE.getParam_Int();
+    EAttribute PARAM__INTVAL = eINSTANCE.getParam_Intval();
 
     /**
-     * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Stringval</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAM__STRING = eINSTANCE.getParam_String();
+    EAttribute PARAM__STRINGVAL = eINSTANCE.getParam_Stringval();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.ImportImpl <em>Import</em>}' class.
@@ -1337,14 +1317,6 @@ public interface SortingPackage extends EPackage
      * @generated
      */
     EReference TRANSITION__SOURCE_PORT = eINSTANCE.getTransition_SourcePort();
-
-    /**
-     * The meta object literal for the '<em><b>Transition</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TRANSITION__TRANSITION = eINSTANCE.getTransition_Transition();
 
   }
 

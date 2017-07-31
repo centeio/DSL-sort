@@ -36,7 +36,7 @@ import org.xtext.example.sorting.sorting.Transition;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getPrams <em>Prams</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getComponents <em>Components</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ConfigImpl#getInstances <em>Instances</em>}</li>
@@ -68,14 +68,14 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getPrams() <em>Prams</em>}' containment reference list.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPrams()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected EList<Param> prams;
+  protected EList<Param> params;
 
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -166,13 +166,13 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Param> getPrams()
+  public EList<Param> getParams()
   {
-    if (prams == null)
+    if (params == null)
     {
-      prams = new EObjectContainmentEList<Param>(Param.class, this, SortingPackage.CONFIG__PRAMS);
+      params = new EObjectContainmentEList<Param>(Param.class, this, SortingPackage.CONFIG__PARAMS);
     }
-    return prams;
+    return params;
   }
 
   /**
@@ -241,8 +241,8 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
   {
     switch (featureID)
     {
-      case SortingPackage.CONFIG__PRAMS:
-        return ((InternalEList<?>)getPrams()).basicRemove(otherEnd, msgs);
+      case SortingPackage.CONFIG__PARAMS:
+        return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
       case SortingPackage.CONFIG__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case SortingPackage.CONFIG__COMPONENTS:
@@ -267,8 +267,8 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
     {
       case SortingPackage.CONFIG__NAME:
         return getName();
-      case SortingPackage.CONFIG__PRAMS:
-        return getPrams();
+      case SortingPackage.CONFIG__PARAMS:
+        return getParams();
       case SortingPackage.CONFIG__IMPORTS:
         return getImports();
       case SortingPackage.CONFIG__COMPONENTS:
@@ -295,9 +295,9 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
       case SortingPackage.CONFIG__NAME:
         setName((String)newValue);
         return;
-      case SortingPackage.CONFIG__PRAMS:
-        getPrams().clear();
-        getPrams().addAll((Collection<? extends Param>)newValue);
+      case SortingPackage.CONFIG__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends Param>)newValue);
         return;
       case SortingPackage.CONFIG__IMPORTS:
         getImports().clear();
@@ -332,8 +332,8 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
       case SortingPackage.CONFIG__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SortingPackage.CONFIG__PRAMS:
-        getPrams().clear();
+      case SortingPackage.CONFIG__PARAMS:
+        getParams().clear();
         return;
       case SortingPackage.CONFIG__IMPORTS:
         getImports().clear();
@@ -363,8 +363,8 @@ public class ConfigImpl extends MinimalEObjectImpl.Container implements Config
     {
       case SortingPackage.CONFIG__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SortingPackage.CONFIG__PRAMS:
-        return prams != null && !prams.isEmpty();
+      case SortingPackage.CONFIG__PARAMS:
+        return params != null && !params.isEmpty();
       case SortingPackage.CONFIG__IMPORTS:
         return imports != null && !imports.isEmpty();
       case SortingPackage.CONFIG__COMPONENTS:

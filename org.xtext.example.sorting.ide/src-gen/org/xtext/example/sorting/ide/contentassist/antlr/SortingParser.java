@@ -31,14 +31,12 @@ public class SortingParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getParamAccess().getAlternatives_1_1(), "rule__Param__Alternatives_1_1");
+					put(grammarAccess.getParamAccess().getAlternatives_2(), "rule__Param__Alternatives_2");
 					put(grammarAccess.getTypeAccess().getTypeAlternatives_0_0(), "rule__Type__TypeAlternatives_0_0");
 					put(grammarAccess.getComponentAccess().getAlternatives(), "rule__Component__Alternatives");
 					put(grammarAccess.getInstanceAccess().getAlternatives_2_1(), "rule__Instance__Alternatives_2_1");
-					put(grammarAccess.getTransitionAccess().getAlternatives_6(), "rule__Transition__Alternatives_6");
 					put(grammarAccess.getConfigAccess().getGroup(), "rule__Config__Group__0");
 					put(grammarAccess.getParamAccess().getGroup(), "rule__Param__Group__0");
-					put(grammarAccess.getParamAccess().getGroup_1(), "rule__Param__Group_1__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
@@ -64,16 +62,15 @@ public class SortingParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstanceAccess().getGroup_2_1_0_5(), "rule__Instance__Group_2_1_0_5__0");
 					put(grammarAccess.getInstanceAccess().getGroup_2_1_1(), "rule__Instance__Group_2_1_1__0");
 					put(grammarAccess.getTransitionAccess().getGroup(), "rule__Transition__Group__0");
-					put(grammarAccess.getTransitionAccess().getGroup_6_0(), "rule__Transition__Group_6_0__0");
 					put(grammarAccess.getConfigAccess().getNameAssignment_3(), "rule__Config__NameAssignment_3");
-					put(grammarAccess.getConfigAccess().getPramsAssignment_4(), "rule__Config__PramsAssignment_4");
+					put(grammarAccess.getConfigAccess().getParamsAssignment_4(), "rule__Config__ParamsAssignment_4");
 					put(grammarAccess.getConfigAccess().getImportsAssignment_5(), "rule__Config__ImportsAssignment_5");
 					put(grammarAccess.getConfigAccess().getComponentsAssignment_6(), "rule__Config__ComponentsAssignment_6");
 					put(grammarAccess.getConfigAccess().getInstancesAssignment_7(), "rule__Config__InstancesAssignment_7");
 					put(grammarAccess.getConfigAccess().getTransitionsAssignment_8(), "rule__Config__TransitionsAssignment_8");
 					put(grammarAccess.getParamAccess().getNameAssignment_0(), "rule__Param__NameAssignment_0");
-					put(grammarAccess.getParamAccess().getIntAssignment_1_1_0(), "rule__Param__IntAssignment_1_1_0");
-					put(grammarAccess.getParamAccess().getStringAssignment_1_1_1(), "rule__Param__StringAssignment_1_1_1");
+					put(grammarAccess.getParamAccess().getIntvalAssignment_2_0(), "rule__Param__IntvalAssignment_2_0");
+					put(grammarAccess.getParamAccess().getStringvalAssignment_2_1(), "rule__Param__StringvalAssignment_2_1");
 					put(grammarAccess.getImportAccess().getNameAssignment_1(), "rule__Import__NameAssignment_1");
 					put(grammarAccess.getPortAccess().getNameAssignment_0(), "rule__Port__NameAssignment_0");
 					put(grammarAccess.getPortAccess().getTypeAssignment_1(), "rule__Port__TypeAssignment_1");
@@ -96,9 +93,8 @@ public class SortingParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstanceAccess().getArgsAssignment_2_1_1_1(), "rule__Instance__ArgsAssignment_2_1_1_1");
 					put(grammarAccess.getTransitionAccess().getSourceAssignment_1(), "rule__Transition__SourceAssignment_1");
 					put(grammarAccess.getTransitionAccess().getTargetPortAssignment_3(), "rule__Transition__TargetPortAssignment_3");
-					put(grammarAccess.getTransitionAccess().getTargetAssignment_6_0_1(), "rule__Transition__TargetAssignment_6_0_1");
-					put(grammarAccess.getTransitionAccess().getSourcePortAssignment_6_0_3(), "rule__Transition__SourcePortAssignment_6_0_3");
-					put(grammarAccess.getTransitionAccess().getTransitionAssignment_6_1(), "rule__Transition__TransitionAssignment_6_1");
+					put(grammarAccess.getTransitionAccess().getTargetAssignment_7(), "rule__Transition__TargetAssignment_7");
+					put(grammarAccess.getTransitionAccess().getSourcePortAssignment_9(), "rule__Transition__SourcePortAssignment_9");
 				}
 			};
 		}

@@ -22,8 +22,8 @@ import org.xtext.example.sorting.sorting.SortingPackage;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ParamImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.ParamImpl#getInt <em>Int</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.ParamImpl#getString <em>String</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ParamImpl#getIntval <em>Intval</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ParamImpl#getStringval <em>Stringval</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,44 +51,44 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getInt() <em>Int</em>}' attribute.
+   * The default value of the '{@link #getIntval() <em>Intval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInt()
+   * @see #getIntval()
    * @generated
    * @ordered
    */
-  protected static final int INT_EDEFAULT = 0;
+  protected static final int INTVAL_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getInt() <em>Int</em>}' attribute.
+   * The cached value of the '{@link #getIntval() <em>Intval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInt()
+   * @see #getIntval()
    * @generated
    * @ordered
    */
-  protected int int_ = INT_EDEFAULT;
+  protected int intval = INTVAL_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getString() <em>String</em>}' attribute.
+   * The default value of the '{@link #getStringval() <em>Stringval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getString()
+   * @see #getStringval()
    * @generated
    * @ordered
    */
-  protected static final String STRING_EDEFAULT = null;
+  protected static final String STRINGVAL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getString() <em>String</em>}' attribute.
+   * The cached value of the '{@link #getStringval() <em>Stringval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getString()
+   * @see #getStringval()
    * @generated
    * @ordered
    */
-  protected String string = STRING_EDEFAULT;
+  protected String stringval = STRINGVAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,9 +139,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getInt()
+  public int getIntval()
   {
-    return int_;
+    return intval;
   }
 
   /**
@@ -149,12 +149,12 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setInt(int newInt)
+  public void setIntval(int newIntval)
   {
-    int oldInt = int_;
-    int_ = newInt;
+    int oldIntval = intval;
+    intval = newIntval;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PARAM__INT, oldInt, int_));
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PARAM__INTVAL, oldIntval, intval));
   }
 
   /**
@@ -162,9 +162,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getString()
+  public String getStringval()
   {
-    return string;
+    return stringval;
   }
 
   /**
@@ -172,12 +172,12 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setString(String newString)
+  public void setStringval(String newStringval)
   {
-    String oldString = string;
-    string = newString;
+    String oldStringval = stringval;
+    stringval = newStringval;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PARAM__STRING, oldString, string));
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PARAM__STRINGVAL, oldStringval, stringval));
   }
 
   /**
@@ -192,10 +192,10 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     {
       case SortingPackage.PARAM__NAME:
         return getName();
-      case SortingPackage.PARAM__INT:
-        return getInt();
-      case SortingPackage.PARAM__STRING:
-        return getString();
+      case SortingPackage.PARAM__INTVAL:
+        return getIntval();
+      case SortingPackage.PARAM__STRINGVAL:
+        return getStringval();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,11 +213,11 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case SortingPackage.PARAM__NAME:
         setName((String)newValue);
         return;
-      case SortingPackage.PARAM__INT:
-        setInt((Integer)newValue);
+      case SortingPackage.PARAM__INTVAL:
+        setIntval((Integer)newValue);
         return;
-      case SortingPackage.PARAM__STRING:
-        setString((String)newValue);
+      case SortingPackage.PARAM__STRINGVAL:
+        setStringval((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,11 +236,11 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case SortingPackage.PARAM__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case SortingPackage.PARAM__INT:
-        setInt(INT_EDEFAULT);
+      case SortingPackage.PARAM__INTVAL:
+        setIntval(INTVAL_EDEFAULT);
         return;
-      case SortingPackage.PARAM__STRING:
-        setString(STRING_EDEFAULT);
+      case SortingPackage.PARAM__STRINGVAL:
+        setStringval(STRINGVAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -258,10 +258,10 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     {
       case SortingPackage.PARAM__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SortingPackage.PARAM__INT:
-        return int_ != INT_EDEFAULT;
-      case SortingPackage.PARAM__STRING:
-        return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
+      case SortingPackage.PARAM__INTVAL:
+        return intval != INTVAL_EDEFAULT;
+      case SortingPackage.PARAM__STRINGVAL:
+        return STRINGVAL_EDEFAULT == null ? stringval != null : !STRINGVAL_EDEFAULT.equals(stringval);
     }
     return super.eIsSet(featureID);
   }
@@ -279,10 +279,10 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", int: ");
-    result.append(int_);
-    result.append(", string: ");
-    result.append(string);
+    result.append(", intval: ");
+    result.append(intval);
+    result.append(", stringval: ");
+    result.append(stringval);
     result.append(')');
     return result.toString();
   }

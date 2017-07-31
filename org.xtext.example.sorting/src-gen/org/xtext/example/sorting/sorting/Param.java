@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.Param#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Param#getInt <em>Int</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Param#getString <em>String</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Param#getIntval <em>Intval</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Param#getStringval <em>Stringval</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getParam()
@@ -52,55 +52,55 @@ public interface Param extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Int</b></em>' attribute.
+   * Returns the value of the '<em><b>Intval</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Int</em>' attribute isn't clear,
+   * If the meaning of the '<em>Intval</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Int</em>' attribute.
-   * @see #setInt(int)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getParam_Int()
+   * @return the value of the '<em>Intval</em>' attribute.
+   * @see #setIntval(int)
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getParam_Intval()
    * @model
    * @generated
    */
-  int getInt();
+  int getIntval();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Param#getInt <em>Int</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Param#getIntval <em>Intval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Int</em>' attribute.
-   * @see #getInt()
+   * @param value the new value of the '<em>Intval</em>' attribute.
+   * @see #getIntval()
    * @generated
    */
-  void setInt(int value);
+  void setIntval(int value);
 
   /**
-   * Returns the value of the '<em><b>String</b></em>' attribute.
+   * Returns the value of the '<em><b>Stringval</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>String</em>' attribute isn't clear,
+   * If the meaning of the '<em>Stringval</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>String</em>' attribute.
-   * @see #setString(String)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getParam_String()
+   * @return the value of the '<em>Stringval</em>' attribute.
+   * @see #setStringval(String)
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getParam_Stringval()
    * @model
    * @generated
    */
-  String getString();
+  String getStringval();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Param#getString <em>String</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Param#getStringval <em>Stringval</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>String</em>' attribute.
-   * @see #getString()
+   * @param value the new value of the '<em>Stringval</em>' attribute.
+   * @see #getStringval()
    * @generated
    */
-  void setString(String value);
+  void setStringval(String value);
 
 } // Param

@@ -20,7 +20,6 @@ class SortingGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
-		fsa.generateFile(resource.className+".java", generate(resource.contents.head as Config)); 
 //			resource.allContents
 //				.filter(Greeting)
 //				.map[name]
@@ -179,6 +178,8 @@ class SortingGenerator extends AbstractGenerator {
 			«ENDIF»					 			
 		 	'''
 		 	);
+			fsa.generateFile(resource.className+"Graph.java", generate(resource.contents.head as Config)); 
+		 	
 		 	}
 		 	
 		 
@@ -194,40 +195,33 @@ class SortingGenerator extends AbstractGenerator {
 		«FOR imp : config.imports»
 			import «imp.name»
 		«ENDFOR»
+		import java.util.ArrayList;
+		import java.util.HashMap;
+		
+		
+		class Graph {
+			private HashTable<String,int> ints = new HashTable<String,int>();
+			private HashTable<String,String> strings = new HashTable<String,String>();
+			private ArrayList<Edge> edges = new ArrayList<Edge>();
+			private ArrayList<Component> nodes = new ArrayList<Component>();
+			
+			public static void main(String args[]) {
+				«FOR param : config.prams»
+					«IF (param.intval != null)»
+						ints.put(«param.name»,«param.intval»);
+					«ELSE»
+						strings.put(«param.name»,«param.stringval»);
+					«ENDIF»
+				«ENDFOR»
+				«FOR instance : config.instances»
+					«instance.component» «instance.name» = new «instance.component»(«instance.name»);
+				«ENDFOR»
+				
+				//add edge to graph
+				//add node to graph
+			}
+		}
 
-		«FOR component : config.components»
-			«IF (component instanceof Source)»
-				public class «component.name» extends Source{
-					public «component.name»(String name){
-						this.name=name;
-						«FOR port : component.outPorts»
-							inPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»
-					}
-				}
-			«ELSEIF (component instanceof Filter)»
-				public class «component.name» extends Filter{
-					public «component.name»(String name){
-						this.name=name;
-						«FOR port : component.inPorts»
-							inPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»
-						«FOR port : component.outPorts»
-							outPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»					
-					}
-				}
-			«ELSEIF (component instanceof Sink)»
-				public class «component.name» extends Sink{
-					public «component.name»(String name){
-						this.name=name;
-						«FOR port : component.outPorts»
-							outPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»					
-					}					
-				}
-			«ENDIF»			
-		«ENDFOR»
 		
 	'''
 }

@@ -5,7 +5,7 @@ generate sorting "http://www.xtext.org/example/sorting/Sorting"
 Config:
 	{Config}
 	'config''{' name=ID
-	prams+=Param+
+	params+=Param+
 	imports+=Import+
 	components+=Component+
 	instances+=Instance+
@@ -13,7 +13,7 @@ Config:
 ;
 
 Param:
-	name='@' ('=' (int=INT|string=STRING))?
+	name='@' ID '=' (intval=INT|stringval=STRING)
 ;
 
 QualifiedNameWithWildcard:
@@ -74,7 +74,10 @@ Instance:
 Transition:
 	//(source=[Source]|source=[Filter]) "=>" (target=[Filter]|target=[Sink])|
 	//source=[Instance] "=>" target=[Instance] /*sem Instance no Component*/
-	'['source=[Instance]',' targetPort=[Port]']''->' ('['target=[Instance] ',' sourcePort=[Port]']'| transition=Transition)  
+	'['source=[Instance]',' targetPort=[Port]']''->' '['target=[Instance] ',' sourcePort=[Port]']'  
 ;
 
 //TODO dot
+//TODO type das ports
+//TODO params
+//TODO método e result

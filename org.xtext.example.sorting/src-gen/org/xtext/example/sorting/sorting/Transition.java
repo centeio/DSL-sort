@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.sorting.sorting.Transition#getTargetPort <em>Target Port</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.Transition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.Transition#getSourcePort <em>Source Port</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Transition#getTransition <em>Transition</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getTransition()
@@ -130,31 +129,5 @@ public interface Transition extends EObject
    * @generated
    */
   void setSourcePort(Port value);
-
-  /**
-   * Returns the value of the '<em><b>Transition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Transition</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Transition</em>' containment reference.
-   * @see #setTransition(Transition)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getTransition_Transition()
-   * @model containment="true"
-   * @generated
-   */
-  Transition getTransition();
-
-  /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Transition#getTransition <em>Transition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Transition</em>' containment reference.
-   * @see #getTransition()
-   * @generated
-   */
-  void setTransition(Transition value);
 
 } // Transition
