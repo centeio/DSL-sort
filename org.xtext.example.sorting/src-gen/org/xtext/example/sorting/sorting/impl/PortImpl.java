@@ -4,17 +4,14 @@
 package org.xtext.example.sorting.sorting.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.sorting.sorting.Port;
 import org.xtext.example.sorting.sorting.SortingPackage;
-import org.xtext.example.sorting.sorting.Type;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,14 +50,24 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected Type type;
+  protected static final String TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected String type = TYPE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,7 +118,7 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getType()
+  public String getType()
   {
     return type;
   }
@@ -121,53 +128,12 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
+  public void setType(String newType)
   {
-    Type oldType = type;
+    String oldType = type;
     type = newType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SortingPackage.PORT__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(Type newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SortingPackage.PORT__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SortingPackage.PORT__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PORT__TYPE, newType, newType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SortingPackage.PORT__TYPE:
-        return basicSetType(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.PORT__TYPE, oldType, type));
   }
 
   /**
@@ -202,7 +168,7 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
         setName((String)newValue);
         return;
       case SortingPackage.PORT__TYPE:
-        setType((Type)newValue);
+        setType((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,7 +188,7 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
         setName(NAME_EDEFAULT);
         return;
       case SortingPackage.PORT__TYPE:
-        setType((Type)null);
+        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -241,7 +207,7 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
       case SortingPackage.PORT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SortingPackage.PORT__TYPE:
-        return type != null;
+        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
     }
     return super.eIsSet(featureID);
   }
@@ -259,6 +225,8 @@ public class PortImpl extends MinimalEObjectImpl.Container implements Port
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", type: ");
+    result.append(type);
     result.append(')');
     return result.toString();
   }

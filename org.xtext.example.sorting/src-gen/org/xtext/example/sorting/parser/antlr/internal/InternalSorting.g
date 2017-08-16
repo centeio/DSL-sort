@@ -229,59 +229,61 @@ ruleParam returns [EObject current=null]
 	(
 		(
 			(
-				lv_name_0_0='@'
 				{
-					newLeafNode(lv_name_0_0, grammarAccess.getParamAccess().getNameCommercialAtKeyword_0_0());
+					newCompositeNode(grammarAccess.getParamAccess().getTypeTypeParserRuleCall_0_0());
+				}
+				lv_type_0_0=ruleType
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getParamRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_0_0,
+						"org.xtext.example.sorting.Sorting.Type");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				lv_name_1_0='@'
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getParamAccess().getNameCommercialAtKeyword_1_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getParamRule());
 					}
-					setWithLastConsumed($current, "name", lv_name_0_0, "@");
+					setWithLastConsumed($current, "name", lv_name_1_0, "@");
 				}
 			)
 		)
-		otherlv_1='='
+		this_ID_2=RULE_ID
 		{
-			newLeafNode(otherlv_1, grammarAccess.getParamAccess().getEqualsSignKeyword_1());
+			newLeafNode(this_ID_2, grammarAccess.getParamAccess().getIDTerminalRuleCall_2());
+		}
+		otherlv_3='='
+		{
+			newLeafNode(otherlv_3, grammarAccess.getParamAccess().getEqualsSignKeyword_3());
 		}
 		(
 			(
-				(
-					lv_intval_2_0=RULE_INT
-					{
-						newLeafNode(lv_intval_2_0, grammarAccess.getParamAccess().getIntvalINTTerminalRuleCall_2_0_0());
+				lv_value_4_0=RULE_STRING
+				{
+					newLeafNode(lv_value_4_0, grammarAccess.getParamAccess().getValueSTRINGTerminalRuleCall_4_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getParamRule());
 					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getParamRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"intval",
-							lv_intval_2_0,
-							"org.eclipse.xtext.common.Terminals.INT");
-					}
-				)
-			)
-			    |
-			(
-				(
-					lv_stringval_3_0=RULE_STRING
-					{
-						newLeafNode(lv_stringval_3_0, grammarAccess.getParamAccess().getStringvalSTRINGTerminalRuleCall_2_1_0());
-					}
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getParamRule());
-						}
-						setWithLastConsumed(
-							$current,
-							"stringval",
-							lv_stringval_3_0,
-							"org.eclipse.xtext.common.Terminals.STRING");
-					}
-				)
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_4_0,
+						"org.eclipse.xtext.common.Terminals.STRING");
+				}
 			)
 		)
 	)

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalSortingLexer extends Lexer {
-    public static final int RULE_STRING=6;
+    public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
     public static final int T__19=19;
     public static final int T__15=15;
@@ -37,7 +37,7 @@ public class InternalSortingLexer extends Lexer {
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=6;
     public static final int T__29=29;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
@@ -601,10 +601,10 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1220:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalSorting.g:1220:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSorting.g:1222:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalSorting.g:1222:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalSorting.g:1220:11: ( '^' )?
+            // InternalSorting.g:1222:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -613,7 +613,7 @@ public class InternalSortingLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalSorting.g:1220:11: '^'
+                    // InternalSorting.g:1222:11: '^'
                     {
                     match('^'); 
 
@@ -631,7 +631,7 @@ public class InternalSortingLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalSorting.g:1220:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSorting.g:1222:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -680,10 +680,10 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1222:10: ( ( '0' .. '9' )+ )
-            // InternalSorting.g:1222:12: ( '0' .. '9' )+
+            // InternalSorting.g:1224:10: ( ( '0' .. '9' )+ )
+            // InternalSorting.g:1224:12: ( '0' .. '9' )+
             {
-            // InternalSorting.g:1222:12: ( '0' .. '9' )+
+            // InternalSorting.g:1224:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -697,7 +697,7 @@ public class InternalSortingLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalSorting.g:1222:13: '0' .. '9'
+            	    // InternalSorting.g:1224:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -729,10 +729,10 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1224:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalSorting.g:1224:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSorting.g:1226:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalSorting.g:1226:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalSorting.g:1224:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSorting.g:1226:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -750,10 +750,10 @@ public class InternalSortingLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalSorting.g:1224:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalSorting.g:1226:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalSorting.g:1224:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalSorting.g:1226:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -769,7 +769,7 @@ public class InternalSortingLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalSorting.g:1224:21: '\\\\' .
+                    	    // InternalSorting.g:1226:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -777,7 +777,7 @@ public class InternalSortingLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalSorting.g:1224:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalSorting.g:1226:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -802,10 +802,10 @@ public class InternalSortingLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalSorting.g:1224:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalSorting.g:1226:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalSorting.g:1224:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalSorting.g:1226:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -821,7 +821,7 @@ public class InternalSortingLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalSorting.g:1224:54: '\\\\' .
+                    	    // InternalSorting.g:1226:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -829,7 +829,7 @@ public class InternalSortingLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalSorting.g:1224:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalSorting.g:1226:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -872,12 +872,12 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1226:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalSorting.g:1226:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalSorting.g:1228:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalSorting.g:1228:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalSorting.g:1226:24: ( options {greedy=false; } : . )*
+            // InternalSorting.g:1228:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -902,7 +902,7 @@ public class InternalSortingLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalSorting.g:1226:52: .
+            	    // InternalSorting.g:1228:52: .
             	    {
             	    matchAny(); 
 
@@ -932,12 +932,12 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1228:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalSorting.g:1228:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalSorting.g:1230:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalSorting.g:1230:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalSorting.g:1228:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalSorting.g:1230:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -950,7 +950,7 @@ public class InternalSortingLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalSorting.g:1228:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalSorting.g:1230:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -970,7 +970,7 @@ public class InternalSortingLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalSorting.g:1228:40: ( ( '\\r' )? '\\n' )?
+            // InternalSorting.g:1230:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -979,9 +979,9 @@ public class InternalSortingLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalSorting.g:1228:41: ( '\\r' )? '\\n'
+                    // InternalSorting.g:1230:41: ( '\\r' )? '\\n'
                     {
-                    // InternalSorting.g:1228:41: ( '\\r' )?
+                    // InternalSorting.g:1230:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -990,7 +990,7 @@ public class InternalSortingLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalSorting.g:1228:41: '\\r'
+                            // InternalSorting.g:1230:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1022,10 +1022,10 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1230:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalSorting.g:1230:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSorting.g:1232:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalSorting.g:1232:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalSorting.g:1230:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSorting.g:1232:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1079,8 +1079,8 @@ public class InternalSortingLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalSorting.g:1232:16: ( . )
-            // InternalSorting.g:1232:18: .
+            // InternalSorting.g:1234:16: ( . )
+            // InternalSorting.g:1234:18: .
             {
             matchAny(); 
 

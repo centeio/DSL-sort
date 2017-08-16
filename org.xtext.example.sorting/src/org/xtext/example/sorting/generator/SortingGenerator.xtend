@@ -10,6 +10,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.example.sorting.sorting.*
 import java.util.Iterator
 import org.eclipse.emf.ecore.EObject
+import org.xtext.example.sorting.sorting.Config
 
 /**
  * Generates code from your model files on save.
@@ -24,6 +25,9 @@ class SortingGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
+
+		fsa.generateFile(resource.className+".PipeStages.java", generatePipeStages(resource.contents.head as Config)); 
+			
 		fsa.generateFile(resource.className+".Component.java", 
 			'''
 			public abstract class Component{
@@ -33,7 +37,14 @@ class SortingGenerator extends AbstractGenerator {
 				
 				public int getLevel() {
 					return level;
-				}				
+				}
+				public void checkLevel(Component c){
+					if(level<c.getLevel())
+						level = c.getLevel()+1;
+				}
+				private int getLevel() {
+					return level;
+				}								
 			}''');
 		 fsa.generateFile(resource.className+".Source.java", 
 		 	'''
@@ -63,15 +74,15 @@ class SortingGenerator extends AbstractGenerator {
 		 );
 		 fsa.generateFile(resource.className+".Sink.java", 
 		 	'''
-		 	import java.util.HashMap;
+		import java.util.HashMap;
 		 	
 		 	public abstract class Sink extends Component{
 		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
 		 		public Port getPort(String name){
 		 			return inPorts.get(name);
 		 		}
-		 	}
-		 	'''
+		 	
+			}'''
 		 );
 		 fsa.generateFile(resource.className+".Port.java", 
 		 	'''
@@ -110,6 +121,9 @@ class SortingGenerator extends AbstractGenerator {
 		 		public void setEdges(ArrayList<Edge> edges) {
 		 			this.edges = edges;
 		 		}
+				public void addEdge(Edge edge) {
+					this.edges.add(edge);
+				}
 		 	}
 		 	'''
 		 );
@@ -186,6 +200,9 @@ class SortingGenerator extends AbstractGenerator {
 		
 	}
 	
+	def CharSequence generatePipeStages(Config config)'''
+	'''
+	
 	def className(Resource res) {
 		var name = res.URI.lastSegment
 		return name.substring(0, name.indexOf('.'))
@@ -200,25 +217,36 @@ class SortingGenerator extends AbstractGenerator {
 		
 		
 		class Graph {
-			private HashTable<String,int> ints = new HashTable<String,int>();
-			private HashTable<String,String> strings = new HashTable<String,String>();
+			private HashMap<String,String> params = new HashTable<String,String>();
 			private ArrayList<Edge> edges = new ArrayList<Edge>();
-			private ArrayList<Component> nodes = new ArrayList<Component>();
+			private HashMap<String,Component> nodes = new HashMap<String,Component>();
+			
+			public void addEdge(Instance from, Port pfrom, Instance to, Port pto){
+				Component csource = nodes.get(from);
+				Component ctarget = nodes.get(target);
+				
+				Port source = csource.getPort(pfrom);
+				Port target = ctarget.getPort(pto);
+				Edge edge = new Edge(source, target);
+				edges.put(edge);
+				csource.addEdge(edge);
+				ctarget.addEdge(edge);
+				ctarget.checkLevel(csource);
+			}
 			
 			public static void main(String args[]) {
-				«FOR param : config.prams»
-					«IF (param.intval != null)»
-						ints.put(«param.name»,«param.intval»);
-					«ELSE»
-						strings.put(«param.name»,«param.stringval»);
-					«ENDIF»
+				«FOR param : config.params»
+					params.put(«param.name»,«param.type» + '|' + «param.value»);
 				«ENDFOR»
 				«FOR instance : config.instances»
 					«instance.component» «instance.name» = new «instance.component»(«instance.name»);
+					nodes.put(«instance.name»);
+				«ENDFOR»
+				«FOR t : config.transitions»
+					addEdge(«t.source»,«t.targetPort»,«t.target»,«t.sourcePort»);
 				«ENDFOR»
 				
-				//add edge to graph
-				//add node to graph
+				
 			}
 		}
 

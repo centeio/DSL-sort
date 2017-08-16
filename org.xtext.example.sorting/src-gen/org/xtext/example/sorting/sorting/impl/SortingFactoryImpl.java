@@ -69,7 +69,6 @@ public class SortingFactoryImpl extends EFactoryImpl implements SortingFactory
       case SortingPackage.PARAM: return createParam();
       case SortingPackage.IMPORT: return createImport();
       case SortingPackage.PORT: return createPort();
-      case SortingPackage.TYPE: return createType();
       case SortingPackage.COMPONENT: return createComponent();
       case SortingPackage.SOURCE: return createSource();
       case SortingPackage.FILTER: return createFilter();
@@ -123,17 +122,6 @@ public class SortingFactoryImpl extends EFactoryImpl implements SortingFactory
   {
     PortImpl port = new PortImpl();
     return port;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type createType()
-  {
-    TypeImpl type = new TypeImpl();
-    return type;
   }
 
   /**

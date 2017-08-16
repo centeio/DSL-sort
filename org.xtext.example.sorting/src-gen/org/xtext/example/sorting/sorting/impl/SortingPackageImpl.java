@@ -257,9 +257,9 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParam_Name()
+  public EReference getParam_Type()
   {
-    return (EAttribute)paramEClass.getEStructuralFeatures().get(0);
+    return (EReference)paramEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -267,7 +267,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParam_Intval()
+  public EAttribute getParam_Name()
   {
     return (EAttribute)paramEClass.getEStructuralFeatures().get(1);
   }
@@ -277,7 +277,7 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParam_Stringval()
+  public EAttribute getParam_Value()
   {
     return (EAttribute)paramEClass.getEStructuralFeatures().get(2);
   }
@@ -571,9 +571,9 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     createEReference(configEClass, CONFIG__TRANSITIONS);
 
     paramEClass = createEClass(PARAM);
+    createEReference(paramEClass, PARAM__TYPE);
     createEAttribute(paramEClass, PARAM__NAME);
-    createEAttribute(paramEClass, PARAM__INTVAL);
-    createEAttribute(paramEClass, PARAM__STRINGVAL);
+    createEAttribute(paramEClass, PARAM__VALUE);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__NAME);
@@ -653,9 +653,9 @@ public class SortingPackageImpl extends EPackageImpl implements SortingPackage
     initEReference(getConfig_Transitions(), this.getTransition(), null, "transitions", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParam_Type(), this.getType(), null, "type", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParam_Intval(), ecorePackage.getEInt(), "intval", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParam_Stringval(), ecorePackage.getEString(), "stringval", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParam_Value(), ecorePackage.getEString(), "value", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_Name(), ecorePackage.getEString(), "name", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

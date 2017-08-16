@@ -96,11 +96,6 @@ public class SortingAdapterFactory extends AdapterFactoryImpl
         return createPortAdapter();
       }
       @Override
-      public Adapter caseType(Type object)
-      {
-        return createTypeAdapter();
-      }
-      @Override
       public Adapter caseComponent(Component object)
       {
         return createComponentAdapter();
@@ -208,21 +203,6 @@ public class SortingAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPortAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.sorting.sorting.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.sorting.sorting.Type
-   * @generated
-   */
-  public Adapter createTypeAdapter()
   {
     return null;
   }

@@ -143,10 +143,22 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Param returns Param
 	 *
 	 * Constraint:
-	 *     (name='@' (intval=INT | stringval=STRING))
+	 *     (type=Type name='@' value=STRING)
 	 */
 	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.PARAM__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.PARAM__TYPE));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.PARAM__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.PARAM__NAME));
+			if (transientValues.isValueTransient(semanticObject, SortingPackage.Literals.PARAM__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SortingPackage.Literals.PARAM__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getParamAccess().getTypeTypeParserRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getParamAccess().getNameCommercialAtKeyword_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getParamAccess().getValueSTRINGTerminalRuleCall_4_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

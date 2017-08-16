@@ -34,7 +34,7 @@ import org.xtext.example.sorting.sorting.SortingPackage;
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getInPorts <em>In Ports</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getOutPorts <em>Out Ports</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.impl.ComponentImpl#getCode <em>Code</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,24 +82,24 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
   protected EList<Port> outPorts;
 
   /**
-   * The default value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected static final String METHOD_EDEFAULT = null;
+  protected static final String CODE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' attribute.
+   * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected String method = METHOD_EDEFAULT;
+  protected String code = CODE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,9 +178,9 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMethod()
+  public String getCode()
   {
-    return method;
+    return code;
   }
 
   /**
@@ -188,12 +188,12 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMethod(String newMethod)
+  public void setCode(String newCode)
   {
-    String oldMethod = method;
-    method = newMethod;
+    String oldCode = code;
+    code = newCode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.COMPONENT__METHOD, oldMethod, method));
+      eNotify(new ENotificationImpl(this, Notification.SET, SortingPackage.COMPONENT__CODE, oldCode, code));
   }
 
   /**
@@ -230,8 +230,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return getInPorts();
       case SortingPackage.COMPONENT__OUT_PORTS:
         return getOutPorts();
-      case SortingPackage.COMPONENT__METHOD:
-        return getMethod();
+      case SortingPackage.COMPONENT__CODE:
+        return getCode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -258,8 +258,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         getOutPorts().clear();
         getOutPorts().addAll((Collection<? extends Port>)newValue);
         return;
-      case SortingPackage.COMPONENT__METHOD:
-        setMethod((String)newValue);
+      case SortingPackage.COMPONENT__CODE:
+        setCode((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -284,8 +284,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
       case SortingPackage.COMPONENT__OUT_PORTS:
         getOutPorts().clear();
         return;
-      case SortingPackage.COMPONENT__METHOD:
-        setMethod(METHOD_EDEFAULT);
+      case SortingPackage.COMPONENT__CODE:
+        setCode(CODE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -307,8 +307,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
         return inPorts != null && !inPorts.isEmpty();
       case SortingPackage.COMPONENT__OUT_PORTS:
         return outPorts != null && !outPorts.isEmpty();
-      case SortingPackage.COMPONENT__METHOD:
-        return METHOD_EDEFAULT == null ? method != null : !METHOD_EDEFAULT.equals(method);
+      case SortingPackage.COMPONENT__CODE:
+        return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
     }
     return super.eIsSet(featureID);
   }
@@ -326,8 +326,8 @@ public class ComponentImpl extends MinimalEObjectImpl.Container implements Compo
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", method: ");
-    result.append(method);
+    result.append(", code: ");
+    result.append(code);
     result.append(')');
     return result.toString();
   }

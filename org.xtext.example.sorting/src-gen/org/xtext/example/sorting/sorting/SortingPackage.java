@@ -141,31 +141,13 @@ public interface SortingPackage extends EPackage
   int PARAM = 1;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Intval</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM__INTVAL = 1;
-
-  /**
-   * The feature id for the '<em><b>Stringval</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM__STRINGVAL = 2;
+  int PARAM__VALUE = 0;
 
   /**
    * The number of structural features of the '<em>Param</em>' class.
@@ -174,7 +156,7 @@ public interface SortingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAM_FEATURE_COUNT = 3;
+  int PARAM_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.ImportImpl <em>Import</em>}' class.
@@ -224,7 +206,7 @@ public interface SortingPackage extends EPackage
   int PORT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -242,34 +224,6 @@ public interface SortingPackage extends EPackage
   int PORT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.TypeImpl <em>Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.sorting.sorting.impl.TypeImpl
-   * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getType()
-   * @generated
-   */
-  int TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__TYPE = 0;
-
-  /**
-   * The number of structural features of the '<em>Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.ComponentImpl <em>Component</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -277,7 +231,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getComponent()
    * @generated
    */
-  int COMPONENT = 5;
+  int COMPONENT = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -307,13 +261,13 @@ public interface SortingPackage extends EPackage
   int COMPONENT__OUT_PORTS = 2;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * The feature id for the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMPONENT__METHOD = 3;
+  int COMPONENT__CODE = 3;
 
   /**
    * The number of structural features of the '<em>Component</em>' class.
@@ -332,7 +286,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getSource()
    * @generated
    */
-  int SOURCE = 6;
+  int SOURCE = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -362,13 +316,13 @@ public interface SortingPackage extends EPackage
   int SOURCE__OUT_PORTS = COMPONENT__OUT_PORTS;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * The feature id for the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOURCE__METHOD = COMPONENT__METHOD;
+  int SOURCE__CODE = COMPONENT__CODE;
 
   /**
    * The number of structural features of the '<em>Source</em>' class.
@@ -387,7 +341,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getFilter()
    * @generated
    */
-  int FILTER = 7;
+  int FILTER = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -417,13 +371,13 @@ public interface SortingPackage extends EPackage
   int FILTER__OUT_PORTS = COMPONENT__OUT_PORTS;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * The feature id for the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FILTER__METHOD = COMPONENT__METHOD;
+  int FILTER__CODE = COMPONENT__CODE;
 
   /**
    * The number of structural features of the '<em>Filter</em>' class.
@@ -442,7 +396,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getSink()
    * @generated
    */
-  int SINK = 8;
+  int SINK = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -472,13 +426,13 @@ public interface SortingPackage extends EPackage
   int SINK__OUT_PORTS = COMPONENT__OUT_PORTS;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * The feature id for the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SINK__METHOD = COMPONENT__METHOD;
+  int SINK__CODE = COMPONENT__CODE;
 
   /**
    * The number of structural features of the '<em>Sink</em>' class.
@@ -497,7 +451,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getInstance()
    * @generated
    */
-  int INSTANCE = 9;
+  int INSTANCE = 8;
 
   /**
    * The feature id for the '<em><b>Component</b></em>' reference.
@@ -518,22 +472,13 @@ public interface SortingPackage extends EPackage
   int INSTANCE__NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' attribute.
+   * The feature id for the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTANCE__METHOD = 2;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTANCE__ARGS = 3;
+  int INSTANCE__CODE = 2;
 
   /**
    * The number of structural features of the '<em>Instance</em>' class.
@@ -542,7 +487,7 @@ public interface SortingPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTANCE_FEATURE_COUNT = 4;
+  int INSTANCE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.xtext.example.sorting.sorting.impl.TransitionImpl <em>Transition</em>}' class.
@@ -552,7 +497,7 @@ public interface SortingPackage extends EPackage
    * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getTransition()
    * @generated
    */
-  int TRANSITION = 10;
+  int TRANSITION = 9;
 
   /**
    * The feature id for the '<em><b>Source</b></em>' reference.
@@ -687,37 +632,15 @@ public interface SortingPackage extends EPackage
   EClass getParam();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.sorting.sorting.Param#getName()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.example.sorting.sorting.Param#getValue()
    * @see #getParam()
    * @generated
    */
-  EAttribute getParam_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getIntval <em>Intval</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Intval</em>'.
-   * @see org.xtext.example.sorting.sorting.Param#getIntval()
-   * @see #getParam()
-   * @generated
-   */
-  EAttribute getParam_Intval();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Param#getStringval <em>Stringval</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Stringval</em>'.
-   * @see org.xtext.example.sorting.sorting.Param#getStringval()
-   * @see #getParam()
-   * @generated
-   */
-  EAttribute getParam_Stringval();
+  EAttribute getParam_Value();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Import <em>Import</em>}'.
@@ -762,36 +685,15 @@ public interface SortingPackage extends EPackage
   EAttribute getPort_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.example.sorting.sorting.Port#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Port#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @return the meta object for the attribute '<em>Type</em>'.
    * @see org.xtext.example.sorting.sorting.Port#getType()
    * @see #getPort()
    * @generated
    */
-  EReference getPort_Type();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Type <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type</em>'.
-   * @see org.xtext.example.sorting.sorting.Type
-   * @generated
-   */
-  EClass getType();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Type#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.xtext.example.sorting.sorting.Type#getType()
-   * @see #getType()
-   * @generated
-   */
-  EAttribute getType_Type();
+  EAttribute getPort_Type();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Component <em>Component</em>}'.
@@ -837,15 +739,15 @@ public interface SortingPackage extends EPackage
   EReference getComponent_OutPorts();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Component#getMethod <em>Method</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Component#getCode <em>Code</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Method</em>'.
-   * @see org.xtext.example.sorting.sorting.Component#getMethod()
+   * @return the meta object for the attribute '<em>Code</em>'.
+   * @see org.xtext.example.sorting.sorting.Component#getCode()
    * @see #getComponent()
    * @generated
    */
-  EAttribute getComponent_Method();
+  EAttribute getComponent_Code();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Source <em>Source</em>}'.
@@ -910,26 +812,15 @@ public interface SortingPackage extends EPackage
   EAttribute getInstance_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Instance#getMethod <em>Method</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.sorting.sorting.Instance#getCode <em>Code</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Method</em>'.
-   * @see org.xtext.example.sorting.sorting.Instance#getMethod()
+   * @return the meta object for the attribute '<em>Code</em>'.
+   * @see org.xtext.example.sorting.sorting.Instance#getCode()
    * @see #getInstance()
    * @generated
    */
-  EAttribute getInstance_Method();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.xtext.example.sorting.sorting.Instance#getArgs <em>Args</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Args</em>'.
-   * @see org.xtext.example.sorting.sorting.Instance#getArgs()
-   * @see #getInstance()
-   * @generated
-   */
-  EAttribute getInstance_Args();
+  EAttribute getInstance_Code();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.sorting.sorting.Transition <em>Transition</em>}'.
@@ -1077,28 +968,12 @@ public interface SortingPackage extends EPackage
     EClass PARAM = eINSTANCE.getParam();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PARAM__NAME = eINSTANCE.getParam_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Intval</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PARAM__INTVAL = eINSTANCE.getParam_Intval();
-
-    /**
-     * The meta object literal for the '<em><b>Stringval</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PARAM__STRINGVAL = eINSTANCE.getParam_Stringval();
+    EAttribute PARAM__VALUE = eINSTANCE.getParam_Value();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.ImportImpl <em>Import</em>}' class.
@@ -1137,30 +1012,12 @@ public interface SortingPackage extends EPackage
     EAttribute PORT__NAME = eINSTANCE.getPort_Name();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PORT__TYPE = eINSTANCE.getPort_Type();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.TypeImpl <em>Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.sorting.sorting.impl.TypeImpl
-     * @see org.xtext.example.sorting.sorting.impl.SortingPackageImpl#getType()
-     * @generated
-     */
-    EClass TYPE = eINSTANCE.getType();
-
-    /**
      * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TYPE__TYPE = eINSTANCE.getType_Type();
+    EAttribute PORT__TYPE = eINSTANCE.getPort_Type();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.ComponentImpl <em>Component</em>}' class.
@@ -1197,12 +1054,12 @@ public interface SortingPackage extends EPackage
     EReference COMPONENT__OUT_PORTS = eINSTANCE.getComponent_OutPorts();
 
     /**
-     * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMPONENT__METHOD = eINSTANCE.getComponent_Method();
+    EAttribute COMPONENT__CODE = eINSTANCE.getComponent_Code();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.SourceImpl <em>Source</em>}' class.
@@ -1261,20 +1118,12 @@ public interface SortingPackage extends EPackage
     EAttribute INSTANCE__NAME = eINSTANCE.getInstance_Name();
 
     /**
-     * The meta object literal for the '<em><b>Method</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTANCE__METHOD = eINSTANCE.getInstance_Method();
-
-    /**
-     * The meta object literal for the '<em><b>Args</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INSTANCE__ARGS = eINSTANCE.getInstance_Args();
+    EAttribute INSTANCE__CODE = eINSTANCE.getInstance_Code();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.sorting.sorting.impl.TransitionImpl <em>Transition</em>}' class.

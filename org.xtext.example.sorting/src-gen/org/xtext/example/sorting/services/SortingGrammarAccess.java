@@ -109,45 +109,45 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	public class ParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.sorting.Sorting.Param");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cNameCommercialAtKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cIntvalAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cIntvalINTTerminalRuleCall_2_0_0 = (RuleCall)cIntvalAssignment_2_0.eContents().get(0);
-		private final Assignment cStringvalAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final RuleCall cStringvalSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cStringvalAssignment_2_1.eContents().get(0);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeTypeParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cNameCommercialAtKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValueSTRINGTerminalRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		
 		//Param:
-		//	name='@' '=' (intval=INT | stringval=STRING);
+		//	type=Type name='@' ID '=' value=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name='@' '=' (intval=INT | stringval=STRING)
+		//type=Type name='@' ID '=' value=STRING
 		public Group getGroup() { return cGroup; }
 		
+		//type=Type
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_0_0() { return cTypeTypeParserRuleCall_0_0; }
+		
 		//name='@'
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//'@'
-		public Keyword getNameCommercialAtKeyword_0_0() { return cNameCommercialAtKeyword_0_0; }
+		public Keyword getNameCommercialAtKeyword_1_0() { return cNameCommercialAtKeyword_1_0; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_2() { return cIDTerminalRuleCall_2; }
 		
 		//'='
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 		
-		//intval=INT | stringval=STRING
-		public Alternatives getAlternatives_2() { return cAlternatives_2; }
-		
-		//intval=INT
-		public Assignment getIntvalAssignment_2_0() { return cIntvalAssignment_2_0; }
-		
-		//INT
-		public RuleCall getIntvalINTTerminalRuleCall_2_0_0() { return cIntvalINTTerminalRuleCall_2_0_0; }
-		
-		//stringval=STRING
-		public Assignment getStringvalAssignment_2_1() { return cStringvalAssignment_2_1; }
+		//value=STRING
+		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
 		
 		//STRING
-		public RuleCall getStringvalSTRINGTerminalRuleCall_2_1_0() { return cStringvalSTRINGTerminalRuleCall_2_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_4_0() { return cValueSTRINGTerminalRuleCall_4_0; }
 	}
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.sorting.Sorting.QualifiedNameWithWildcard");
@@ -883,7 +883,7 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Param:
-	//	name='@' '=' (intval=INT | stringval=STRING);
+	//	type=Type name='@' ID '=' value=STRING;
 	public ParamElements getParamAccess() {
 		return pParam;
 	}

@@ -3,8 +3,6 @@
  */
 package org.xtext.example.sorting.sorting;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.example.sorting.sorting.Instance#getComponent <em>Component</em>}</li>
  *   <li>{@link org.xtext.example.sorting.sorting.Instance#getName <em>Name</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Instance#getMethod <em>Method</em>}</li>
- *   <li>{@link org.xtext.example.sorting.sorting.Instance#getArgs <em>Args</em>}</li>
+ *   <li>{@link org.xtext.example.sorting.sorting.Instance#getCode <em>Code</em>}</li>
  * </ul>
  *
  * @see org.xtext.example.sorting.sorting.SortingPackage#getInstance()
@@ -81,45 +78,29 @@ public interface Instance extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Method</b></em>' attribute.
+   * Returns the value of the '<em><b>Code</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Method</em>' attribute isn't clear,
+   * If the meaning of the '<em>Code</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Method</em>' attribute.
-   * @see #setMethod(String)
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getInstance_Method()
+   * @return the value of the '<em>Code</em>' attribute.
+   * @see #setCode(String)
+   * @see org.xtext.example.sorting.sorting.SortingPackage#getInstance_Code()
    * @model
    * @generated
    */
-  String getMethod();
+  String getCode();
 
   /**
-   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Instance#getMethod <em>Method</em>}' attribute.
+   * Sets the value of the '{@link org.xtext.example.sorting.sorting.Instance#getCode <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Method</em>' attribute.
-   * @see #getMethod()
+   * @param value the new value of the '<em>Code</em>' attribute.
+   * @see #getCode()
    * @generated
    */
-  void setMethod(String value);
-
-  /**
-   * Returns the value of the '<em><b>Args</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Args</em>' attribute list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Args</em>' attribute list.
-   * @see org.xtext.example.sorting.sorting.SortingPackage#getInstance_Args()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getArgs();
+  void setCode(String value);
 
 } // Instance
