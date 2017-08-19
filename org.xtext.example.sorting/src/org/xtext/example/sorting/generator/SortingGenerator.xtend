@@ -18,6 +18,7 @@ import org.xtext.example.sorting.sorting.Config
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class SortingGenerator extends AbstractGenerator {
+	String packname = "pipesgraph";
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 
@@ -26,11 +27,13 @@ class SortingGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 
-		fsa.generateFile(resource.className+".PipeStages.java", generatePipeStages(resource.contents.head as Config)); 
-		fsa.generateFile(resource.className+resource.allContents.filter(Config).map[name]+".java", generateClass(resource.contents.head as Config)); 
+		fsa.generateFile("PipeStages.java", generatePipeStages(resource.contents.head as Config)); 
+		fsa.generateFile(resource.allContents.filter(Config).map[name]+".java", generateClass(resource.contents.head as Config)); 
 			
-		fsa.generateFile(resource.className+".Component.java", 
+		fsa.generateFile("Component.java", 
 			'''
+			package «packname»;
+			
 			public abstract class Component{
 				protected int level = 0;
 				public void invoke();
@@ -49,8 +52,10 @@ class SortingGenerator extends AbstractGenerator {
 				}
 				
 			}''');
-		 fsa.generateFile(resource.className+".Source.java", 
+		 fsa.generateFile("Source.java", 
 		 	'''
+		 	package «packname»;
+		 	
 		 	import java.util.HashMap;
 		 	
 		 	public abstract class Source extends Component{
@@ -60,8 +65,11 @@ class SortingGenerator extends AbstractGenerator {
 		 	'''
 		 );
 		 
-		 fsa.generateFile(resource.className+".Filter.java", 
+		 fsa.generateFile("Filter.java", 
 		 	'''
+		 	package «packname»;
+		 	
+		 	
 		 	import java.util.HashMap;
 		 	
 		 	public abstract class Filter extends Component{
@@ -75,8 +83,10 @@ class SortingGenerator extends AbstractGenerator {
 		 	}
 		 	'''
 		 );
-		 fsa.generateFile(resource.className+".Sink.java", 
+		 fsa.generateFile("Sink.java", 
 		 	'''
+		 	package «packname»;
+		 	
 		import java.util.HashMap;
 		 	
 		 	public abstract class Sink extends Component{
@@ -87,8 +97,9 @@ class SortingGenerator extends AbstractGenerator {
 		 	
 			}'''
 		 );
-		 fsa.generateFile(resource.className+".Port.java", 
+		 fsa.generateFile("Port.java", 
 		 	'''
+		 	package «packname»;
 		 	import java.util.ArrayList;
 		 	
 		 	public class Port{
@@ -130,8 +141,9 @@ class SortingGenerator extends AbstractGenerator {
 		 	}
 		 	'''
 		 );
-		  fsa.generateFile(resource.className+".Edge.java", 
+		  fsa.generateFile("Edge.java", 
 		 	'''
+		 	package «packname»;
 		 	public class Edge{
 		 		protected Port source; // <n1.get(p1),n2.get(p2)> 
 		 		protected Port target;
@@ -160,20 +172,23 @@ class SortingGenerator extends AbstractGenerator {
 		 	''');
 		 	
 		 	for(source: resource.allContents.toIterable.filter(Source)){
-		 		fsa.generateFile(resource.className+'.'+source.name + ".java",
+		 		fsa.generateFile(source.name + ".java",
 		 			'''
-				public class «source.name» extends Source{
-					public «source.name»(String name){
-						this.name=name;
-						«FOR port : source.outPorts»
-							inPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»
-					}
-					«source.code»
-				} ''')}
+			package «packname»;
+			
+			public class «source.name» extends Source{
+				public «source.name»(String name){
+					this.name=name;
+					«FOR port : source.outPorts»
+						inPorts.put(«port.name», new Port(«port.name»,this));
+					«ENDFOR»
+				}
+				«source.code»
+			} ''')}
 		 	for(filter: resource.allContents.toIterable.filter(Filter)){
-		 		fsa.generateFile(resource.className+'.'+filter.name + ".java",
+		 		fsa.generateFile(filter.name + ".java",
 		 			'''
+				package «packname»;
 				public class «filter.name» extends Filter{
 					public «filter.name»(String name){
 						this.name=name;
@@ -189,8 +204,9 @@ class SortingGenerator extends AbstractGenerator {
 				}''')}
 				
 		 	for(sink: resource.allContents.toIterable.filter(Sink)){
-		 		fsa.generateFile(resource.className+'.'+sink.name + ".java",
+		 		fsa.generateFile(sink.name + ".java",
 		 			'''
+				package «packname»;
 				public class «sink.name» extends Sink{
 					public «sink.name»(String name){
 						this.name=name;
@@ -203,7 +219,7 @@ class SortingGenerator extends AbstractGenerator {
 				}
 		 	'''
 		 	);
-			fsa.generateFile(resource.className+".Graph.java", generate(resource.contents.head as Config)); 
+			fsa.generateFile("Graph.java", generate(resource.contents.head as Config)); 
 		 	
 		 	}
 		 	
@@ -215,6 +231,7 @@ class SortingGenerator extends AbstractGenerator {
 	'''
 	
 	def CharSequence generatePipeStages(Config config)'''
+	package «packname»;
 		«FOR imp : config.imports»
 			import «imp.name»
 		«ENDFOR»
@@ -232,6 +249,7 @@ class SortingGenerator extends AbstractGenerator {
 	}
 	
 	def CharSequence generate(Config config)'''
+	package «packname»;
 		«FOR imp : config.imports»
 			import «imp.name»
 		«ENDFOR»
