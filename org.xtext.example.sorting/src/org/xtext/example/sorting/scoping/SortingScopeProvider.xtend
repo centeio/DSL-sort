@@ -7,6 +7,10 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.xtext.example.sorting.sorting.Transition
+import org.eclipse.emf.ecore.EObject
+import javax.lang.model.element.Element
+import org.eclipse.xtext.EcoreUtil2
+import org.xtext.example.sorting.sorting.Port
 
 /**
  * This class contains custom scoping description.
@@ -15,7 +19,19 @@ import org.xtext.example.sorting.sorting.Transition
  * on how and when to use it.
  */
 class SortingScopeProvider extends AbstractSortingScopeProvider {
-  /*  def IScope scope_Service_extras(Transition ctx, EReference ref) {
-        return Scopes.scopeFor(ctx.source)
-    }*/
+
+	override getScope(EObject context, EReference reference) {
+    // We want to define the Scope for the Element's superElement cross-reference
+    if (reference == org.xtext.example.sorting.sorting.SortingPackage.Literals.TRANSITION__SOURCE_PORT || 
+            	reference == org.xtext.example.sorting.sorting.SortingPackage.Literals.TRANSITION__TARGET_PORT){
+        // Collect a list of candidates by going through the model
+        // EcoreUtil2 provides useful functionality to do that
+        // For example searching for all elements within the root Object's tree
+        val rootElement = EcoreUtil2.getRootContainer(context)
+        val candidates = EcoreUtil2.getAllContentsOfType(rootElement, Port)
+        // Create IEObjectDescriptions and puts them into an IScope instance
+        return Scopes.scopeFor(candidates)
+    }
+    return super.getScope(context, reference);
+}
 }

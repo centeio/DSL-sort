@@ -27,12 +27,14 @@ class SortingGenerator extends AbstractGenerator {
 //				.join(', '))
 
 		fsa.generateFile(resource.className+".PipeStages.java", generatePipeStages(resource.contents.head as Config)); 
+		fsa.generateFile(resource.className+resource.allContents.filter(Config).map[name]+".java", generateClass(resource.contents.head as Config)); 
 			
 		fsa.generateFile(resource.className+".Component.java", 
 			'''
 			public abstract class Component{
 				protected int level = 0;
 				public void invoke();
+				String call;
 				public Port getPort(String name);
 				
 				public int getLevel() {
@@ -44,7 +46,8 @@ class SortingGenerator extends AbstractGenerator {
 				}
 				private int getLevel() {
 					return level;
-				}								
+				}
+				
 			}''');
 		 fsa.generateFile(resource.className+".Source.java", 
 		 	'''
@@ -121,9 +124,9 @@ class SortingGenerator extends AbstractGenerator {
 		 		public void setEdges(ArrayList<Edge> edges) {
 		 			this.edges = edges;
 		 		}
-				public void addEdge(Edge edge) {
-					this.edges.add(edge);
-				}
+		 		public void addEdge(Edge edge){
+		 			this.edges.add(edge);
+		 		}
 		 	}
 		 	'''
 		 );
@@ -156,43 +159,51 @@ class SortingGenerator extends AbstractGenerator {
 		 	}
 		 	''');
 		 	
-		 	for(component: resource.allContents.toIterable.filter(Component)){
-		 		fsa.generateFile(resource.className+component.name + ".java",
+		 	for(source: resource.allContents.toIterable.filter(Source)){
+		 		fsa.generateFile(resource.className+'.'+source.name + ".java",
 		 			'''
-			«IF (component instanceof Source)»
-				public class «component.name» extends Source{
-					public «component.name»(String name){
+				public class «source.name» extends Source{
+					public «source.name»(String name){
 						this.name=name;
-						«FOR port : component.outPorts»
+						«FOR port : source.outPorts»
 							inPorts.put(«port.name», new Port(«port.name»,this));
 						«ENDFOR»
 					}
-				}
-			«ELSEIF (component instanceof Filter)»
-				public class «component.name» extends Filter{
-					public «component.name»(String name){
+					«source.code»
+				} ''')}
+		 	for(filter: resource.allContents.toIterable.filter(Filter)){
+		 		fsa.generateFile(resource.className+'.'+filter.name + ".java",
+		 			'''
+				public class «filter.name» extends Filter{
+					public «filter.name»(String name){
 						this.name=name;
-						«FOR port : component.inPorts»
+						«FOR port : filter.inPorts»
 							inPorts.put(«port.name», new Port(«port.name»,this));
 						«ENDFOR»
-						«FOR port : component.outPorts»
+						«FOR port : filter.outPorts»
 							outPorts.put(«port.name», new Port(«port.name»,this));
 						«ENDFOR»					
 					}
-				}
-			«ELSEIF (component instanceof Sink)»
-				public class «component.name» extends Sink{
-					public «component.name»(String name){
+					«filter.code»
+					
+				}''')}
+				
+		 	for(sink: resource.allContents.toIterable.filter(Sink)){
+		 		fsa.generateFile(resource.className+'.'+sink.name + ".java",
+		 			'''
+				public class «sink.name» extends Sink{
+					public «sink.name»(String name){
 						this.name=name;
-						«FOR port : component.outPorts»
+						«FOR port : sink.outPorts»
 							outPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»					
-					}					
+						«ENDFOR»
+					}
+					«sink.code»
+					
 				}
-			«ENDIF»					 			
 		 	'''
 		 	);
-			fsa.generateFile(resource.className+"Graph.java", generate(resource.contents.head as Config)); 
+			fsa.generateFile(resource.className+".Graph.java", generate(resource.contents.head as Config)); 
 		 	
 		 	}
 		 	
@@ -200,7 +211,19 @@ class SortingGenerator extends AbstractGenerator {
 		
 	}
 	
+	def CharSequence generateClass(Config config) '''
+	'''
+	
 	def CharSequence generatePipeStages(Config config)'''
+		«FOR imp : config.imports»
+			import «imp.name»
+		«ENDFOR»
+		public abstract class PipeStages{
+		«FOR par : config.params»
+			«par.value»
+		«ENDFOR»
+		}
+
 	'''
 	
 	def className(Resource res) {
@@ -217,7 +240,6 @@ class SortingGenerator extends AbstractGenerator {
 		
 		
 		class Graph {
-			private HashMap<String,String> params = new HashTable<String,String>();
 			private ArrayList<Edge> edges = new ArrayList<Edge>();
 			private HashMap<String,Component> nodes = new HashMap<String,Component>();
 			
@@ -235,11 +257,8 @@ class SortingGenerator extends AbstractGenerator {
 			}
 			
 			public static void main(String args[]) {
-				«FOR param : config.params»
-					params.put(«param.name»,«param.type» + '|' + «param.value»);
-				«ENDFOR»
 				«FOR instance : config.instances»
-					«instance.component» «instance.name» = new «instance.component»(«instance.name»);
+					«instance.component.name» «instance.name» = new «instance.component.name»(«instance.name»);
 					nodes.put(«instance.name»);
 				«ENDFOR»
 				«FOR t : config.transitions»

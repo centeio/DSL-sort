@@ -10,9 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.xtext.example.sorting.services.SortingGrammarAccess;
@@ -21,55 +18,17 @@ import org.xtext.example.sorting.services.SortingGrammarAccess;
 public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SortingGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a;
-	protected AbstractElementAlias match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a;
-	protected AbstractElementAlias match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a;
-	protected AbstractElementAlias match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q;
-	protected AbstractElementAlias match_Sink___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a;
-	protected AbstractElementAlias match_Source___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a;
-	protected AbstractElementAlias match_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SortingGrammarAccess) access;
-		match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getFilterAccess().getFullStopKeyword_7_2_0()), new TokenAlias(false, false, grammarAccess.getFilterAccess().getSTRINGTerminalRuleCall_7_2_1()));
-		match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getFullStopKeyword_2_1_0_2_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getSTRINGTerminalRuleCall_2_1_0_2_1()));
-		match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getFullStopKeyword_2_1_0_5_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getSTRINGTerminalRuleCall_2_1_0_5_1()));
-		match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getInstanceAccess().getLeftCurlyBracketKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getArgsKeyword_2_1_1_0()), new TokenAlias(false, false, grammarAccess.getInstanceAccess().getRightCurlyBracketKeyword_2_2()));
-		match_Sink___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getSinkAccess().getFullStopKeyword_6_2_0()), new TokenAlias(false, false, grammarAccess.getSinkAccess().getSTRINGTerminalRuleCall_6_2_1()));
-		match_Source___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a = new GroupAlias(true, true, new TokenAlias(false, false, grammarAccess.getSourceAccess().getFullStopKeyword_6_2_0()), new TokenAlias(false, false, grammarAccess.getSourceAccess().getSTRINGTerminalRuleCall_6_2_1()));
-		match_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTypeAccess().getLeftSquareBracketKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getTypeAccess().getRightSquareBracketKeyword_1_1()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getIDRule())
-			return getIDToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getSTRINGRule())
-			return getSTRINGToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-	 */
-	protected String getIDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * terminal STRING	: 
-	 * 			'"' ( '\\' .  | !('\\'|'"') )* '"' |
-	 * 			"'" ( '\\' .  | !('\\'|"'") )* "'"
-	 * 		;
-	 */
-	protected String getSTRINGToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "\"\"";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -77,102 +36,8 @@ public class SortingSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a.equals(syntax))
-				emit_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a.equals(syntax))
-				emit_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a.equals(syntax))
-				emit_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q.equals(syntax))
-				emit_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Sink___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a.equals(syntax))
-				emit_Sink___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Source___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a.equals(syntax))
-				emit_Source___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q.equals(syntax))
-				emit_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' STRING)*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     method=STRING (ambiguity) '}' (rule end)
-	 */
-	protected void emit_Filter___FullStopKeyword_7_2_0_STRINGTerminalRuleCall_7_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' STRING)*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     method=STRING (ambiguity) '(' STRING ('.' STRING)* ')' '}' (rule end)
-	 */
-	protected void emit_Instance___FullStopKeyword_2_1_0_2_0_STRINGTerminalRuleCall_2_1_0_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' STRING)*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     method=STRING ('.' STRING)* '(' STRING (ambiguity) ')' '}' (rule end)
-	 */
-	protected void emit_Instance___FullStopKeyword_2_1_0_5_0_STRINGTerminalRuleCall_2_1_0_5_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('{' 'args:' '}')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     name=ID (ambiguity) (rule end)
-	 */
-	protected void emit_Instance___LeftCurlyBracketKeyword_2_0_ArgsKeyword_2_1_1_0_RightCurlyBracketKeyword_2_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' STRING)*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     method=STRING (ambiguity) '}' (rule end)
-	 */
-	protected void emit_Sink___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('.' STRING)*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     method=STRING (ambiguity) '}' (rule end)
-	 */
-	protected void emit_Source___FullStopKeyword_6_2_0_STRINGTerminalRuleCall_6_2_1__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('[' ']')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     type='String' (ambiguity) (rule end)
-	 *     type='double' (ambiguity) (rule end)
-	 *     type='int' (ambiguity) (rule end)
-	 *     type='long' (ambiguity) (rule end)
-	 */
-	protected void emit_Type___LeftSquareBracketKeyword_1_0_RightSquareBracketKeyword_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

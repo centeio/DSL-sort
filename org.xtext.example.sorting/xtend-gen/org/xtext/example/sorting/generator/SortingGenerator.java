@@ -16,7 +16,6 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.xtext.example.sorting.sorting.Component;
 import org.xtext.example.sorting.sorting.Config;
 import org.xtext.example.sorting.sorting.Filter;
 import org.xtext.example.sorting.sorting.Import;
@@ -347,158 +346,167 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_5.append("}");
     _builder_5.newLine();
     fsa.generateFile(_plus_8, _builder_5);
-    Iterable<Component> _filter = Iterables.<Component>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Component.class);
-    for (final Component component : _filter) {
+    Iterable<Source> _filter = Iterables.<Source>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Source.class);
+    for (final Source source : _filter) {
+      String _className_8 = this.className(resource);
+      String _plus_9 = (_className_8 + ".");
+      String _name = source.getName();
+      String _plus_10 = (_plus_9 + _name);
+      String _plus_11 = (_plus_10 + ".java");
+      StringConcatenation _builder_6 = new StringConcatenation();
+      _builder_6.append("public class ");
+      String _name_1 = source.getName();
+      _builder_6.append(_name_1);
+      _builder_6.append(" extends Source{");
+      _builder_6.newLineIfNotEmpty();
+      _builder_6.append("\t");
+      _builder_6.append("public ");
+      String _name_2 = source.getName();
+      _builder_6.append(_name_2, "\t");
+      _builder_6.append("(String name){");
+      _builder_6.newLineIfNotEmpty();
+      _builder_6.append("\t\t");
+      _builder_6.append("this.name=name;");
+      _builder_6.newLine();
       {
-        String _className_8 = this.className(resource);
-        String _name = component.getName();
-        String _plus_9 = (_className_8 + _name);
-        String _plus_10 = (_plus_9 + ".java");
-        StringConcatenation _builder_6 = new StringConcatenation();
+        EList<Port> _outPorts = source.getOutPorts();
+        for(final Port port : _outPorts) {
+          _builder_6.append("\t\t");
+          _builder_6.append("inPorts.put(");
+          String _name_3 = port.getName();
+          _builder_6.append(_name_3, "\t\t");
+          _builder_6.append(", new Port(");
+          String _name_4 = port.getName();
+          _builder_6.append(_name_4, "\t\t");
+          _builder_6.append(",this));");
+          _builder_6.newLineIfNotEmpty();
+        }
+      }
+      _builder_6.append("\t");
+      _builder_6.append("}");
+      _builder_6.newLine();
+      _builder_6.append("\t");
+      String _code = source.getCode();
+      _builder_6.append(_code, "\t");
+      _builder_6.newLineIfNotEmpty();
+      _builder_6.append("} ");
+      fsa.generateFile(_plus_11, _builder_6);
+    }
+    Iterable<Filter> _filter_1 = Iterables.<Filter>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Filter.class);
+    for (final Filter filter : _filter_1) {
+      String _className_9 = this.className(resource);
+      String _plus_12 = (_className_9 + ".");
+      String _name_5 = filter.getName();
+      String _plus_13 = (_plus_12 + _name_5);
+      String _plus_14 = (_plus_13 + ".java");
+      StringConcatenation _builder_7 = new StringConcatenation();
+      _builder_7.append("public class ");
+      String _name_6 = filter.getName();
+      _builder_7.append(_name_6);
+      _builder_7.append(" extends Filter{");
+      _builder_7.newLineIfNotEmpty();
+      _builder_7.append("\t");
+      _builder_7.append("public ");
+      String _name_7 = filter.getName();
+      _builder_7.append(_name_7, "\t");
+      _builder_7.append("(String name){");
+      _builder_7.newLineIfNotEmpty();
+      _builder_7.append("\t\t");
+      _builder_7.append("this.name=name;");
+      _builder_7.newLine();
+      {
+        EList<Port> _inPorts = filter.getInPorts();
+        for(final Port port_1 : _inPorts) {
+          _builder_7.append("\t\t");
+          _builder_7.append("inPorts.put(");
+          String _name_8 = port_1.getName();
+          _builder_7.append(_name_8, "\t\t");
+          _builder_7.append(", new Port(");
+          String _name_9 = port_1.getName();
+          _builder_7.append(_name_9, "\t\t");
+          _builder_7.append(",this));");
+          _builder_7.newLineIfNotEmpty();
+        }
+      }
+      {
+        EList<Port> _outPorts_1 = filter.getOutPorts();
+        for(final Port port_2 : _outPorts_1) {
+          _builder_7.append("\t\t");
+          _builder_7.append("outPorts.put(");
+          String _name_10 = port_2.getName();
+          _builder_7.append(_name_10, "\t\t");
+          _builder_7.append(", new Port(");
+          String _name_11 = port_2.getName();
+          _builder_7.append(_name_11, "\t\t");
+          _builder_7.append(",this));");
+          _builder_7.newLineIfNotEmpty();
+        }
+      }
+      _builder_7.append("\t");
+      _builder_7.append("}");
+      _builder_7.newLine();
+      _builder_7.append("\t");
+      String _code_1 = filter.getCode();
+      _builder_7.append(_code_1, "\t");
+      _builder_7.newLineIfNotEmpty();
+      _builder_7.append("\t");
+      _builder_7.newLine();
+      _builder_7.append("}");
+      fsa.generateFile(_plus_14, _builder_7);
+    }
+    Iterable<Sink> _filter_2 = Iterables.<Sink>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Sink.class);
+    for (final Sink sink : _filter_2) {
+      {
+        String _className_10 = this.className(resource);
+        String _plus_15 = (_className_10 + ".");
+        String _name_12 = sink.getName();
+        String _plus_16 = (_plus_15 + _name_12);
+        String _plus_17 = (_plus_16 + ".java");
+        StringConcatenation _builder_8 = new StringConcatenation();
+        _builder_8.append("public class ");
+        String _name_13 = sink.getName();
+        _builder_8.append(_name_13);
+        _builder_8.append(" extends Sink{");
+        _builder_8.newLineIfNotEmpty();
+        _builder_8.append("\t");
+        _builder_8.append("public ");
+        String _name_14 = sink.getName();
+        _builder_8.append(_name_14, "\t");
+        _builder_8.append("(String name){");
+        _builder_8.newLineIfNotEmpty();
+        _builder_8.append("\t\t");
+        _builder_8.append("this.name=name;");
+        _builder_8.newLine();
         {
-          if ((component instanceof Source)) {
-            _builder_6.append("public class ");
-            String _name_1 = ((Source)component).getName();
-            _builder_6.append(_name_1);
-            _builder_6.append(" extends Source{");
-            _builder_6.newLineIfNotEmpty();
-            _builder_6.append("\t");
-            _builder_6.append("public ");
-            String _name_2 = ((Source)component).getName();
-            _builder_6.append(_name_2, "\t");
-            _builder_6.append("(String name){");
-            _builder_6.newLineIfNotEmpty();
-            _builder_6.append("\t\t");
-            _builder_6.append("this.name=name;");
-            _builder_6.newLine();
-            {
-              EList<Port> _outPorts = ((Source)component).getOutPorts();
-              for(final Port port : _outPorts) {
-                _builder_6.append("\t\t");
-                _builder_6.append("inPorts.put(");
-                String _name_3 = port.getName();
-                _builder_6.append(_name_3, "\t\t");
-                _builder_6.append(", new Port(");
-                String _name_4 = port.getName();
-                _builder_6.append(_name_4, "\t\t");
-                _builder_6.append(",this));");
-                _builder_6.newLineIfNotEmpty();
-              }
-            }
-            _builder_6.append("\t");
-            _builder_6.append("}");
-            _builder_6.newLine();
-            _builder_6.append("\t");
-            String _code = ((Source)component).getCode();
-            _builder_6.append(_code, "\t");
-            _builder_6.newLineIfNotEmpty();
-            _builder_6.append("}");
-            _builder_6.newLine();
-          } else {
-            if ((component instanceof Filter)) {
-              _builder_6.append("public class ");
-              String _name_5 = component.getName();
-              _builder_6.append(_name_5);
-              _builder_6.append(" extends Filter{");
-              _builder_6.newLineIfNotEmpty();
-              _builder_6.append("\t");
-              _builder_6.append("public ");
-              String _name_6 = component.getName();
-              _builder_6.append(_name_6, "\t");
-              _builder_6.append("(String name){");
-              _builder_6.newLineIfNotEmpty();
-              _builder_6.append("\t\t");
-              _builder_6.append("this.name=name;");
-              _builder_6.newLine();
-              {
-                EList<Port> _inPorts = component.getInPorts();
-                for(final Port port_1 : _inPorts) {
-                  _builder_6.append("\t\t");
-                  _builder_6.append("inPorts.put(");
-                  String _name_7 = port_1.getName();
-                  _builder_6.append(_name_7, "\t\t");
-                  _builder_6.append(", new Port(");
-                  String _name_8 = port_1.getName();
-                  _builder_6.append(_name_8, "\t\t");
-                  _builder_6.append(",this));");
-                  _builder_6.newLineIfNotEmpty();
-                }
-              }
-              {
-                EList<Port> _outPorts_1 = component.getOutPorts();
-                for(final Port port_2 : _outPorts_1) {
-                  _builder_6.append("\t\t");
-                  _builder_6.append("outPorts.put(");
-                  String _name_9 = port_2.getName();
-                  _builder_6.append(_name_9, "\t\t");
-                  _builder_6.append(", new Port(");
-                  String _name_10 = port_2.getName();
-                  _builder_6.append(_name_10, "\t\t");
-                  _builder_6.append(",this));");
-                  _builder_6.newLineIfNotEmpty();
-                }
-              }
-              _builder_6.append("\t");
-              _builder_6.append("}");
-              _builder_6.newLine();
-              _builder_6.append("\t");
-              String _code_1 = component.getCode();
-              _builder_6.append(_code_1, "\t");
-              _builder_6.newLineIfNotEmpty();
-              _builder_6.append("\t");
-              _builder_6.newLine();
-              _builder_6.append("}");
-              _builder_6.newLine();
-            } else {
-              if ((component instanceof Sink)) {
-                _builder_6.append("public class ");
-                String _name_11 = component.getName();
-                _builder_6.append(_name_11);
-                _builder_6.append(" extends Sink{");
-                _builder_6.newLineIfNotEmpty();
-                _builder_6.append("\t");
-                _builder_6.append("public ");
-                String _name_12 = component.getName();
-                _builder_6.append(_name_12, "\t");
-                _builder_6.append("(String name){");
-                _builder_6.newLineIfNotEmpty();
-                _builder_6.append("\t\t");
-                _builder_6.append("this.name=name;");
-                _builder_6.newLine();
-                {
-                  EList<Port> _outPorts_2 = component.getOutPorts();
-                  for(final Port port_3 : _outPorts_2) {
-                    _builder_6.append("\t\t");
-                    _builder_6.append("outPorts.put(");
-                    String _name_13 = port_3.getName();
-                    _builder_6.append(_name_13, "\t\t");
-                    _builder_6.append(", new Port(");
-                    String _name_14 = port_3.getName();
-                    _builder_6.append(_name_14, "\t\t");
-                    _builder_6.append(",this));");
-                    _builder_6.newLineIfNotEmpty();
-                  }
-                }
-                _builder_6.append("\t");
-                _builder_6.append("}");
-                _builder_6.newLine();
-                _builder_6.append("\t");
-                String _code_2 = component.getCode();
-                _builder_6.append(_code_2, "\t");
-                _builder_6.newLineIfNotEmpty();
-                _builder_6.append("\t");
-                _builder_6.newLine();
-                _builder_6.append("}");
-                _builder_6.newLine();
-              }
-            }
+          EList<Port> _outPorts_2 = sink.getOutPorts();
+          for(final Port port_3 : _outPorts_2) {
+            _builder_8.append("\t\t");
+            _builder_8.append("outPorts.put(");
+            String _name_15 = port_3.getName();
+            _builder_8.append(_name_15, "\t\t");
+            _builder_8.append(", new Port(");
+            String _name_16 = port_3.getName();
+            _builder_8.append(_name_16, "\t\t");
+            _builder_8.append(",this));");
+            _builder_8.newLineIfNotEmpty();
           }
         }
-        fsa.generateFile(_plus_10, _builder_6);
-        String _className_9 = this.className(resource);
-        String _plus_11 = (_className_9 + ".Graph.java");
+        _builder_8.append("\t");
+        _builder_8.append("}");
+        _builder_8.newLine();
+        _builder_8.append("\t");
+        String _code_2 = sink.getCode();
+        _builder_8.append(_code_2, "\t");
+        _builder_8.newLineIfNotEmpty();
+        _builder_8.append("\t");
+        _builder_8.newLine();
+        _builder_8.append("}");
+        _builder_8.newLine();
+        fsa.generateFile(_plus_17, _builder_8);
+        String _className_11 = this.className(resource);
+        String _plus_18 = (_className_11 + ".Graph.java");
         EObject _head_2 = IterableExtensions.<EObject>head(resource.getContents());
-        fsa.generateFile(_plus_11, this.generate(((Config) _head_2)));
+        fsa.generateFile(_plus_18, this.generate(((Config) _head_2)));
       }
     }
   }
@@ -611,23 +619,23 @@ public class SortingGenerator extends AbstractGenerator {
       EList<Instance> _instances = config.getInstances();
       for(final Instance instance : _instances) {
         _builder.append("\t\t");
-        Component _component = instance.getComponent();
-        _builder.append(_component, "\t\t");
-        _builder.append(" ");
-        String _name_1 = instance.getName();
+        String _name_1 = instance.getComponent().getName();
         _builder.append(_name_1, "\t\t");
-        _builder.append(" = new ");
-        Component _component_1 = instance.getComponent();
-        _builder.append(_component_1, "\t\t");
-        _builder.append("(");
+        _builder.append(" ");
         String _name_2 = instance.getName();
         _builder.append(_name_2, "\t\t");
+        _builder.append(" = new ");
+        String _name_3 = instance.getComponent().getName();
+        _builder.append(_name_3, "\t\t");
+        _builder.append("(");
+        String _name_4 = instance.getName();
+        _builder.append(_name_4, "\t\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
         _builder.append("nodes.put(");
-        String _name_3 = instance.getName();
-        _builder.append(_name_3, "\t\t");
+        String _name_5 = instance.getName();
+        _builder.append(_name_5, "\t\t");
         _builder.append(");");
         _builder.newLineIfNotEmpty();
       }
