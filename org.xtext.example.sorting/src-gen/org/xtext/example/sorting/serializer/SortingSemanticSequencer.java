@@ -141,7 +141,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getInstanceAccess().getComponentComponentIDTerminalRuleCall_0_0_1(), semanticObject.eGet(SortingPackage.Literals.INSTANCE__COMPONENT, false));
 		feeder.accept(grammarAccess.getInstanceAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getInstanceAccess().getCodeCODETerminalRuleCall_4_0(), semanticObject.getCode());
+		feeder.accept(grammarAccess.getInstanceAccess().getCodeCODETerminalRuleCall_3_0(), semanticObject.getCode());
 		feeder.finish();
 	}
 	

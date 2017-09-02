@@ -1604,7 +1604,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSource"
-    // InternalSorting.g:639:1: ruleSource returns [EObject current=null] : (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) ;
+    // InternalSorting.g:639:1: ruleSource returns [EObject current=null] : (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) ;
     public final EObject ruleSource() throws RecognitionException {
         EObject current = null;
 
@@ -1614,10 +1614,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
-        Token otherlv_8=null;
-        Token lv_code_9_0=null;
-        Token otherlv_10=null;
-        Token otherlv_11=null;
+        Token lv_code_8_0=null;
+        Token otherlv_9=null;
         EObject lv_inPorts_4_0 = null;
 
         EObject lv_outPorts_6_0 = null;
@@ -1627,11 +1625,11 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalSorting.g:645:2: ( (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) )
-            // InternalSorting.g:646:2: (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
+            // InternalSorting.g:645:2: ( (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) )
+            // InternalSorting.g:646:2: (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
             {
-            // InternalSorting.g:646:2: (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
-            // InternalSorting.g:647:3: otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}'
+            // InternalSorting.g:646:2: (otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
+            // InternalSorting.g:647:3: otherlv_0= 'source' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' (otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ )? otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}'
             {
             otherlv_0=(Token)match(input,40,FOLLOW_4); 
 
@@ -1800,7 +1798,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                 cnt10++;
             } while (true);
 
-            // InternalSorting.g:721:3: (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )?
+            // InternalSorting.g:721:3: (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1809,25 +1807,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // InternalSorting.g:722:4: otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}'
+                    // InternalSorting.g:722:4: otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) )
                     {
-                    otherlv_7=(Token)match(input,43,FOLLOW_3); 
+                    otherlv_7=(Token)match(input,43,FOLLOW_26); 
 
                     				newLeafNode(otherlv_7, grammarAccess.getSourceAccess().getMethodKeyword_6_0());
                     			
-                    otherlv_8=(Token)match(input,13,FOLLOW_26); 
-
-                    				newLeafNode(otherlv_8, grammarAccess.getSourceAccess().getLeftCurlyBracketKeyword_6_1());
-                    			
-                    // InternalSorting.g:730:4: ( (lv_code_9_0= RULE_CODE ) )
-                    // InternalSorting.g:731:5: (lv_code_9_0= RULE_CODE )
+                    // InternalSorting.g:726:4: ( (lv_code_8_0= RULE_CODE ) )
+                    // InternalSorting.g:727:5: (lv_code_8_0= RULE_CODE )
                     {
-                    // InternalSorting.g:731:5: (lv_code_9_0= RULE_CODE )
-                    // InternalSorting.g:732:6: lv_code_9_0= RULE_CODE
+                    // InternalSorting.g:727:5: (lv_code_8_0= RULE_CODE )
+                    // InternalSorting.g:728:6: lv_code_8_0= RULE_CODE
                     {
-                    lv_code_9_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
+                    lv_code_8_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
 
-                    						newLeafNode(lv_code_9_0, grammarAccess.getSourceAccess().getCodeCODETerminalRuleCall_6_2_0());
+                    						newLeafNode(lv_code_8_0, grammarAccess.getSourceAccess().getCodeCODETerminalRuleCall_6_1_0());
                     					
 
                     						if (current==null) {
@@ -1836,7 +1830,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                     						setWithLastConsumed(
                     							current,
                     							"code",
-                    							lv_code_9_0,
+                    							lv_code_8_0,
                     							"org.xtext.example.sorting.Sorting.CODE");
                     					
 
@@ -1845,19 +1839,15 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,15,FOLLOW_19); 
-
-                    				newLeafNode(otherlv_10, grammarAccess.getSourceAccess().getRightCurlyBracketKeyword_6_3());
-                    			
 
                     }
                     break;
 
             }
 
-            otherlv_11=(Token)match(input,15,FOLLOW_2); 
+            otherlv_9=(Token)match(input,15,FOLLOW_2); 
 
-            			newLeafNode(otherlv_11, grammarAccess.getSourceAccess().getRightCurlyBracketKeyword_7());
+            			newLeafNode(otherlv_9, grammarAccess.getSourceAccess().getRightCurlyBracketKeyword_7());
             		
 
             }
@@ -1882,7 +1872,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFilter"
-    // InternalSorting.g:761:1: entryRuleFilter returns [EObject current=null] : iv_ruleFilter= ruleFilter EOF ;
+    // InternalSorting.g:753:1: entryRuleFilter returns [EObject current=null] : iv_ruleFilter= ruleFilter EOF ;
     public final EObject entryRuleFilter() throws RecognitionException {
         EObject current = null;
 
@@ -1890,8 +1880,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalSorting.g:761:47: (iv_ruleFilter= ruleFilter EOF )
-            // InternalSorting.g:762:2: iv_ruleFilter= ruleFilter EOF
+            // InternalSorting.g:753:47: (iv_ruleFilter= ruleFilter EOF )
+            // InternalSorting.g:754:2: iv_ruleFilter= ruleFilter EOF
             {
              newCompositeNode(grammarAccess.getFilterRule()); 
             pushFollow(FOLLOW_1);
@@ -1918,7 +1908,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFilter"
-    // InternalSorting.g:768:1: ruleFilter returns [EObject current=null] : (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) ;
+    // InternalSorting.g:760:1: ruleFilter returns [EObject current=null] : (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) ;
     public final EObject ruleFilter() throws RecognitionException {
         EObject current = null;
 
@@ -1928,10 +1918,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
-        Token otherlv_8=null;
-        Token lv_code_9_0=null;
-        Token otherlv_10=null;
-        Token otherlv_11=null;
+        Token lv_code_8_0=null;
+        Token otherlv_9=null;
         EObject lv_inPorts_4_0 = null;
 
         EObject lv_outPorts_6_0 = null;
@@ -1941,21 +1929,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalSorting.g:774:2: ( (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) )
-            // InternalSorting.g:775:2: (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
+            // InternalSorting.g:766:2: ( (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) )
+            // InternalSorting.g:767:2: (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
             {
-            // InternalSorting.g:775:2: (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
-            // InternalSorting.g:776:3: otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}'
+            // InternalSorting.g:767:2: (otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
+            // InternalSorting.g:768:3: otherlv_0= 'filter' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}'
             {
             otherlv_0=(Token)match(input,44,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getFilterAccess().getFilterKeyword_0());
             		
-            // InternalSorting.g:780:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalSorting.g:781:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:772:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalSorting.g:773:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalSorting.g:781:4: (lv_name_1_0= RULE_ID )
-            // InternalSorting.g:782:5: lv_name_1_0= RULE_ID
+            // InternalSorting.g:773:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:774:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_3); 
 
@@ -1985,7 +1973,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getFilterAccess().getInKeyword_3());
             		
-            // InternalSorting.g:806:3: ( (lv_inPorts_4_0= rulePort ) )+
+            // InternalSorting.g:798:3: ( (lv_inPorts_4_0= rulePort ) )+
             int cnt12=0;
             loop12:
             do {
@@ -1999,10 +1987,10 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                 switch (alt12) {
             	case 1 :
-            	    // InternalSorting.g:807:4: (lv_inPorts_4_0= rulePort )
+            	    // InternalSorting.g:799:4: (lv_inPorts_4_0= rulePort )
             	    {
-            	    // InternalSorting.g:807:4: (lv_inPorts_4_0= rulePort )
-            	    // InternalSorting.g:808:5: lv_inPorts_4_0= rulePort
+            	    // InternalSorting.g:799:4: (lv_inPorts_4_0= rulePort )
+            	    // InternalSorting.g:800:5: lv_inPorts_4_0= rulePort
             	    {
 
             	    					newCompositeNode(grammarAccess.getFilterAccess().getInPortsPortParserRuleCall_4_0());
@@ -2043,7 +2031,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getFilterAccess().getOutKeyword_5());
             		
-            // InternalSorting.g:829:3: ( (lv_outPorts_6_0= rulePort ) )+
+            // InternalSorting.g:821:3: ( (lv_outPorts_6_0= rulePort ) )+
             int cnt13=0;
             loop13:
             do {
@@ -2057,10 +2045,10 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                 switch (alt13) {
             	case 1 :
-            	    // InternalSorting.g:830:4: (lv_outPorts_6_0= rulePort )
+            	    // InternalSorting.g:822:4: (lv_outPorts_6_0= rulePort )
             	    {
-            	    // InternalSorting.g:830:4: (lv_outPorts_6_0= rulePort )
-            	    // InternalSorting.g:831:5: lv_outPorts_6_0= rulePort
+            	    // InternalSorting.g:822:4: (lv_outPorts_6_0= rulePort )
+            	    // InternalSorting.g:823:5: lv_outPorts_6_0= rulePort
             	    {
 
             	    					newCompositeNode(grammarAccess.getFilterAccess().getOutPortsPortParserRuleCall_6_0());
@@ -2097,7 +2085,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                 cnt13++;
             } while (true);
 
-            // InternalSorting.g:848:3: (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )?
+            // InternalSorting.g:840:3: (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2106,25 +2094,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // InternalSorting.g:849:4: otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}'
+                    // InternalSorting.g:841:4: otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) )
                     {
-                    otherlv_7=(Token)match(input,43,FOLLOW_3); 
+                    otherlv_7=(Token)match(input,43,FOLLOW_26); 
 
                     				newLeafNode(otherlv_7, grammarAccess.getFilterAccess().getMethodKeyword_7_0());
                     			
-                    otherlv_8=(Token)match(input,13,FOLLOW_26); 
-
-                    				newLeafNode(otherlv_8, grammarAccess.getFilterAccess().getLeftCurlyBracketKeyword_7_1());
-                    			
-                    // InternalSorting.g:857:4: ( (lv_code_9_0= RULE_CODE ) )
-                    // InternalSorting.g:858:5: (lv_code_9_0= RULE_CODE )
+                    // InternalSorting.g:845:4: ( (lv_code_8_0= RULE_CODE ) )
+                    // InternalSorting.g:846:5: (lv_code_8_0= RULE_CODE )
                     {
-                    // InternalSorting.g:858:5: (lv_code_9_0= RULE_CODE )
-                    // InternalSorting.g:859:6: lv_code_9_0= RULE_CODE
+                    // InternalSorting.g:846:5: (lv_code_8_0= RULE_CODE )
+                    // InternalSorting.g:847:6: lv_code_8_0= RULE_CODE
                     {
-                    lv_code_9_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
+                    lv_code_8_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
 
-                    						newLeafNode(lv_code_9_0, grammarAccess.getFilterAccess().getCodeCODETerminalRuleCall_7_2_0());
+                    						newLeafNode(lv_code_8_0, grammarAccess.getFilterAccess().getCodeCODETerminalRuleCall_7_1_0());
                     					
 
                     						if (current==null) {
@@ -2133,7 +2117,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                     						setWithLastConsumed(
                     							current,
                     							"code",
-                    							lv_code_9_0,
+                    							lv_code_8_0,
                     							"org.xtext.example.sorting.Sorting.CODE");
                     					
 
@@ -2142,19 +2126,15 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,15,FOLLOW_19); 
-
-                    				newLeafNode(otherlv_10, grammarAccess.getFilterAccess().getRightCurlyBracketKeyword_7_3());
-                    			
 
                     }
                     break;
 
             }
 
-            otherlv_11=(Token)match(input,15,FOLLOW_2); 
+            otherlv_9=(Token)match(input,15,FOLLOW_2); 
 
-            			newLeafNode(otherlv_11, grammarAccess.getFilterAccess().getRightCurlyBracketKeyword_8());
+            			newLeafNode(otherlv_9, grammarAccess.getFilterAccess().getRightCurlyBracketKeyword_8());
             		
 
             }
@@ -2179,7 +2159,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSink"
-    // InternalSorting.g:888:1: entryRuleSink returns [EObject current=null] : iv_ruleSink= ruleSink EOF ;
+    // InternalSorting.g:872:1: entryRuleSink returns [EObject current=null] : iv_ruleSink= ruleSink EOF ;
     public final EObject entryRuleSink() throws RecognitionException {
         EObject current = null;
 
@@ -2187,8 +2167,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalSorting.g:888:45: (iv_ruleSink= ruleSink EOF )
-            // InternalSorting.g:889:2: iv_ruleSink= ruleSink EOF
+            // InternalSorting.g:872:45: (iv_ruleSink= ruleSink EOF )
+            // InternalSorting.g:873:2: iv_ruleSink= ruleSink EOF
             {
              newCompositeNode(grammarAccess.getSinkRule()); 
             pushFollow(FOLLOW_1);
@@ -2215,7 +2195,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSink"
-    // InternalSorting.g:895:1: ruleSink returns [EObject current=null] : (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) ;
+    // InternalSorting.g:879:1: ruleSink returns [EObject current=null] : (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) ;
     public final EObject ruleSink() throws RecognitionException {
         EObject current = null;
 
@@ -2225,10 +2205,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         Token otherlv_3=null;
         Token otherlv_5=null;
         Token otherlv_7=null;
-        Token otherlv_8=null;
-        Token lv_code_9_0=null;
-        Token otherlv_10=null;
-        Token otherlv_11=null;
+        Token lv_code_8_0=null;
+        Token otherlv_9=null;
         EObject lv_inPorts_4_0 = null;
 
         EObject lv_outPorts_6_0 = null;
@@ -2238,21 +2216,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalSorting.g:901:2: ( (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' ) )
-            // InternalSorting.g:902:2: (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
+            // InternalSorting.g:885:2: ( (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' ) )
+            // InternalSorting.g:886:2: (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
             {
-            // InternalSorting.g:902:2: (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}' )
-            // InternalSorting.g:903:3: otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )? otherlv_11= '}'
+            // InternalSorting.g:886:2: (otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}' )
+            // InternalSorting.g:887:3: otherlv_0= 'sink' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' otherlv_3= 'in:' ( (lv_inPorts_4_0= rulePort ) )+ (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )? (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )? otherlv_9= '}'
             {
             otherlv_0=(Token)match(input,45,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getSinkAccess().getSinkKeyword_0());
             		
-            // InternalSorting.g:907:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalSorting.g:908:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:891:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalSorting.g:892:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalSorting.g:908:4: (lv_name_1_0= RULE_ID )
-            // InternalSorting.g:909:5: lv_name_1_0= RULE_ID
+            // InternalSorting.g:892:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:893:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_3); 
 
@@ -2282,7 +2260,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getSinkAccess().getInKeyword_3());
             		
-            // InternalSorting.g:933:3: ( (lv_inPorts_4_0= rulePort ) )+
+            // InternalSorting.g:917:3: ( (lv_inPorts_4_0= rulePort ) )+
             int cnt15=0;
             loop15:
             do {
@@ -2296,10 +2274,10 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalSorting.g:934:4: (lv_inPorts_4_0= rulePort )
+            	    // InternalSorting.g:918:4: (lv_inPorts_4_0= rulePort )
             	    {
-            	    // InternalSorting.g:934:4: (lv_inPorts_4_0= rulePort )
-            	    // InternalSorting.g:935:5: lv_inPorts_4_0= rulePort
+            	    // InternalSorting.g:918:4: (lv_inPorts_4_0= rulePort )
+            	    // InternalSorting.g:919:5: lv_inPorts_4_0= rulePort
             	    {
 
             	    					newCompositeNode(grammarAccess.getSinkAccess().getInPortsPortParserRuleCall_4_0());
@@ -2336,7 +2314,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                 cnt15++;
             } while (true);
 
-            // InternalSorting.g:952:3: (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )?
+            // InternalSorting.g:936:3: (otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+ )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2345,13 +2323,13 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // InternalSorting.g:953:4: otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+
+                    // InternalSorting.g:937:4: otherlv_5= 'out:' ( (lv_outPorts_6_0= rulePort ) )+
                     {
                     otherlv_5=(Token)match(input,42,FOLLOW_23); 
 
                     				newLeafNode(otherlv_5, grammarAccess.getSinkAccess().getOutKeyword_5_0());
                     			
-                    // InternalSorting.g:957:4: ( (lv_outPorts_6_0= rulePort ) )+
+                    // InternalSorting.g:941:4: ( (lv_outPorts_6_0= rulePort ) )+
                     int cnt16=0;
                     loop16:
                     do {
@@ -2365,10 +2343,10 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // InternalSorting.g:958:5: (lv_outPorts_6_0= rulePort )
+                    	    // InternalSorting.g:942:5: (lv_outPorts_6_0= rulePort )
                     	    {
-                    	    // InternalSorting.g:958:5: (lv_outPorts_6_0= rulePort )
-                    	    // InternalSorting.g:959:6: lv_outPorts_6_0= rulePort
+                    	    // InternalSorting.g:942:5: (lv_outPorts_6_0= rulePort )
+                    	    // InternalSorting.g:943:6: lv_outPorts_6_0= rulePort
                     	    {
 
                     	    						newCompositeNode(grammarAccess.getSinkAccess().getOutPortsPortParserRuleCall_5_1_0());
@@ -2411,7 +2389,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalSorting.g:977:3: (otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}' )?
+            // InternalSorting.g:961:3: (otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2420,25 +2398,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // InternalSorting.g:978:4: otherlv_7= 'method:' otherlv_8= '{' ( (lv_code_9_0= RULE_CODE ) ) otherlv_10= '}'
+                    // InternalSorting.g:962:4: otherlv_7= 'method:' ( (lv_code_8_0= RULE_CODE ) )
                     {
-                    otherlv_7=(Token)match(input,43,FOLLOW_3); 
+                    otherlv_7=(Token)match(input,43,FOLLOW_26); 
 
                     				newLeafNode(otherlv_7, grammarAccess.getSinkAccess().getMethodKeyword_6_0());
                     			
-                    otherlv_8=(Token)match(input,13,FOLLOW_26); 
-
-                    				newLeafNode(otherlv_8, grammarAccess.getSinkAccess().getLeftCurlyBracketKeyword_6_1());
-                    			
-                    // InternalSorting.g:986:4: ( (lv_code_9_0= RULE_CODE ) )
-                    // InternalSorting.g:987:5: (lv_code_9_0= RULE_CODE )
+                    // InternalSorting.g:966:4: ( (lv_code_8_0= RULE_CODE ) )
+                    // InternalSorting.g:967:5: (lv_code_8_0= RULE_CODE )
                     {
-                    // InternalSorting.g:987:5: (lv_code_9_0= RULE_CODE )
-                    // InternalSorting.g:988:6: lv_code_9_0= RULE_CODE
+                    // InternalSorting.g:967:5: (lv_code_8_0= RULE_CODE )
+                    // InternalSorting.g:968:6: lv_code_8_0= RULE_CODE
                     {
-                    lv_code_9_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
+                    lv_code_8_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
 
-                    						newLeafNode(lv_code_9_0, grammarAccess.getSinkAccess().getCodeCODETerminalRuleCall_6_2_0());
+                    						newLeafNode(lv_code_8_0, grammarAccess.getSinkAccess().getCodeCODETerminalRuleCall_6_1_0());
                     					
 
                     						if (current==null) {
@@ -2447,7 +2421,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
                     						setWithLastConsumed(
                     							current,
                     							"code",
-                    							lv_code_9_0,
+                    							lv_code_8_0,
                     							"org.xtext.example.sorting.Sorting.CODE");
                     					
 
@@ -2456,19 +2430,15 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_10=(Token)match(input,15,FOLLOW_19); 
-
-                    				newLeafNode(otherlv_10, grammarAccess.getSinkAccess().getRightCurlyBracketKeyword_6_3());
-                    			
 
                     }
                     break;
 
             }
 
-            otherlv_11=(Token)match(input,15,FOLLOW_2); 
+            otherlv_9=(Token)match(input,15,FOLLOW_2); 
 
-            			newLeafNode(otherlv_11, grammarAccess.getSinkAccess().getRightCurlyBracketKeyword_7());
+            			newLeafNode(otherlv_9, grammarAccess.getSinkAccess().getRightCurlyBracketKeyword_7());
             		
 
             }
@@ -2493,7 +2463,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInstance"
-    // InternalSorting.g:1017:1: entryRuleInstance returns [EObject current=null] : iv_ruleInstance= ruleInstance EOF ;
+    // InternalSorting.g:993:1: entryRuleInstance returns [EObject current=null] : iv_ruleInstance= ruleInstance EOF ;
     public final EObject entryRuleInstance() throws RecognitionException {
         EObject current = null;
 
@@ -2501,8 +2471,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalSorting.g:1017:49: (iv_ruleInstance= ruleInstance EOF )
-            // InternalSorting.g:1018:2: iv_ruleInstance= ruleInstance EOF
+            // InternalSorting.g:993:49: (iv_ruleInstance= ruleInstance EOF )
+            // InternalSorting.g:994:2: iv_ruleInstance= ruleInstance EOF
             {
              newCompositeNode(grammarAccess.getInstanceRule()); 
             pushFollow(FOLLOW_1);
@@ -2529,32 +2499,30 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstance"
-    // InternalSorting.g:1024:1: ruleInstance returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' otherlv_3= '{' ( (lv_code_4_0= RULE_CODE ) ) otherlv_5= '}' ) ;
+    // InternalSorting.g:1000:1: ruleInstance returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' ( (lv_code_3_0= RULE_CODE ) ) ) ;
     public final EObject ruleInstance() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        Token otherlv_3=null;
-        Token lv_code_4_0=null;
-        Token otherlv_5=null;
+        Token lv_code_3_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalSorting.g:1030:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' otherlv_3= '{' ( (lv_code_4_0= RULE_CODE ) ) otherlv_5= '}' ) )
-            // InternalSorting.g:1031:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' otherlv_3= '{' ( (lv_code_4_0= RULE_CODE ) ) otherlv_5= '}' )
+            // InternalSorting.g:1006:2: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' ( (lv_code_3_0= RULE_CODE ) ) ) )
+            // InternalSorting.g:1007:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' ( (lv_code_3_0= RULE_CODE ) ) )
             {
-            // InternalSorting.g:1031:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' otherlv_3= '{' ( (lv_code_4_0= RULE_CODE ) ) otherlv_5= '}' )
-            // InternalSorting.g:1032:3: ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' otherlv_3= '{' ( (lv_code_4_0= RULE_CODE ) ) otherlv_5= '}'
+            // InternalSorting.g:1007:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' ( (lv_code_3_0= RULE_CODE ) ) )
+            // InternalSorting.g:1008:3: ( (otherlv_0= RULE_ID ) ) ( (lv_name_1_0= RULE_ID ) ) otherlv_2= 'call:' ( (lv_code_3_0= RULE_CODE ) )
             {
-            // InternalSorting.g:1032:3: ( (otherlv_0= RULE_ID ) )
-            // InternalSorting.g:1033:4: (otherlv_0= RULE_ID )
+            // InternalSorting.g:1008:3: ( (otherlv_0= RULE_ID ) )
+            // InternalSorting.g:1009:4: (otherlv_0= RULE_ID )
             {
-            // InternalSorting.g:1033:4: (otherlv_0= RULE_ID )
-            // InternalSorting.g:1034:5: otherlv_0= RULE_ID
+            // InternalSorting.g:1009:4: (otherlv_0= RULE_ID )
+            // InternalSorting.g:1010:5: otherlv_0= RULE_ID
             {
 
             					if (current==null) {
@@ -2571,11 +2539,11 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalSorting.g:1045:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalSorting.g:1046:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:1021:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalSorting.g:1022:4: (lv_name_1_0= RULE_ID )
             {
-            // InternalSorting.g:1046:4: (lv_name_1_0= RULE_ID )
-            // InternalSorting.g:1047:5: lv_name_1_0= RULE_ID
+            // InternalSorting.g:1022:4: (lv_name_1_0= RULE_ID )
+            // InternalSorting.g:1023:5: lv_name_1_0= RULE_ID
             {
             lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_29); 
 
@@ -2597,23 +2565,19 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,46,FOLLOW_3); 
+            otherlv_2=(Token)match(input,46,FOLLOW_26); 
 
             			newLeafNode(otherlv_2, grammarAccess.getInstanceAccess().getCallKeyword_2());
             		
-            otherlv_3=(Token)match(input,13,FOLLOW_26); 
-
-            			newLeafNode(otherlv_3, grammarAccess.getInstanceAccess().getLeftCurlyBracketKeyword_3());
-            		
-            // InternalSorting.g:1071:3: ( (lv_code_4_0= RULE_CODE ) )
-            // InternalSorting.g:1072:4: (lv_code_4_0= RULE_CODE )
+            // InternalSorting.g:1043:3: ( (lv_code_3_0= RULE_CODE ) )
+            // InternalSorting.g:1044:4: (lv_code_3_0= RULE_CODE )
             {
-            // InternalSorting.g:1072:4: (lv_code_4_0= RULE_CODE )
-            // InternalSorting.g:1073:5: lv_code_4_0= RULE_CODE
+            // InternalSorting.g:1044:4: (lv_code_3_0= RULE_CODE )
+            // InternalSorting.g:1045:5: lv_code_3_0= RULE_CODE
             {
-            lv_code_4_0=(Token)match(input,RULE_CODE,FOLLOW_19); 
+            lv_code_3_0=(Token)match(input,RULE_CODE,FOLLOW_2); 
 
-            					newLeafNode(lv_code_4_0, grammarAccess.getInstanceAccess().getCodeCODETerminalRuleCall_4_0());
+            					newLeafNode(lv_code_3_0, grammarAccess.getInstanceAccess().getCodeCODETerminalRuleCall_3_0());
             				
 
             					if (current==null) {
@@ -2622,7 +2586,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"code",
-            						lv_code_4_0,
+            						lv_code_3_0,
             						"org.xtext.example.sorting.Sorting.CODE");
             				
 
@@ -2631,10 +2595,6 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,15,FOLLOW_2); 
-
-            			newLeafNode(otherlv_5, grammarAccess.getInstanceAccess().getRightCurlyBracketKeyword_5());
-            		
 
             }
 
@@ -2658,7 +2618,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTransition"
-    // InternalSorting.g:1097:1: entryRuleTransition returns [EObject current=null] : iv_ruleTransition= ruleTransition EOF ;
+    // InternalSorting.g:1065:1: entryRuleTransition returns [EObject current=null] : iv_ruleTransition= ruleTransition EOF ;
     public final EObject entryRuleTransition() throws RecognitionException {
         EObject current = null;
 
@@ -2666,8 +2626,8 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalSorting.g:1097:51: (iv_ruleTransition= ruleTransition EOF )
-            // InternalSorting.g:1098:2: iv_ruleTransition= ruleTransition EOF
+            // InternalSorting.g:1065:51: (iv_ruleTransition= ruleTransition EOF )
+            // InternalSorting.g:1066:2: iv_ruleTransition= ruleTransition EOF
             {
              newCompositeNode(grammarAccess.getTransitionRule()); 
             pushFollow(FOLLOW_1);
@@ -2694,7 +2654,7 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTransition"
-    // InternalSorting.g:1104:1: ruleTransition returns [EObject current=null] : (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' ) ;
+    // InternalSorting.g:1072:1: ruleTransition returns [EObject current=null] : (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' ) ;
     public final EObject ruleTransition() throws RecognitionException {
         EObject current = null;
 
@@ -2714,21 +2674,21 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalSorting.g:1110:2: ( (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' ) )
-            // InternalSorting.g:1111:2: (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' )
+            // InternalSorting.g:1078:2: ( (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' ) )
+            // InternalSorting.g:1079:2: (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' )
             {
-            // InternalSorting.g:1111:2: (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' )
-            // InternalSorting.g:1112:3: otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']'
+            // InternalSorting.g:1079:2: (otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']' )
+            // InternalSorting.g:1080:3: otherlv_0= '[' ( (otherlv_1= RULE_ID ) ) otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) otherlv_4= ']' otherlv_5= '->' otherlv_6= '[' ( (otherlv_7= RULE_ID ) ) otherlv_8= ',' ( (otherlv_9= RULE_ID ) ) otherlv_10= ']'
             {
             otherlv_0=(Token)match(input,27,FOLLOW_4); 
 
             			newLeafNode(otherlv_0, grammarAccess.getTransitionAccess().getLeftSquareBracketKeyword_0());
             		
-            // InternalSorting.g:1116:3: ( (otherlv_1= RULE_ID ) )
-            // InternalSorting.g:1117:4: (otherlv_1= RULE_ID )
+            // InternalSorting.g:1084:3: ( (otherlv_1= RULE_ID ) )
+            // InternalSorting.g:1085:4: (otherlv_1= RULE_ID )
             {
-            // InternalSorting.g:1117:4: (otherlv_1= RULE_ID )
-            // InternalSorting.g:1118:5: otherlv_1= RULE_ID
+            // InternalSorting.g:1085:4: (otherlv_1= RULE_ID )
+            // InternalSorting.g:1086:5: otherlv_1= RULE_ID
             {
 
             					if (current==null) {
@@ -2749,11 +2709,11 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_2, grammarAccess.getTransitionAccess().getCommaKeyword_2());
             		
-            // InternalSorting.g:1133:3: ( (otherlv_3= RULE_ID ) )
-            // InternalSorting.g:1134:4: (otherlv_3= RULE_ID )
+            // InternalSorting.g:1101:3: ( (otherlv_3= RULE_ID ) )
+            // InternalSorting.g:1102:4: (otherlv_3= RULE_ID )
             {
-            // InternalSorting.g:1134:4: (otherlv_3= RULE_ID )
-            // InternalSorting.g:1135:5: otherlv_3= RULE_ID
+            // InternalSorting.g:1102:4: (otherlv_3= RULE_ID )
+            // InternalSorting.g:1103:5: otherlv_3= RULE_ID
             {
 
             					if (current==null) {
@@ -2782,11 +2742,11 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_6, grammarAccess.getTransitionAccess().getLeftSquareBracketKeyword_6());
             		
-            // InternalSorting.g:1158:3: ( (otherlv_7= RULE_ID ) )
-            // InternalSorting.g:1159:4: (otherlv_7= RULE_ID )
+            // InternalSorting.g:1126:3: ( (otherlv_7= RULE_ID ) )
+            // InternalSorting.g:1127:4: (otherlv_7= RULE_ID )
             {
-            // InternalSorting.g:1159:4: (otherlv_7= RULE_ID )
-            // InternalSorting.g:1160:5: otherlv_7= RULE_ID
+            // InternalSorting.g:1127:4: (otherlv_7= RULE_ID )
+            // InternalSorting.g:1128:5: otherlv_7= RULE_ID
             {
 
             					if (current==null) {
@@ -2807,11 +2767,11 @@ public class InternalSortingParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_8, grammarAccess.getTransitionAccess().getCommaKeyword_8());
             		
-            // InternalSorting.g:1175:3: ( (otherlv_9= RULE_ID ) )
-            // InternalSorting.g:1176:4: (otherlv_9= RULE_ID )
+            // InternalSorting.g:1143:3: ( (otherlv_9= RULE_ID ) )
+            // InternalSorting.g:1144:4: (otherlv_9= RULE_ID )
             {
-            // InternalSorting.g:1176:4: (otherlv_9= RULE_ID )
-            // InternalSorting.g:1177:5: otherlv_9= RULE_ID
+            // InternalSorting.g:1144:4: (otherlv_9= RULE_ID )
+            // InternalSorting.g:1145:5: otherlv_9= RULE_ID
             {
 
             					if (current==null) {
