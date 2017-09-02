@@ -38,16 +38,6 @@ class SortingGenerator extends AbstractGenerator {
 				protected int level = 0;
 				Runnable call;
 				public abstract Port getPort(String name);
-			public Component(String name) {
-				switch (name) {
-			«FOR instance : resource.allContents.toIterable.filter(Instance)»
-				case "«instance.name»":
-					call = () -> {«instance.code.substring(2, instance.code.length - 2)»}
-				break;
-			«ENDFOR»
-
-				}
-			}
 				
 				public int getLevel() {
 					return level;
@@ -194,10 +184,9 @@ class SortingGenerator extends AbstractGenerator {
 			«FOR port : source.outPorts»
 				private «port.type» «port.name»;
 			«ENDFOR»
-				public «source.name»(String name){
-					super(name);
+				public «source.name»(){
 					«FOR port : source.outPorts»
-						outPorts.put("«port.name»", new Port("«port.name»",this));
+						Ports.put("«port.name»", new Port("«port.name»",this));
 					«ENDFOR»
 				}
 				«source.code.substring(2, source.code.length - 2)»
@@ -262,7 +251,10 @@ class SortingGenerator extends AbstractGenerator {
 		«FOR par : resource.allContents.toIterable.filter(Param)»
 			«par.value»;
 		«ENDFOR»
-
+		/*Components*/
+		«FOR component : resource.allContents.toIterable.filter(Component)»
+			«component.code.substring(2, component.code.length - 2)»
+		«ENDFOR»
 		}
 
 	'''
@@ -300,8 +292,9 @@ class SortingGenerator extends AbstractGenerator {
 		
 		public Graph() {
 			«FOR instance : config.instances»
-				nodes.put("«instance.name»", new «instance.component.name»("«instance.name»"));
+				nodes.put("«instance.name»", new «instance.component.name»());
 				components.add(nodes.get("«instance.name»"));
+				nodes.get("«instance.name»").setCall( () -> {«instance.code.substring(2, instance.code.length - 2)»});
 			«ENDFOR»
 			«FOR t : config.transitions»
 				addEdge("«t.source.name»","«t.targetPort.name»","«t.target.name»","«t.sourcePort.name»");

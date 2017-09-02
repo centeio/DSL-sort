@@ -16,6 +16,7 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.xtext.example.sorting.sorting.Component;
 import org.xtext.example.sorting.sorting.Config;
 import org.xtext.example.sorting.sorting.Filter;
 import org.xtext.example.sorting.sorting.Import;
@@ -61,38 +62,6 @@ public class SortingGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("public abstract Port getPort(String name);");
-    _builder.newLine();
-    _builder.append("public Component(String name) {");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("switch (name) {");
-    _builder.newLine();
-    {
-      Iterable<Instance> _filter = Iterables.<Instance>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Instance.class);
-      for(final Instance instance : _filter) {
-        _builder.append("case \"");
-        String _name = instance.getName();
-        _builder.append(_name);
-        _builder.append("\":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("call = () -> {");
-        String _code = instance.getCode();
-        int _length = instance.getCode().length();
-        int _minus = (_length - 2);
-        String _substring = _code.substring(2, _minus);
-        _builder.append(_substring, "\t");
-        _builder.append("}");
-        _builder.newLineIfNotEmpty();
-        _builder.append("break;");
-        _builder.newLine();
-      }
-    }
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("}");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -401,10 +370,10 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_5.append("}");
     _builder_5.newLine();
     fsa.generateFile("Edge.java", _builder_5);
-    Iterable<Source> _filter_1 = Iterables.<Source>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Source.class);
-    for (final Source source : _filter_1) {
-      String _name_1 = source.getName();
-      String _plus_1 = (_name_1 + ".java");
+    Iterable<Source> _filter = Iterables.<Source>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Source.class);
+    for (final Source source : _filter) {
+      String _name = source.getName();
+      String _plus_1 = (_name + ".java");
       StringConcatenation _builder_6 = new StringConcatenation();
       _builder_6.append("package ");
       _builder_6.append(this.packname);
@@ -412,8 +381,8 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_6.newLineIfNotEmpty();
       _builder_6.newLine();
       _builder_6.append("public class ");
-      String _name_2 = source.getName();
-      _builder_6.append(_name_2);
+      String _name_1 = source.getName();
+      _builder_6.append(_name_1);
       _builder_6.append(" extends Source{");
       _builder_6.newLineIfNotEmpty();
       {
@@ -423,31 +392,28 @@ public class SortingGenerator extends AbstractGenerator {
           String _type = port.getType();
           _builder_6.append(_type);
           _builder_6.append(" ");
-          String _name_3 = port.getName();
-          _builder_6.append(_name_3);
+          String _name_2 = port.getName();
+          _builder_6.append(_name_2);
           _builder_6.append(";");
           _builder_6.newLineIfNotEmpty();
         }
       }
       _builder_6.append("\t");
       _builder_6.append("public ");
-      String _name_4 = source.getName();
-      _builder_6.append(_name_4, "\t");
-      _builder_6.append("(String name){");
+      String _name_3 = source.getName();
+      _builder_6.append(_name_3, "\t");
+      _builder_6.append("(){");
       _builder_6.newLineIfNotEmpty();
-      _builder_6.append("\t\t");
-      _builder_6.append("super(name);");
-      _builder_6.newLine();
       {
         EList<Port> _outPorts_1 = source.getOutPorts();
         for(final Port port_1 : _outPorts_1) {
           _builder_6.append("\t\t");
-          _builder_6.append("outPorts.put(\"");
+          _builder_6.append("Ports.put(\"");
+          String _name_4 = port_1.getName();
+          _builder_6.append(_name_4, "\t\t");
+          _builder_6.append("\", new Port(\"");
           String _name_5 = port_1.getName();
           _builder_6.append(_name_5, "\t\t");
-          _builder_6.append("\", new Port(\"");
-          String _name_6 = port_1.getName();
-          _builder_6.append(_name_6, "\t\t");
           _builder_6.append("\",this));");
           _builder_6.newLineIfNotEmpty();
         }
@@ -456,28 +422,28 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_6.append("}");
       _builder_6.newLine();
       _builder_6.append("\t");
-      String _code_1 = source.getCode();
-      int _length_1 = source.getCode().length();
-      int _minus_1 = (_length_1 - 2);
-      String _substring_1 = _code_1.substring(2, _minus_1);
-      _builder_6.append(_substring_1, "\t");
+      String _code = source.getCode();
+      int _length = source.getCode().length();
+      int _minus = (_length - 2);
+      String _substring = _code.substring(2, _minus);
+      _builder_6.append(_substring, "\t");
       _builder_6.newLineIfNotEmpty();
       _builder_6.newLine();
       _builder_6.append("} ");
       fsa.generateFile(_plus_1, _builder_6);
     }
-    Iterable<Filter> _filter_2 = Iterables.<Filter>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Filter.class);
-    for (final Filter filter : _filter_2) {
-      String _name_7 = filter.getName();
-      String _plus_2 = (_name_7 + ".java");
+    Iterable<Filter> _filter_1 = Iterables.<Filter>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Filter.class);
+    for (final Filter filter : _filter_1) {
+      String _name_6 = filter.getName();
+      String _plus_2 = (_name_6 + ".java");
       StringConcatenation _builder_7 = new StringConcatenation();
       _builder_7.append("package ");
       _builder_7.append(this.packname);
       _builder_7.append(";");
       _builder_7.newLineIfNotEmpty();
       _builder_7.append("public class ");
-      String _name_8 = filter.getName();
-      _builder_7.append(_name_8);
+      String _name_7 = filter.getName();
+      _builder_7.append(_name_7);
       _builder_7.append(" extends Filter{");
       _builder_7.newLineIfNotEmpty();
       {
@@ -487,15 +453,15 @@ public class SortingGenerator extends AbstractGenerator {
           String _type_1 = port_2.getType();
           _builder_7.append(_type_1);
           _builder_7.append(" ");
-          String _name_9 = port_2.getName();
-          _builder_7.append(_name_9);
+          String _name_8 = port_2.getName();
+          _builder_7.append(_name_8);
           _builder_7.append(";");
           _builder_7.newLineIfNotEmpty();
         }
       }
       _builder_7.append("public ");
-      String _name_10 = filter.getName();
-      _builder_7.append(_name_10);
+      String _name_9 = filter.getName();
+      _builder_7.append(_name_9);
       _builder_7.append("(){");
       _builder_7.newLineIfNotEmpty();
       {
@@ -503,11 +469,11 @@ public class SortingGenerator extends AbstractGenerator {
         for(final Port port_3 : _inPorts) {
           _builder_7.append("\t");
           _builder_7.append("inPorts.put(\"");
+          String _name_10 = port_3.getName();
+          _builder_7.append(_name_10, "\t");
+          _builder_7.append("\", new Port(\"");
           String _name_11 = port_3.getName();
           _builder_7.append(_name_11, "\t");
-          _builder_7.append("\", new Port(\"");
-          String _name_12 = port_3.getName();
-          _builder_7.append(_name_12, "\t");
           _builder_7.append("\",this));");
           _builder_7.newLineIfNotEmpty();
         }
@@ -517,11 +483,11 @@ public class SortingGenerator extends AbstractGenerator {
         for(final Port port_4 : _outPorts_3) {
           _builder_7.append("\t");
           _builder_7.append("outPorts.put(\"");
+          String _name_12 = port_4.getName();
+          _builder_7.append(_name_12, "\t");
+          _builder_7.append("\", new Port(\"");
           String _name_13 = port_4.getName();
           _builder_7.append(_name_13, "\t");
-          _builder_7.append("\", new Port(\"");
-          String _name_14 = port_4.getName();
-          _builder_7.append(_name_14, "\t");
           _builder_7.append("\",this));");
           _builder_7.newLineIfNotEmpty();
         }
@@ -530,29 +496,29 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_7.append("}");
       _builder_7.newLine();
       _builder_7.append("\t");
-      String _code_2 = filter.getCode();
-      int _length_2 = filter.getCode().length();
-      int _minus_2 = (_length_2 - 2);
-      String _substring_2 = _code_2.substring(2, _minus_2);
-      _builder_7.append(_substring_2, "\t");
+      String _code_1 = filter.getCode();
+      int _length_1 = filter.getCode().length();
+      int _minus_1 = (_length_1 - 2);
+      String _substring_1 = _code_1.substring(2, _minus_1);
+      _builder_7.append(_substring_1, "\t");
       _builder_7.newLineIfNotEmpty();
       _builder_7.newLine();
       _builder_7.append("}");
       fsa.generateFile(_plus_2, _builder_7);
     }
-    Iterable<Sink> _filter_3 = Iterables.<Sink>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Sink.class);
-    for (final Sink sink : _filter_3) {
+    Iterable<Sink> _filter_2 = Iterables.<Sink>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Sink.class);
+    for (final Sink sink : _filter_2) {
       {
-        String _name_15 = sink.getName();
-        String _plus_3 = (_name_15 + ".java");
+        String _name_14 = sink.getName();
+        String _plus_3 = (_name_14 + ".java");
         StringConcatenation _builder_8 = new StringConcatenation();
         _builder_8.append("package ");
         _builder_8.append(this.packname);
         _builder_8.append(";");
         _builder_8.newLineIfNotEmpty();
         _builder_8.append("public class ");
-        String _name_16 = sink.getName();
-        _builder_8.append(_name_16);
+        String _name_15 = sink.getName();
+        _builder_8.append(_name_15);
         _builder_8.append(" extends Sink{");
         _builder_8.newLineIfNotEmpty();
         {
@@ -562,16 +528,16 @@ public class SortingGenerator extends AbstractGenerator {
             String _type_2 = port_5.getType();
             _builder_8.append(_type_2);
             _builder_8.append(" ");
-            String _name_17 = port_5.getName();
-            _builder_8.append(_name_17);
+            String _name_16 = port_5.getName();
+            _builder_8.append(_name_16);
             _builder_8.append(";");
             _builder_8.newLineIfNotEmpty();
           }
         }
         _builder_8.append("\t");
         _builder_8.append("public ");
-        String _name_18 = sink.getName();
-        _builder_8.append(_name_18, "\t");
+        String _name_17 = sink.getName();
+        _builder_8.append(_name_17, "\t");
         _builder_8.append("(){");
         _builder_8.newLineIfNotEmpty();
         {
@@ -579,11 +545,11 @@ public class SortingGenerator extends AbstractGenerator {
           for(final Port port_6 : _outPorts_5) {
             _builder_8.append("\t\t");
             _builder_8.append("outPorts.put(\"");
+            String _name_18 = port_6.getName();
+            _builder_8.append(_name_18, "\t\t");
+            _builder_8.append("\", new Port(\"");
             String _name_19 = port_6.getName();
             _builder_8.append(_name_19, "\t\t");
-            _builder_8.append("\", new Port(\"");
-            String _name_20 = port_6.getName();
-            _builder_8.append(_name_20, "\t\t");
             _builder_8.append("\",this));");
             _builder_8.newLineIfNotEmpty();
           }
@@ -592,11 +558,11 @@ public class SortingGenerator extends AbstractGenerator {
         _builder_8.append("}");
         _builder_8.newLine();
         _builder_8.append("\t");
-        String _code_3 = sink.getCode();
-        int _length_3 = sink.getCode().length();
-        int _minus_3 = (_length_3 - 2);
-        String _substring_3 = _code_3.substring(2, _minus_3);
-        _builder_8.append(_substring_3, "\t");
+        String _code_2 = sink.getCode();
+        int _length_2 = sink.getCode().length();
+        int _minus_2 = (_length_2 - 2);
+        String _substring_2 = _code_2.substring(2, _minus_2);
+        _builder_8.append(_substring_2, "\t");
         _builder_8.newLineIfNotEmpty();
         _builder_8.newLine();
         _builder_8.append("}");
@@ -646,7 +612,21 @@ public class SortingGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    _builder.append("\t");
+    _builder.append("/*Components*/");
     _builder.newLine();
+    {
+      Iterable<Component> _filter_2 = Iterables.<Component>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Component.class);
+      for(final Component component : _filter_2) {
+        _builder.append("\t");
+        String _code = component.getCode();
+        int _length = component.getCode().length();
+        int _minus = (_length - 2);
+        String _substring = _code.substring(2, _minus);
+        _builder.append(_substring, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -739,16 +719,25 @@ public class SortingGenerator extends AbstractGenerator {
         _builder.append("\", new ");
         String _name_2 = instance.getComponent().getName();
         _builder.append(_name_2, "\t\t");
-        _builder.append("(\"");
+        _builder.append("());");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t\t");
+        _builder.append("components.add(nodes.get(\"");
         String _name_3 = instance.getName();
         _builder.append(_name_3, "\t\t");
         _builder.append("\"));");
         _builder.newLineIfNotEmpty();
         _builder.append("\t\t");
-        _builder.append("components.add(nodes.get(\"");
+        _builder.append("nodes.get(\"");
         String _name_4 = instance.getName();
         _builder.append(_name_4, "\t\t");
-        _builder.append("\"));");
+        _builder.append("\").setCall( () -> {");
+        String _code = instance.getCode();
+        int _length = instance.getCode().length();
+        int _minus = (_length - 2);
+        String _substring = _code.substring(2, _minus);
+        _builder.append(_substring, "\t\t");
+        _builder.append("});");
         _builder.newLineIfNotEmpty();
       }
     }

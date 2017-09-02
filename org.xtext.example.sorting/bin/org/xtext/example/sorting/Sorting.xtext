@@ -42,7 +42,7 @@ Source:
 	'source' name=ID '{'
 	('in:' inPorts+=Port+)?
 	'out:' outPorts+=Port+
-	('method:' '{' code=CODE '}')?
+	('method:'  code=CODE )?
 	'}'
 	//TODO foreach N (param ou unknown)
 ;
@@ -51,7 +51,7 @@ Filter:
 	'filter' name=ID '{'
 	'in:' inPorts+=Port+
 	'out:' outPorts+=Port+
-	('method:' '{' code=CODE '}')?
+	('method:'  code=CODE )?
 	'}'
 ;	
 
@@ -59,14 +59,14 @@ Sink:
 	'sink' name=ID '{'
 	'in:' inPorts+=Port+
 	('out:' outPorts+=Port+)?
-	('method:' '{' code=CODE '}')?
+	('method:'  code=CODE )?
 	'}'
 ;
 	
 
 Instance:
 	component=[Component] name=ID 
-	'call:' '{' code=CODE '}'
+	'call:'  code=CODE 
 	
 ;
 Transition:
