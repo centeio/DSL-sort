@@ -39,16 +39,7 @@ class SortingGenerator extends AbstractGenerator {
 				Runnable call;
 				public abstract Port getPort(String name);
 				
-				public Component(String name) {
-					switch (name) {
-					«FOR instance : resource.allContents.toIterable.filter(Instance)»
-						case "«instance.name»":
-						call = () -> {«instance.code.substring(2, instance.code.length - 2)»};
-						break;
-					«ENDFOR»
-
-					}
-				}
+i
 				
 				public int getLevel() {
 					return level;
@@ -76,9 +67,7 @@ class SortingGenerator extends AbstractGenerator {
 		 	public abstract class Source extends Component{
 		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
 		 		public Port getPort(String name){return outPorts.get(name);}
-		 		public Source(String name) {
-		 			super(name);
-		 		}
+
 		 	}
 		 	'''
 		 );
@@ -97,10 +86,7 @@ class SortingGenerator extends AbstractGenerator {
 		 			if(inPorts.get(name) != null) 
 		 				return inPorts.get(name);
 		 			return outPorts.get(name);
-		 		}
-		 		public Filter(String name) {
-		 			super(name);
-		 		}		
+		 		}	
 		 	}
 		 	'''
 		 );
@@ -114,9 +100,6 @@ class SortingGenerator extends AbstractGenerator {
 		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
 		 		public Port getPort(String name){
 		 			return inPorts.get(name);
-		 		}
-		 		public Sink(String name) {
-		 			super(name);
 		 		}
 		 	}'''
 		 );
@@ -200,11 +183,22 @@ class SortingGenerator extends AbstractGenerator {
 			package «packname»;
 			
 			public class «source.name» extends Source{
+			«FOR port : source.inPorts»
+				private «port.type» «port.name»;
+			«ENDFOR»
 			«FOR port : source.outPorts»
 				private «port.type» «port.name»;
 			«ENDFOR»
 				public «source.name»(String name){
-					super(name);
+					switch (name) {
+					«FOR instance : resource.allContents.toIterable.filter(Instance)»
+					«IF instance.component.name==source.name»
+						case "«instance.name»":
+						call = () -> {«instance.code.substring(2, instance.code.length - 2)»};
+						break;
+					«ENDIF»
+					«ENDFOR»
+					}
 					«FOR port : source.outPorts»
 						outPorts.put("«port.name»", new Port("«port.name»",this));
 					«ENDFOR»
@@ -217,11 +211,22 @@ class SortingGenerator extends AbstractGenerator {
 		 			'''
 				package «packname»;
 				public class «filter.name» extends Filter{
+				«FOR port : filter.inPorts»
+					private «port.type» «port.name»;
+				«ENDFOR»
 				«FOR port : filter.outPorts»
 					private «port.type» «port.name»;
 				«ENDFOR»
 				public «filter.name»(String name){
-					super(name);
+					switch (name) {
+					«FOR instance : resource.allContents.toIterable.filter(Instance)»
+					«IF instance.component.name==filter.name»
+						case "«instance.name»":
+						call = () -> {«instance.code.substring(2, instance.code.length - 2)»};
+						break;
+					«ENDIF»
+					«ENDFOR»
+					}
 					«FOR port : filter.inPorts»
 						inPorts.put("«port.name»", new Port("«port.name»",this));
 					«ENDFOR»
@@ -238,11 +243,22 @@ class SortingGenerator extends AbstractGenerator {
 		 			'''
 				package «packname»;
 				public class «sink.name» extends Sink{
+				«FOR port : sink.inPorts»
+					private «port.type» «port.name»;
+				«ENDFOR»
 				«FOR port : sink.outPorts»
 					private «port.type» «port.name»;
 				«ENDFOR»
 					public «sink.name»(String name){
-						super(name);
+					switch (name) {
+					«FOR instance : resource.allContents.toIterable.filter(Instance)»
+					«IF instance.component.name==sink.name»
+						case "«instance.name»":
+						call = () -> {«instance.code.substring(2, instance.code.length - 2)»};
+						break;
+					«ENDIF»
+					«ENDFOR»
+					}
 						«FOR port : sink.outPorts»
 							outPorts.put("«port.name»", new Port("«port.name»",this));
 						«ENDFOR»

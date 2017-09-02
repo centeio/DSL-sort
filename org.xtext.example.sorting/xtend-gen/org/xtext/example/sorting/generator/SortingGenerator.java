@@ -3,6 +3,7 @@
  */
 package org.xtext.example.sorting.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import java.util.Iterator;
@@ -64,41 +65,7 @@ public class SortingGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public Component(String name) {");
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("switch (name) {");
-    _builder.newLine();
-    {
-      Iterable<Instance> _filter = Iterables.<Instance>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Instance.class);
-      for(final Instance instance : _filter) {
-        _builder.append("\t\t");
-        _builder.append("case \"");
-        String _name = instance.getName();
-        _builder.append(_name, "\t\t");
-        _builder.append("\":");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("call = () -> {");
-        String _code = instance.getCode();
-        int _length = instance.getCode().length();
-        int _minus = (_length - 2);
-        String _substring = _code.substring(2, _minus);
-        _builder.append(_substring, "\t\t");
-        _builder.append("};");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("break;");
-        _builder.newLine();
-      }
-    }
-    _builder.newLine();
-    _builder.append("\t\t");
-    _builder.append("}");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("}");
+    _builder.append("i");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -169,14 +136,6 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_1.append("\t");
     _builder_1.append("public Port getPort(String name){return outPorts.get(name);}");
     _builder_1.newLine();
-    _builder_1.append("\t");
-    _builder_1.append("public Source(String name) {");
-    _builder_1.newLine();
-    _builder_1.append("\t\t");
-    _builder_1.append("super(name);");
-    _builder_1.newLine();
-    _builder_1.append("\t");
-    _builder_1.append("}");
     _builder_1.newLine();
     _builder_1.append("}");
     _builder_1.newLine();
@@ -212,16 +171,7 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_2.append("return outPorts.get(name);");
     _builder_2.newLine();
     _builder_2.append("\t");
-    _builder_2.append("}");
-    _builder_2.newLine();
-    _builder_2.append("\t");
-    _builder_2.append("public Filter(String name) {");
-    _builder_2.newLine();
-    _builder_2.append("\t\t");
-    _builder_2.append("super(name);");
-    _builder_2.newLine();
-    _builder_2.append("\t");
-    _builder_2.append("}\t\t");
+    _builder_2.append("}\t");
     _builder_2.newLine();
     _builder_2.append("}");
     _builder_2.newLine();
@@ -245,15 +195,6 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_3.newLine();
     _builder_3.append("\t\t");
     _builder_3.append("return inPorts.get(name);");
-    _builder_3.newLine();
-    _builder_3.append("\t");
-    _builder_3.append("}");
-    _builder_3.newLine();
-    _builder_3.append("\t");
-    _builder_3.append("public Sink(String name) {");
-    _builder_3.newLine();
-    _builder_3.append("\t\t");
-    _builder_3.append("super(name);");
     _builder_3.newLine();
     _builder_3.append("\t");
     _builder_3.append("}");
@@ -433,10 +374,10 @@ public class SortingGenerator extends AbstractGenerator {
     _builder_5.append("}");
     _builder_5.newLine();
     fsa.generateFile("Edge.java", _builder_5);
-    Iterable<Source> _filter_1 = Iterables.<Source>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Source.class);
-    for (final Source source : _filter_1) {
-      String _name_1 = source.getName();
-      String _plus_1 = (_name_1 + ".java");
+    Iterable<Source> _filter = Iterables.<Source>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Source.class);
+    for (final Source source : _filter) {
+      String _name = source.getName();
+      String _plus_1 = (_name + ".java");
       StringConcatenation _builder_6 = new StringConcatenation();
       _builder_6.append("package ");
       _builder_6.append(this.packname);
@@ -444,18 +385,31 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_6.newLineIfNotEmpty();
       _builder_6.newLine();
       _builder_6.append("public class ");
-      String _name_2 = source.getName();
-      _builder_6.append(_name_2);
+      String _name_1 = source.getName();
+      _builder_6.append(_name_1);
       _builder_6.append(" extends Source{");
       _builder_6.newLineIfNotEmpty();
       {
-        EList<Port> _outPorts = source.getOutPorts();
-        for(final Port port : _outPorts) {
+        EList<Port> _inPorts = source.getInPorts();
+        for(final Port port : _inPorts) {
           _builder_6.append("private ");
           String _type = port.getType();
           _builder_6.append(_type);
           _builder_6.append(" ");
-          String _name_3 = port.getName();
+          String _name_2 = port.getName();
+          _builder_6.append(_name_2);
+          _builder_6.append(";");
+          _builder_6.newLineIfNotEmpty();
+        }
+      }
+      {
+        EList<Port> _outPorts = source.getOutPorts();
+        for(final Port port_1 : _outPorts) {
+          _builder_6.append("private ");
+          String _type_1 = port_1.getType();
+          _builder_6.append(_type_1);
+          _builder_6.append(" ");
+          String _name_3 = port_1.getName();
           _builder_6.append(_name_3);
           _builder_6.append(";");
           _builder_6.newLineIfNotEmpty();
@@ -468,18 +422,51 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_6.append("(String name){");
       _builder_6.newLineIfNotEmpty();
       _builder_6.append("\t\t");
-      _builder_6.append("super(name);");
+      _builder_6.append("switch (name) {");
+      _builder_6.newLine();
+      {
+        Iterable<Instance> _filter_1 = Iterables.<Instance>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Instance.class);
+        for(final Instance instance : _filter_1) {
+          {
+            String _name_5 = instance.getComponent().getName();
+            String _name_6 = source.getName();
+            boolean _equals = Objects.equal(_name_5, _name_6);
+            if (_equals) {
+              _builder_6.append("\t\t");
+              _builder_6.append("case \"");
+              String _name_7 = instance.getName();
+              _builder_6.append(_name_7, "\t\t");
+              _builder_6.append("\":");
+              _builder_6.newLineIfNotEmpty();
+              _builder_6.append("\t\t");
+              _builder_6.append("call = () -> {");
+              String _code = instance.getCode();
+              int _length = instance.getCode().length();
+              int _minus = (_length - 2);
+              String _substring = _code.substring(2, _minus);
+              _builder_6.append(_substring, "\t\t");
+              _builder_6.append("};");
+              _builder_6.newLineIfNotEmpty();
+              _builder_6.append("\t\t");
+              _builder_6.append("break;");
+              _builder_6.newLine();
+            }
+          }
+        }
+      }
+      _builder_6.append("\t\t");
+      _builder_6.append("}");
       _builder_6.newLine();
       {
         EList<Port> _outPorts_1 = source.getOutPorts();
-        for(final Port port_1 : _outPorts_1) {
+        for(final Port port_2 : _outPorts_1) {
           _builder_6.append("\t\t");
           _builder_6.append("outPorts.put(\"");
-          String _name_5 = port_1.getName();
-          _builder_6.append(_name_5, "\t\t");
+          String _name_8 = port_2.getName();
+          _builder_6.append(_name_8, "\t\t");
           _builder_6.append("\", new Port(\"");
-          String _name_6 = port_1.getName();
-          _builder_6.append(_name_6, "\t\t");
+          String _name_9 = port_2.getName();
+          _builder_6.append(_name_9, "\t\t");
           _builder_6.append("\",this));");
           _builder_6.newLineIfNotEmpty();
         }
@@ -500,63 +487,109 @@ public class SortingGenerator extends AbstractGenerator {
     }
     Iterable<Filter> _filter_2 = Iterables.<Filter>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Filter.class);
     for (final Filter filter : _filter_2) {
-      String _name_7 = filter.getName();
-      String _plus_2 = (_name_7 + ".java");
+      String _name_10 = filter.getName();
+      String _plus_2 = (_name_10 + ".java");
       StringConcatenation _builder_7 = new StringConcatenation();
       _builder_7.append("package ");
       _builder_7.append(this.packname);
       _builder_7.append(";");
       _builder_7.newLineIfNotEmpty();
       _builder_7.append("public class ");
-      String _name_8 = filter.getName();
-      _builder_7.append(_name_8);
+      String _name_11 = filter.getName();
+      _builder_7.append(_name_11);
       _builder_7.append(" extends Filter{");
       _builder_7.newLineIfNotEmpty();
       {
-        EList<Port> _outPorts_2 = filter.getOutPorts();
-        for(final Port port_2 : _outPorts_2) {
+        EList<Port> _inPorts_1 = filter.getInPorts();
+        for(final Port port_3 : _inPorts_1) {
           _builder_7.append("private ");
-          String _type_1 = port_2.getType();
-          _builder_7.append(_type_1);
+          String _type_2 = port_3.getType();
+          _builder_7.append(_type_2);
           _builder_7.append(" ");
-          String _name_9 = port_2.getName();
-          _builder_7.append(_name_9);
+          String _name_12 = port_3.getName();
+          _builder_7.append(_name_12);
+          _builder_7.append(";");
+          _builder_7.newLineIfNotEmpty();
+        }
+      }
+      {
+        EList<Port> _outPorts_2 = filter.getOutPorts();
+        for(final Port port_4 : _outPorts_2) {
+          _builder_7.append("private ");
+          String _type_3 = port_4.getType();
+          _builder_7.append(_type_3);
+          _builder_7.append(" ");
+          String _name_13 = port_4.getName();
+          _builder_7.append(_name_13);
           _builder_7.append(";");
           _builder_7.newLineIfNotEmpty();
         }
       }
       _builder_7.append("public ");
-      String _name_10 = filter.getName();
-      _builder_7.append(_name_10);
+      String _name_14 = filter.getName();
+      _builder_7.append(_name_14);
       _builder_7.append("(String name){");
       _builder_7.newLineIfNotEmpty();
       _builder_7.append("\t");
-      _builder_7.append("super(name);");
+      _builder_7.append("switch (name) {");
       _builder_7.newLine();
       {
-        EList<Port> _inPorts = filter.getInPorts();
-        for(final Port port_3 : _inPorts) {
+        Iterable<Instance> _filter_3 = Iterables.<Instance>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Instance.class);
+        for(final Instance instance_1 : _filter_3) {
+          {
+            String _name_15 = instance_1.getComponent().getName();
+            String _name_16 = filter.getName();
+            boolean _equals_1 = Objects.equal(_name_15, _name_16);
+            if (_equals_1) {
+              _builder_7.append("\t");
+              _builder_7.append("case \"");
+              String _name_17 = instance_1.getName();
+              _builder_7.append(_name_17, "\t");
+              _builder_7.append("\":");
+              _builder_7.newLineIfNotEmpty();
+              _builder_7.append("\t");
+              _builder_7.append("call = () -> {");
+              String _code_2 = instance_1.getCode();
+              int _length_2 = instance_1.getCode().length();
+              int _minus_2 = (_length_2 - 2);
+              String _substring_2 = _code_2.substring(2, _minus_2);
+              _builder_7.append(_substring_2, "\t");
+              _builder_7.append("};");
+              _builder_7.newLineIfNotEmpty();
+              _builder_7.append("\t");
+              _builder_7.append("break;");
+              _builder_7.newLine();
+            }
+          }
+        }
+      }
+      _builder_7.append("\t");
+      _builder_7.append("}");
+      _builder_7.newLine();
+      {
+        EList<Port> _inPorts_2 = filter.getInPorts();
+        for(final Port port_5 : _inPorts_2) {
           _builder_7.append("\t");
           _builder_7.append("inPorts.put(\"");
-          String _name_11 = port_3.getName();
-          _builder_7.append(_name_11, "\t");
+          String _name_18 = port_5.getName();
+          _builder_7.append(_name_18, "\t");
           _builder_7.append("\", new Port(\"");
-          String _name_12 = port_3.getName();
-          _builder_7.append(_name_12, "\t");
+          String _name_19 = port_5.getName();
+          _builder_7.append(_name_19, "\t");
           _builder_7.append("\",this));");
           _builder_7.newLineIfNotEmpty();
         }
       }
       {
         EList<Port> _outPorts_3 = filter.getOutPorts();
-        for(final Port port_4 : _outPorts_3) {
+        for(final Port port_6 : _outPorts_3) {
           _builder_7.append("\t");
           _builder_7.append("outPorts.put(\"");
-          String _name_13 = port_4.getName();
-          _builder_7.append(_name_13, "\t");
+          String _name_20 = port_6.getName();
+          _builder_7.append(_name_20, "\t");
           _builder_7.append("\", new Port(\"");
-          String _name_14 = port_4.getName();
-          _builder_7.append(_name_14, "\t");
+          String _name_21 = port_6.getName();
+          _builder_7.append(_name_21, "\t");
           _builder_7.append("\",this));");
           _builder_7.newLineIfNotEmpty();
         }
@@ -565,63 +598,109 @@ public class SortingGenerator extends AbstractGenerator {
       _builder_7.append("}");
       _builder_7.newLine();
       _builder_7.append("\t");
-      String _code_2 = filter.getCode();
-      int _length_2 = filter.getCode().length();
-      int _minus_2 = (_length_2 - 2);
-      String _substring_2 = _code_2.substring(2, _minus_2);
-      _builder_7.append(_substring_2, "\t");
+      String _code_3 = filter.getCode();
+      int _length_3 = filter.getCode().length();
+      int _minus_3 = (_length_3 - 2);
+      String _substring_3 = _code_3.substring(2, _minus_3);
+      _builder_7.append(_substring_3, "\t");
       _builder_7.newLineIfNotEmpty();
       _builder_7.newLine();
       _builder_7.append("}");
       fsa.generateFile(_plus_2, _builder_7);
     }
-    Iterable<Sink> _filter_3 = Iterables.<Sink>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Sink.class);
-    for (final Sink sink : _filter_3) {
+    Iterable<Sink> _filter_4 = Iterables.<Sink>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Sink.class);
+    for (final Sink sink : _filter_4) {
       {
-        String _name_15 = sink.getName();
-        String _plus_3 = (_name_15 + ".java");
+        String _name_22 = sink.getName();
+        String _plus_3 = (_name_22 + ".java");
         StringConcatenation _builder_8 = new StringConcatenation();
         _builder_8.append("package ");
         _builder_8.append(this.packname);
         _builder_8.append(";");
         _builder_8.newLineIfNotEmpty();
         _builder_8.append("public class ");
-        String _name_16 = sink.getName();
-        _builder_8.append(_name_16);
+        String _name_23 = sink.getName();
+        _builder_8.append(_name_23);
         _builder_8.append(" extends Sink{");
         _builder_8.newLineIfNotEmpty();
         {
-          EList<Port> _outPorts_4 = sink.getOutPorts();
-          for(final Port port_5 : _outPorts_4) {
+          EList<Port> _inPorts_3 = sink.getInPorts();
+          for(final Port port_7 : _inPorts_3) {
             _builder_8.append("private ");
-            String _type_2 = port_5.getType();
-            _builder_8.append(_type_2);
+            String _type_4 = port_7.getType();
+            _builder_8.append(_type_4);
             _builder_8.append(" ");
-            String _name_17 = port_5.getName();
-            _builder_8.append(_name_17);
+            String _name_24 = port_7.getName();
+            _builder_8.append(_name_24);
+            _builder_8.append(";");
+            _builder_8.newLineIfNotEmpty();
+          }
+        }
+        {
+          EList<Port> _outPorts_4 = sink.getOutPorts();
+          for(final Port port_8 : _outPorts_4) {
+            _builder_8.append("private ");
+            String _type_5 = port_8.getType();
+            _builder_8.append(_type_5);
+            _builder_8.append(" ");
+            String _name_25 = port_8.getName();
+            _builder_8.append(_name_25);
             _builder_8.append(";");
             _builder_8.newLineIfNotEmpty();
           }
         }
         _builder_8.append("\t");
         _builder_8.append("public ");
-        String _name_18 = sink.getName();
-        _builder_8.append(_name_18, "\t");
+        String _name_26 = sink.getName();
+        _builder_8.append(_name_26, "\t");
         _builder_8.append("(String name){");
         _builder_8.newLineIfNotEmpty();
-        _builder_8.append("\t\t");
-        _builder_8.append("super(name);");
+        _builder_8.append("\t");
+        _builder_8.append("switch (name) {");
+        _builder_8.newLine();
+        {
+          Iterable<Instance> _filter_5 = Iterables.<Instance>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Instance.class);
+          for(final Instance instance_2 : _filter_5) {
+            {
+              String _name_27 = instance_2.getComponent().getName();
+              String _name_28 = sink.getName();
+              boolean _equals_2 = Objects.equal(_name_27, _name_28);
+              if (_equals_2) {
+                _builder_8.append("\t");
+                _builder_8.append("case \"");
+                String _name_29 = instance_2.getName();
+                _builder_8.append(_name_29, "\t");
+                _builder_8.append("\":");
+                _builder_8.newLineIfNotEmpty();
+                _builder_8.append("\t");
+                _builder_8.append("call = () -> {");
+                String _code_4 = instance_2.getCode();
+                int _length_4 = instance_2.getCode().length();
+                int _minus_4 = (_length_4 - 2);
+                String _substring_4 = _code_4.substring(2, _minus_4);
+                _builder_8.append(_substring_4, "\t");
+                _builder_8.append("};");
+                _builder_8.newLineIfNotEmpty();
+                _builder_8.append("\t");
+                _builder_8.append("break;");
+                _builder_8.newLine();
+              }
+            }
+          }
+        }
+        _builder_8.append("\t");
+        _builder_8.append("}");
         _builder_8.newLine();
         {
           EList<Port> _outPorts_5 = sink.getOutPorts();
-          for(final Port port_6 : _outPorts_5) {
+          for(final Port port_9 : _outPorts_5) {
             _builder_8.append("\t\t");
             _builder_8.append("outPorts.put(\"");
-            String _name_19 = port_6.getName();
-            _builder_8.append(_name_19, "\t\t");
+            String _name_30 = port_9.getName();
+            _builder_8.append(_name_30, "\t\t");
             _builder_8.append("\", new Port(\"");
-            String _name_20 = port_6.getName();
-            _builder_8.append(_name_20, "\t\t");
+            String _name_31 = port_9.getName();
+            _builder_8.append(_name_31, "\t\t");
             _builder_8.append("\",this));");
             _builder_8.newLineIfNotEmpty();
           }
@@ -630,11 +709,11 @@ public class SortingGenerator extends AbstractGenerator {
         _builder_8.append("}");
         _builder_8.newLine();
         _builder_8.append("\t");
-        String _code_3 = sink.getCode();
-        int _length_3 = sink.getCode().length();
-        int _minus_3 = (_length_3 - 2);
-        String _substring_3 = _code_3.substring(2, _minus_3);
-        _builder_8.append(_substring_3, "\t");
+        String _code_5 = sink.getCode();
+        int _length_5 = sink.getCode().length();
+        int _minus_5 = (_length_5 - 2);
+        String _substring_5 = _code_5.substring(2, _minus_5);
+        _builder_8.append(_substring_5, "\t");
         _builder_8.newLineIfNotEmpty();
         _builder_8.newLine();
         _builder_8.append("}");
