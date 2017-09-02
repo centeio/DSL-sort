@@ -27,18 +27,27 @@ class SortingGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 
-		fsa.generateFile("PipeStages.java", generatePipeStages(resource.contents.head as Config)); 
+		fsa.generateFile("PipeStages.java", generatePipeStages(resource)); 
 		fsa.generateFile(resource.allContents.filter(Config).map[name]+".java", generateClass(resource.contents.head as Config)); 
 			
 		fsa.generateFile("Component.java", 
 			'''
 			package «packname»;
 			
-			public abstract class Component{
+			public abstract class Component extends PipeStages{
 				protected int level = 0;
-				public void invoke();
-				String call;
-				public Port getPort(String name);
+				Runnable call;
+				public abstract Port getPort(String name);
+			public Component(String name) {
+				switch (name) {
+			«FOR instance : resource.allContents.toIterable.filter(Instance)»
+				case "«instance.name»":
+					call = () -> {«instance.code.substring(2, instance.code.length - 2)»}
+				break;
+			«ENDFOR»
+
+				}
+			}
 				
 				public int getLevel() {
 					return level;
@@ -47,10 +56,15 @@ class SortingGenerator extends AbstractGenerator {
 					if(level<c.getLevel())
 						level = c.getLevel()+1;
 				}
-				private int getLevel() {
-					return level;
+				public int compareTo(Component c) {
+					return this.level - c.getLevel();
 				}
-				
+				public void invoke(){
+					call.run();
+				}
+				public void setCall(Runnable r) {
+					call=r;
+				}
 			}''');
 		 fsa.generateFile("Source.java", 
 		 	'''
@@ -60,7 +74,7 @@ class SortingGenerator extends AbstractGenerator {
 		 	
 		 	public abstract class Source extends Component{
 		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
-		 		Port getPort(String name){return outPorts.get(name);}
+		 		public Port getPort(String name){return outPorts.get(name);}
 		 	}
 		 	'''
 		 );
@@ -87,7 +101,7 @@ class SortingGenerator extends AbstractGenerator {
 		 	'''
 		 	package «packname»;
 		 	
-		import java.util.HashMap;
+		 	import java.util.HashMap;
 		 	
 		 	public abstract class Sink extends Component{
 		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
@@ -95,7 +109,7 @@ class SortingGenerator extends AbstractGenerator {
 		 			return inPorts.get(name);
 		 		}
 		 	
-			}'''
+		 	}'''
 		 );
 		 fsa.generateFile("Port.java", 
 		 	'''
@@ -177,30 +191,36 @@ class SortingGenerator extends AbstractGenerator {
 			package «packname»;
 			
 			public class «source.name» extends Source{
+			«FOR port : source.outPorts»
+				private «port.type» «port.name»;
+			«ENDFOR»
 				public «source.name»(String name){
-					this.name=name;
+					super(name);
 					«FOR port : source.outPorts»
-						inPorts.put(«port.name», new Port(«port.name»,this));
+						outPorts.put("«port.name»", new Port("«port.name»",this));
 					«ENDFOR»
 				}
-				«source.code»
+				«source.code.substring(2, source.code.length - 2)»
+
 			} ''')}
 		 	for(filter: resource.allContents.toIterable.filter(Filter)){
 		 		fsa.generateFile(filter.name + ".java",
 		 			'''
 				package «packname»;
 				public class «filter.name» extends Filter{
-					public «filter.name»(String name){
-						this.name=name;
-						«FOR port : filter.inPorts»
-							inPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»
-						«FOR port : filter.outPorts»
-							outPorts.put(«port.name», new Port(«port.name»,this));
-						«ENDFOR»					
+				«FOR port : filter.outPorts»
+					private «port.type» «port.name»;
+				«ENDFOR»
+				public «filter.name»(){
+					«FOR port : filter.inPorts»
+						inPorts.put("«port.name»", new Port("«port.name»",this));
+					«ENDFOR»
+					«FOR port : filter.outPorts»
+						outPorts.put("«port.name»", new Port("«port.name»",this));
+					«ENDFOR»					
 					}
-					«filter.code»
-					
+					«filter.code.substring(2, filter.code.length - 2)»
+
 				}''')}
 				
 		 	for(sink: resource.allContents.toIterable.filter(Sink)){
@@ -208,14 +228,16 @@ class SortingGenerator extends AbstractGenerator {
 		 			'''
 				package «packname»;
 				public class «sink.name» extends Sink{
-					public «sink.name»(String name){
-						this.name=name;
+				«FOR port : sink.outPorts»
+					private «port.type» «port.name»;
+				«ENDFOR»
+					public «sink.name»(){
 						«FOR port : sink.outPorts»
-							outPorts.put(«port.name», new Port(«port.name»,this));
+							outPorts.put("«port.name»", new Port("«port.name»",this));
 						«ENDFOR»
 					}
-					«sink.code»
-					
+					«sink.code.substring(2, sink.code.length - 2)»
+
 				}
 		 	'''
 		 	);
@@ -230,15 +252,17 @@ class SortingGenerator extends AbstractGenerator {
 	def CharSequence generateClass(Config config) '''
 	'''
 	
-	def CharSequence generatePipeStages(Config config)'''
+	def CharSequence generatePipeStages(Resource resource)'''
 	package «packname»;
-		«FOR imp : config.imports»
-			import «imp.name»
+		«FOR imp : resource.allContents.toIterable.filter(Import)»
+		import «imp.name»;
 		«ENDFOR»
 		public abstract class PipeStages{
-		«FOR par : config.params»
-			«par.value»
+		/*Vars*/
+		«FOR par : resource.allContents.toIterable.filter(Param)»
+			«par.value»;
 		«ENDFOR»
+
 		}
 
 	'''
@@ -250,42 +274,46 @@ class SortingGenerator extends AbstractGenerator {
 	
 	def CharSequence generate(Config config)'''
 	package «packname»;
-		«FOR imp : config.imports»
-			import «imp.name»
-		«ENDFOR»
-		import java.util.ArrayList;
-		import java.util.HashMap;
+	«FOR imp : config.imports»
+	import «imp.name»
+	«ENDFOR»
+	import java.util.ArrayList;
+	import java.util.HashMap;
+	import java.util.TreeSet;
+	
+	
+	class Graph extends PipeStages{
+		private ArrayList<Edge> edges = new ArrayList<Edge>();
+		private HashMap<String,Component> nodes = new HashMap<String,Component>();
+		private TreeSet<Component> components = new TreeSet<>();		
 		
-		
-		class Graph {
-			private ArrayList<Edge> edges = new ArrayList<Edge>();
-			private HashMap<String,Component> nodes = new HashMap<String,Component>();
+		public void addEdge(String from, String pfrom, String to, String pto){
+			Component csource = nodes.get(from);
+			Component ctarget = nodes.get(pto);
 			
-			public void addEdge(Instance from, Port pfrom, Instance to, Port pto){
-				Component csource = nodes.get(from);
-				Component ctarget = nodes.get(target);
-				
-				Port source = csource.getPort(pfrom);
-				Port target = ctarget.getPort(pto);
-				Edge edge = new Edge(source, target);
-				edges.put(edge);
-				csource.addEdge(edge);
-				ctarget.addEdge(edge);
-				ctarget.checkLevel(csource);
-			}
-			
-			public static void main(String args[]) {
-				«FOR instance : config.instances»
-					«instance.component.name» «instance.name» = new «instance.component.name»(«instance.name»);
-					nodes.put(«instance.name»);
-				«ENDFOR»
-				«FOR t : config.transitions»
-					addEdge(«t.source»,«t.targetPort»,«t.target»,«t.sourcePort»);
-				«ENDFOR»
-				
-				
-			}
+			Port source = csource.getPort(pfrom);
+			Port target = ctarget.getPort(pto);
+			Edge edge = new Edge(source, target);
+			edges.add(edge);
+			ctarget.checkLevel(csource);
 		}
+		
+		public Graph() {
+			«FOR instance : config.instances»
+				nodes.put("«instance.name»", new «instance.component.name»("«instance.name»"));
+				components.add(nodes.get("«instance.name»"));
+			«ENDFOR»
+			«FOR t : config.transitions»
+				addEdge("«t.source.name»","«t.targetPort.name»","«t.target.name»","«t.sourcePort.name»");
+			«ENDFOR»
+			
+		}
+		public void invoke(){
+			 for(Component c: components) {
+				 c.invoke();
+			 }
+		}
+	}
 
 		
 	'''

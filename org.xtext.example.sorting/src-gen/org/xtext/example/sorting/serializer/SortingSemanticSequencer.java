@@ -97,7 +97,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Filter returns Filter
 	 *
 	 * Constraint:
-	 *     (name=ID inPorts+=Port+ outPorts+=Port+ code=Anything)
+	 *     (name=ID inPorts+=Port+ outPorts+=Port+ code=CODE?)
 	 */
 	protected void sequence_Filter(ISerializationContext context, Filter semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -127,7 +127,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Instance returns Instance
 	 *
 	 * Constraint:
-	 *     (component=[Component|ID] name=ID code=Anything)
+	 *     (component=[Component|ID] name=ID code=CODE)
 	 */
 	protected void sequence_Instance(ISerializationContext context, Instance semanticObject) {
 		if (errorAcceptor != null) {
@@ -141,7 +141,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getInstanceAccess().getComponentComponentIDTerminalRuleCall_0_0_1(), semanticObject.eGet(SortingPackage.Literals.INSTANCE__COMPONENT, false));
 		feeder.accept(grammarAccess.getInstanceAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getInstanceAccess().getCodeAnythingParserRuleCall_4_0(), semanticObject.getCode());
+		feeder.accept(grammarAccess.getInstanceAccess().getCodeCODETerminalRuleCall_4_0(), semanticObject.getCode());
 		feeder.finish();
 	}
 	
@@ -191,7 +191,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Sink returns Sink
 	 *
 	 * Constraint:
-	 *     (name=ID inPorts+=Port+ outPorts+=Port* code=Anything)
+	 *     (name=ID inPorts+=Port+ outPorts+=Port* code=CODE?)
 	 */
 	protected void sequence_Sink(ISerializationContext context, Sink semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -204,7 +204,7 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     Source returns Source
 	 *
 	 * Constraint:
-	 *     (name=ID inPorts+=Port* outPorts+=Port+ code=Anything)
+	 *     (name=ID inPorts+=Port* outPorts+=Port+ code=CODE?)
 	 */
 	protected void sequence_Source(ISerializationContext context, Source semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

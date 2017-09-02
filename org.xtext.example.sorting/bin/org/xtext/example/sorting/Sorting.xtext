@@ -8,7 +8,7 @@ Config:
 	'params' '{' (params+=Param)+ '}'
 	'imports''{' (imports+=Import)+ '}'
 	'components''{' (components+=Component)+ '}'
-	'intances' '{'(instances+=Instance)+ '}'
+	'instances' '{'(instances+=Instance)+ '}'
 	'transitions' '{' (transitions+=Transition)+ '}' '}'
 ;
 
@@ -18,6 +18,11 @@ Param:
 
 Anything:
 	(ID | INT | STRING | WS | '(' | ')' | ',' | '.' | '!' | '?' | '[' | ']' | '+' | '-' | '/' | '*' | '<' | '>' | ':' | '=' | '%')+
+;
+
+terminal CODE:
+	'/#' -> '#/'
+	/*'%{' (~['}'])* '}' ('}' | ~['}','%'] (~['}'])* '}')* '%'*/
 ;
 
 Import:
@@ -37,7 +42,7 @@ Source:
 	'source' name=ID '{'
 	('in:' inPorts+=Port+)?
 	'out:' outPorts+=Port+
-	'method:' '{' code=Anything '}'
+	('method:' '{' code=CODE '}')?
 	'}'
 	//TODO foreach N (param ou unknown)
 ;
@@ -46,8 +51,7 @@ Filter:
 	'filter' name=ID '{'
 	'in:' inPorts+=Port+
 	'out:' outPorts+=Port+
-	'method:' '{' code=Anything '}'
-	//TODO adicionar codigo ao método
+	('method:' '{' code=CODE '}')?
 	'}'
 ;	
 
@@ -55,13 +59,14 @@ Sink:
 	'sink' name=ID '{'
 	'in:' inPorts+=Port+
 	('out:' outPorts+=Port+)?
-	'method:' '{' code=Anything '}'
+	('method:' '{' code=CODE '}')?
 	'}'
-;	
+;
+	
 
 Instance:
 	component=[Component] name=ID 
-	'call:' '{' code=Anything '}'
+	'call:' '{' code=CODE '}'
 	
 ;
 Transition:
