@@ -32,44 +32,44 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Keyword cParamsKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Assignment cParamsAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cParamsParamParserRuleCall_6_0 = (RuleCall)cParamsAssignment_6.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cImportsKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cLeftCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cImportsAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cImportsImportParserRuleCall_10_0 = (RuleCall)cImportsAssignment_10.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Keyword cComponentsKeyword_12 = (Keyword)cGroup.eContents().get(12);
-		private final Keyword cLeftCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
-		private final Assignment cComponentsAssignment_14 = (Assignment)cGroup.eContents().get(14);
-		private final RuleCall cComponentsComponentParserRuleCall_14_0 = (RuleCall)cComponentsAssignment_14.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
-		private final Keyword cInstancesKeyword_16 = (Keyword)cGroup.eContents().get(16);
-		private final Keyword cLeftCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
-		private final Assignment cInstancesAssignment_18 = (Assignment)cGroup.eContents().get(18);
-		private final RuleCall cInstancesInstanceParserRuleCall_18_0 = (RuleCall)cInstancesAssignment_18.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_19 = (Keyword)cGroup.eContents().get(19);
-		private final Keyword cTransitionsKeyword_20 = (Keyword)cGroup.eContents().get(20);
-		private final Keyword cLeftCurlyBracketKeyword_21 = (Keyword)cGroup.eContents().get(21);
-		private final Assignment cTransitionsAssignment_22 = (Assignment)cGroup.eContents().get(22);
-		private final RuleCall cTransitionsTransitionParserRuleCall_22_0 = (RuleCall)cTransitionsAssignment_22.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_23 = (Keyword)cGroup.eContents().get(23);
-		private final Keyword cRightCurlyBracketKeyword_24 = (Keyword)cGroup.eContents().get(24);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cParamsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Assignment cParamsAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final RuleCall cParamsParamParserRuleCall_4_2_0 = (RuleCall)cParamsAssignment_4_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cImportsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
+		private final Assignment cImportsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final RuleCall cImportsImportParserRuleCall_5_2_0 = (RuleCall)cImportsAssignment_5_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
+		private final Keyword cComponentsKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cComponentsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cComponentsComponentParserRuleCall_8_0 = (RuleCall)cComponentsAssignment_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cInstancesKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Keyword cLeftCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		private final Assignment cInstancesAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cInstancesInstanceParserRuleCall_12_0 = (RuleCall)cInstancesAssignment_12.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Keyword cTransitionsKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cLeftCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
+		private final Assignment cTransitionsAssignment_16 = (Assignment)cGroup.eContents().get(16);
+		private final RuleCall cTransitionsTransitionParserRuleCall_16_0 = (RuleCall)cTransitionsAssignment_16.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_17 = (Keyword)cGroup.eContents().get(17);
+		private final Keyword cRightCurlyBracketKeyword_18 = (Keyword)cGroup.eContents().get(18);
 		
 		//Config:
 		//	{Config}
-		//	'config' '{' name=ID
-		//	'params' '{' params+=Param+ '}'
-		//	'imports' '{' imports+=Import+ '}'
+		//	'config' '{' name=ID ('params' '{' params+=Param+ '}')? ('imports' '{' imports+=Import+ '}')?
 		//	'components' '{' components+=Component+ '}'
 		//	'instances' '{' instances+=Instance+ '}'
 		//	'transitions' '{' transitions+=Transition+ '}' '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Config} 'config' '{' name=ID 'params' '{' params+=Param+ '}' 'imports' '{' imports+=Import+ '}' 'components' '{'
+		//{Config} 'config' '{' name=ID ('params' '{' params+=Param+ '}')? ('imports' '{' imports+=Import+ '}')? 'components' '{'
 		//components+=Component+ '}' 'instances' '{' instances+=Instance+ '}' 'transitions' '{' transitions+=Transition+ '}' '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -88,83 +88,89 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
+		//('params' '{' params+=Param+ '}')?
+		public Group getGroup_4() { return cGroup_4; }
+		
 		//'params'
-		public Keyword getParamsKeyword_4() { return cParamsKeyword_4; }
+		public Keyword getParamsKeyword_4_0() { return cParamsKeyword_4_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
 		
 		//params+=Param+
-		public Assignment getParamsAssignment_6() { return cParamsAssignment_6; }
+		public Assignment getParamsAssignment_4_2() { return cParamsAssignment_4_2; }
 		
 		//Param
-		public RuleCall getParamsParamParserRuleCall_6_0() { return cParamsParamParserRuleCall_6_0; }
+		public RuleCall getParamsParamParserRuleCall_4_2_0() { return cParamsParamParserRuleCall_4_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public Keyword getRightCurlyBracketKeyword_4_3() { return cRightCurlyBracketKeyword_4_3; }
+		
+		//('imports' '{' imports+=Import+ '}')?
+		public Group getGroup_5() { return cGroup_5; }
 		
 		//'imports'
-		public Keyword getImportsKeyword_8() { return cImportsKeyword_8; }
+		public Keyword getImportsKeyword_5_0() { return cImportsKeyword_5_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_9() { return cLeftCurlyBracketKeyword_9; }
+		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
 		
 		//imports+=Import+
-		public Assignment getImportsAssignment_10() { return cImportsAssignment_10; }
+		public Assignment getImportsAssignment_5_2() { return cImportsAssignment_5_2; }
 		
 		//Import
-		public RuleCall getImportsImportParserRuleCall_10_0() { return cImportsImportParserRuleCall_10_0; }
+		public RuleCall getImportsImportParserRuleCall_5_2_0() { return cImportsImportParserRuleCall_5_2_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+		public Keyword getRightCurlyBracketKeyword_5_3() { return cRightCurlyBracketKeyword_5_3; }
 		
 		//'components'
-		public Keyword getComponentsKeyword_12() { return cComponentsKeyword_12; }
+		public Keyword getComponentsKeyword_6() { return cComponentsKeyword_6; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_13() { return cLeftCurlyBracketKeyword_13; }
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 		
 		//components+=Component+
-		public Assignment getComponentsAssignment_14() { return cComponentsAssignment_14; }
+		public Assignment getComponentsAssignment_8() { return cComponentsAssignment_8; }
 		
 		//Component
-		public RuleCall getComponentsComponentParserRuleCall_14_0() { return cComponentsComponentParserRuleCall_14_0; }
+		public RuleCall getComponentsComponentParserRuleCall_8_0() { return cComponentsComponentParserRuleCall_8_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
 		
 		//'instances'
-		public Keyword getInstancesKeyword_16() { return cInstancesKeyword_16; }
+		public Keyword getInstancesKeyword_10() { return cInstancesKeyword_10; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_17() { return cLeftCurlyBracketKeyword_17; }
+		public Keyword getLeftCurlyBracketKeyword_11() { return cLeftCurlyBracketKeyword_11; }
 		
 		//instances+=Instance+
-		public Assignment getInstancesAssignment_18() { return cInstancesAssignment_18; }
+		public Assignment getInstancesAssignment_12() { return cInstancesAssignment_12; }
 		
 		//Instance
-		public RuleCall getInstancesInstanceParserRuleCall_18_0() { return cInstancesInstanceParserRuleCall_18_0; }
+		public RuleCall getInstancesInstanceParserRuleCall_12_0() { return cInstancesInstanceParserRuleCall_12_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_19() { return cRightCurlyBracketKeyword_19; }
+		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
 		
 		//'transitions'
-		public Keyword getTransitionsKeyword_20() { return cTransitionsKeyword_20; }
+		public Keyword getTransitionsKeyword_14() { return cTransitionsKeyword_14; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_21() { return cLeftCurlyBracketKeyword_21; }
+		public Keyword getLeftCurlyBracketKeyword_15() { return cLeftCurlyBracketKeyword_15; }
 		
 		//transitions+=Transition+
-		public Assignment getTransitionsAssignment_22() { return cTransitionsAssignment_22; }
+		public Assignment getTransitionsAssignment_16() { return cTransitionsAssignment_16; }
 		
 		//Transition
-		public RuleCall getTransitionsTransitionParserRuleCall_22_0() { return cTransitionsTransitionParserRuleCall_22_0; }
+		public RuleCall getTransitionsTransitionParserRuleCall_16_0() { return cTransitionsTransitionParserRuleCall_16_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_23() { return cRightCurlyBracketKeyword_23; }
+		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_24() { return cRightCurlyBracketKeyword_24; }
+		public Keyword getRightCurlyBracketKeyword_18() { return cRightCurlyBracketKeyword_18; }
 	}
 	public class ParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.sorting.Sorting.Param");
@@ -812,9 +818,7 @@ public class SortingGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Config:
 	//	{Config}
-	//	'config' '{' name=ID
-	//	'params' '{' params+=Param+ '}'
-	//	'imports' '{' imports+=Import+ '}'
+	//	'config' '{' name=ID ('params' '{' params+=Param+ '}')? ('imports' '{' imports+=Import+ '}')?
 	//	'components' '{' components+=Component+ '}'
 	//	'instances' '{' instances+=Instance+ '}'
 	//	'transitions' '{' transitions+=Transition+ '}' '}';

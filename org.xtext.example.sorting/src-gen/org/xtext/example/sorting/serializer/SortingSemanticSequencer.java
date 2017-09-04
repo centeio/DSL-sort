@@ -79,8 +79,8 @@ public class SortingSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 * Constraint:
 	 *     (
 	 *         name=ID 
-	 *         params+=Param+ 
-	 *         imports+=Import+ 
+	 *         params+=Param* 
+	 *         imports+=Import* 
 	 *         components+=Component+ 
 	 *         instances+=Instance+ 
 	 *         transitions+=Transition+

@@ -33,14 +33,18 @@ class SortingGenerator extends AbstractGenerator {
 		fsa.generateFile("Component.java", 
 			'''
 			package «packname»;
+			import java.util.HashMap;
 			
-			public abstract class Component extends PipeStages{
+			public abstract class Component extends PipeStages implements Comparable<Component>{
 				protected int level = 0;
 				Runnable call;
-				public abstract Port getPort(String name);
-				
-i
-				
+				protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
+				protected HashMap<String, Port> outPorts = new HashMap<String, Port>();				
+				public Port getPort(String name){
+					if(inPorts.get(name) != null) 
+						return inPorts.get(name);
+						return outPorts.get(name);
+				}
 				public int getLevel() {
 					return level;
 				}
@@ -49,7 +53,7 @@ i
 						level = c.getLevel()+1;
 				}
 				public int compareTo(Component c) {
-					return this.level - c.getLevel();
+					return Integer.compare(this.level, c.getLevel());
 				}
 				public void invoke(){
 					call.run();
@@ -61,12 +65,8 @@ i
 		 fsa.generateFile("Source.java", 
 		 	'''
 		 	package «packname»;
-		 	
-		 	import java.util.HashMap;
-		 	
+		 			 	
 		 	public abstract class Source extends Component{
-		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
-		 		public Port getPort(String name){return outPorts.get(name);}
 
 		 	}
 		 	'''
@@ -80,27 +80,16 @@ i
 		 	import java.util.HashMap;
 		 	
 		 	public abstract class Filter extends Component{
-		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
-		 		protected HashMap<String, Port> outPorts = new HashMap<String, Port>();
-		 		public Port getPort(String name){
-		 			if(inPorts.get(name) != null) 
-		 				return inPorts.get(name);
-		 			return outPorts.get(name);
-		 		}	
+
 		 	}
 		 	'''
 		 );
 		 fsa.generateFile("Sink.java", 
 		 	'''
 		 	package «packname»;
-		 	
-		 	import java.util.HashMap;
-		 	
+		 			 	
 		 	public abstract class Sink extends Component{
-		 		protected HashMap<String, Port> inPorts = new HashMap<String, Port>();
-		 		public Port getPort(String name){
-		 			return inPorts.get(name);
-		 		}
+
 		 	}'''
 		 );
 		 fsa.generateFile("Port.java", 
@@ -199,7 +188,9 @@ i
 					«ENDIF»
 					«ENDFOR»
 					}
-					«FOR port : source.outPorts»
+					«FOR port : source.inPorts»
+						inPorts.put("«port.name»", new Port("«port.name»",this));
+					«ENDFOR»					«FOR port : source.outPorts»
 						outPorts.put("«port.name»", new Port("«port.name»",this));
 					«ENDFOR»
 				}
@@ -259,11 +250,14 @@ i
 					«ENDIF»
 					«ENDFOR»
 					}
-						«FOR port : sink.outPorts»
-							outPorts.put("«port.name»", new Port("«port.name»",this));
-						«ENDFOR»
-					}
-					«sink.code.substring(2, sink.code.length - 2)»
+				«FOR port : sink.inPorts»
+					inPorts.put("«port.name»", new Port("«port.name»",this));
+				«ENDFOR»
+				«FOR port : sink.outPorts»
+					outPorts.put("«port.name»", new Port("«port.name»",this));
+				«ENDFOR»
+				}
+				«sink.code.substring(2, sink.code.length - 2)»
 
 				}
 		 	'''
@@ -306,17 +300,17 @@ i
 	«ENDFOR»
 	import java.util.ArrayList;
 	import java.util.HashMap;
-	import java.util.TreeSet;
+	import java.util.PriorityQueue;
 	
 	
 	class Graph extends PipeStages{
 		private ArrayList<Edge> edges = new ArrayList<Edge>();
 		private HashMap<String,Component> nodes = new HashMap<String,Component>();
-		private TreeSet<Component> components = new TreeSet<>();		
+		private PriorityQueue<Component> components = new PriorityQueue<Component>();		
 		
 		public void addEdge(String from, String pfrom, String to, String pto){
 			Component csource = nodes.get(from);
-			Component ctarget = nodes.get(pto);
+			Component ctarget = nodes.get(to);
 			
 			Port source = csource.getPort(pfrom);
 			Port target = ctarget.getPort(pto);
